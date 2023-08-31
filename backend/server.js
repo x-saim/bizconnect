@@ -1,5 +1,5 @@
 const express = require('express');
-const connectDB = require('../config/db');
+const connectDB = require('./config/db');
 
 const app = express();
 
@@ -14,6 +14,11 @@ app.get('/', (req, res) => res.send('API Running'));
 //Define Routes
 
 app.use('/api/users', require('./routes/users'));
+//
+//
+//
+//
+//
 
 //PORT
 

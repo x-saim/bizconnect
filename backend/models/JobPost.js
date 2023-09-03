@@ -19,7 +19,7 @@ const JobPostSchema = new Schema({
     required: true,
   },
   requirements: {
-    type: [String],
+    type: String,
     required: true,
   },
   location: {
@@ -46,18 +46,15 @@ const JobPostSchema = new Schema({
       },
     },
   ],
-  comments: [
+  applications: [
     {
       user: {
         type: Schema.Types.ObjectId,
         ref: 'users',
       },
-      text: {
+      resume: {
         type: String,
         required: true,
-      },
-      avatar: {
-        type: String,
       },
       date: {
         type: Date,

@@ -17,7 +17,7 @@ app.use('/api/users', require('./routes/api/users'));
 app.use('/api/auth', require('./routes/api/auth'));
 app.use('/api/profile', require('./routes/api/profile'));
 app.use('/api/publicposts', require('./routes/api/publicpost'));
-//app.use('/api/jobpost', require('./routes/api/jobpost'));
+app.use('/api/jobposts', require('./routes/api/jobpost'));
 
 //PORT
 

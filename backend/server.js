@@ -13,7 +13,11 @@ app.get('/', (req, res) => res.send('API Running'));
 
 //Define Routes
 
-app.use('/api/users', require('./routes/users'));
+app.use('/api/users', require('./routes/api/users'));
+app.use('/api/auth', require('./routes/api/auth'));
+//app.use('/api/publicpost', require('./routes/api/publicpost'));
+//app.use('/api/jobpost', require('./routes/api/jobpost'));
+//app.use('/api/profile', require('./routes/api/profile'));
 
 //PORT
 

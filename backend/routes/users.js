@@ -1,5 +1,5 @@
 const express = require('express');
-const router = express.Router(); // Create an instance of Express router
+const router = express.Router();
 const gravatar = require('gravatar');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
@@ -80,7 +80,7 @@ router.post('/',
         }
       };
 
-      // Sign the payload to create a JWT
+      // Sign the payload to create a JWT, return token
       jwt.sign(
         payload,
         config.get("jwtSecret"),

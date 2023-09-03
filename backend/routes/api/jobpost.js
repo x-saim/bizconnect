@@ -55,4 +55,44 @@ router.post(
   }
 );
 
+// @route   GET api/jobposts
+// @desc    Get all job posts
+// @access  Private
+
+router.get('/', auth, async (req, res) => {
+  try {
+    //sorted by most recent job post
+    const jobPosts = await JobPost.find().sort({ date: -1 });
+
+    res.json(jobPosts);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error.');
+  }
+});
+
+// @route   GET api/jobposts/:id
+// @desc    Get job post by id
+// @access  Private
+
+router.get('/:id', auth, async (req, res) => {
+  try {
+    const jobPost = await JobPost.findById(req.params.id);
+
+    if (!jobPost) {
+      return res.status(404).json({ msg: 'Post not found' });
+    }
+
+    res.json(jobPost);
+  } catch (err) {
+    console.error(err.message);
+
+    if (err.kind === 'ObjectId') {
+      return res.status(404).json({ msg: 'Post not found' });
+    }
+
+    res.status(500).send('Server Error.');
+  }
+});
+
 module.exports = router;

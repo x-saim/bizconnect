@@ -95,4 +95,38 @@ router.get('/:id', auth, async (req, res) => {
   }
 });
 
+// @route   DELETE api/jobposts/:id
+// @desc    Delete job post by id
+// @access  Private
+
+router.delete('/:id', auth, async (req, res) => {
+  try {
+    const jobPost = await JobPost.findById(req.params.id);
+
+    if (!jobPost) {
+      return res.status(404).json({ msg: 'Job posting not found.' });
+    }
+
+    //Check if Logged in User is owner of post
+    //jobPost.user type: ObjectId
+    //req.user.id type: String
+
+    if (jobPost.user.toString() !== req.user.id) {
+      return res.status(401).json({ msg: 'User not authorized.' });
+    }
+
+    // Use deleteOne() directly on the job post object
+    await jobPost.deleteOne();
+
+    res.json({ msg: 'Job posting removed.' });
+  } catch (err) {
+    console.error(err.message);
+
+    if (err.kind === 'ObjectId') {
+      return res.status(404).json({ msg: 'Job posting not found.' });
+    }
+    res.status(500).send('Server Error.');
+  }
+});
+
 module.exports = router;

@@ -30,4 +30,89 @@ router.get('/me', auth, async (req, res) => {
   }
 });
 
+// @route   POST api/profile
+// @desc    Create or update user profile.
+// @access  Private
+
+router.post(
+  '/',
+  [
+    auth,
+    [
+      check('status', 'Status is required').not().isEmpty(),
+      check('skills', 'Skills are required').not().isEmpty(),
+    ],
+  ],
+  async (req, res) => {
+    // Extract validation errors, if any
+    const errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+
+    // Destructure data from the request body
+    const {
+      company,
+      website,
+      location,
+      bio,
+      status,
+      skills,
+      youtube,
+      facebook,
+      twitter,
+      instagram,
+      linkedin,
+      githubusername,
+    } = req.body;
+
+    // Build Profile Object
+    const profileFields = {};
+    profileFields.user = req.user.id;
+    if (company) profileFields.company = company;
+    if (website) profileFields.website = website;
+    if (location) profileFields.location = location;
+    if (bio) profileFields.bio = bio;
+    if (status) profileFields.status = status;
+
+    // Skills - split into an array and trim spaces at beginning/end.
+    if (skills) {
+      profileFields.skills = skills.split(',').map((skill) => skill.trim());
+    }
+
+    // Create separate object for social links
+    profileFields.social = {};
+    if (youtube) profileFields.social.youtube = youtube;
+    if (facebook) profileFields.social.facebook = facebook;
+    if (twitter) profileFields.social.twitter = twitter;
+    if (instagram) profileFields.social.instagram = instagram;
+    if (linkedin) profileFields.social.linkedin = linkedin;
+    if (githubusername) profileFields.social.githubusername = githubusername;
+
+    try {
+      //Check if profile exists.
+      let profile = await Profile.findOne({ user: req.user.id });
+
+      // Update existing profile
+      if (profile) {
+        profile = await Profile.findOneAndUpdate(
+          { user: req.user.id },
+          { $set: profileFields },
+          { new: true }
+        );
+
+        return res.json(profile);
+      }
+
+      // Create new profile
+      profile = new Profile(profileFields);
+      await profile.save();
+      res.json(profile);
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Server Error');
+    }
+  }
+);
 module.exports = router;

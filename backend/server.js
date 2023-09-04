@@ -6,6 +6,9 @@ const app = express();
 //Connect to MongoDB Database
 connectDB();
 
+// Enable CORS for all routes
+app.use(cors());
+
 //Initializing Middleware
 app.use(express.json({ extended: false }));
 

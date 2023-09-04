@@ -44,7 +44,15 @@ const JobPostSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'users',
       },
-      resume: {
+      firstname: {
+        type: String,
+        required: true,
+      },
+      lastname: {
+        type: String,
+        required: true,
+      },
+      file: {
         type: String,
         required: true,
       },

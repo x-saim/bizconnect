@@ -64,7 +64,10 @@ router.get('/', auth, async (req, res) => {
     //sorted by most recent job post
     const jobPosts = await JobPost.find().sort({ date: -1 });
 
-    res.json(jobPosts);
+    res.json({
+      count: jobPosts.length,
+      data: jobPosts,
+    });
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Server Error.');
@@ -127,6 +130,24 @@ router.delete('/:id', auth, async (req, res) => {
     }
     res.status(500).send('Server Error.');
   }
+});
+
+// @route   POST api/jobposts/apply/:id
+// @desc    Apply to job post by id
+// @access  Private
+
+router.post('/apply/:id', auth, async (req, res) => {
+  try {
+    const jobPost = await JobPost.findById(req.params.id);
+
+    if (!jobPost) {
+      return res.status(404).json({ msg: 'Job posting not found.' });
+    }
+
+    //Create a new application obj to be submitted.
+
+    const newJobApplication = {};
+  } catch (error) {}
 });
 
 module.exports = router;

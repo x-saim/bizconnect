@@ -45,7 +45,9 @@ const MyProfile = () => {
 
       {about && <About postOpen={postFunction} photoOpen={photoFunction} />}
 
+      {post && <Posts aboutOpen={aboutFunction} photoOpen={photoFunction} />}
 
+      {photos && <Photo aboutOpen={aboutFunction} postOpen={postFunction} />}
 
       {/* <div className="pt-8 pb-5 lg:xl:py-9 px-16 bg-[#DEDDE8]">
                 <div className="bg-white flex flex-col md:flex-row rounded-[10px] ">

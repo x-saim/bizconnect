@@ -33,8 +33,8 @@ const Nav =()=>{
             <span onClick={mobileMenu} class="material-symbols-outlined lg:hidden">menu</span>
 
             <div className="ml-[5rem] space-x-10 hidden lg:inline-block">
-                <a href="">Home</a>
-                <a href="">Job Board</a>
+                <a href="#">Home</a>
+                <a href="#">Job Board</a>
             </div>
 
             <div className="hidden lg:flex items-center space-x-1 absolute right-[32px]  ">
@@ -43,8 +43,8 @@ const Nav =()=>{
 
             {drop && (
                 <div className="hidden px-4 py-4 space-y-2 lg:inline-block absolute top-[50px] right-[12px] w-[7rem] shadow-md rounded-sm">
-                <a href="" className="block hover:bg-slate-400 px-1 rounded-sm ">Log in</a>
-                <a href="" className="block hover:bg-slate-400 px-1 rounded-sm">Sign up</a>
+                <a href="#" className="block hover:bg-slate-400 px-1 rounded-sm ">Log in</a>
+                <a href="#" className="block hover:bg-slate-400 px-1 rounded-sm">Sign up</a>
             </div>
             )
 
@@ -58,8 +58,8 @@ const Nav =()=>{
             {menu && (
                 <div className="absolute top-[44px] left-0 flex flex-col py-8 px-8 bg-white lg:hidden">
                     <div className="flex flex-col space-y-4">
-                        <a href="">Home</a>
-                        <a href="">Job Board</a>
+                        <a href="#">Home</a>
+                        <a href="#">Job Board</a>
                     </div>
                     
                     <div className="flex items-center mt-7 space-x-1">
@@ -68,8 +68,8 @@ const Nav =()=>{
 
                         {login && (
                             <div className="py-3 px-3 shadow-md flex flex-col space-y-1 absolute bottom-[-45px]">
-                                <a href="">Log in</a>
-                                <a href="">Sign up</a>
+                                <a href="#">Log in</a>
+                                <a href="#">Sign up</a>
                             </div>
                         )
 

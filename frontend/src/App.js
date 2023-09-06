@@ -6,16 +6,20 @@ import JobBoard from "./pages/JobBoard";
 import Welcome from "./pages/Welcome"
 import './index.css'
 
+import { Provider } from 'react-redux'
+import store from './redux/store'
+
 const App=()=> {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path='/my-profile' element={<MyProfile></MyProfile>}/>
-        <Route path='/job-board' element={<JobBoard></JobBoard>}/>
-        <Route path='/' element={<Welcome></Welcome>} />
-
-      </Routes>
-    </BrowserRouter>
+    <Provider store={store}>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/my-profile' element={<MyProfile></MyProfile>}/>
+          <Route path='/job-board' element={<JobBoard></JobBoard>}/>
+          <Route path='/' element={<Welcome></Welcome>} />
+        </Routes>
+      </BrowserRouter>
+    </Provider>
   )
 }
 

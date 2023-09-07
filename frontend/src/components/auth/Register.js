@@ -64,28 +64,28 @@ const Register = () => {
       console.log('Success');
       console.log(formData);
 
-    //   const newUser = {
-    //     firstname,
-    //     lastname,
-    //     email,
-    //     password,
-    //   };
+      //   const newUser = {
+      //     firstname,
+      //     lastname,
+      //     email,
+      //     password,
+      //   };
 
-    //   try {
-    //     const config = {
-    //       headers: {
-    //         'Content-Type': 'application/json',
-    //       },
-    //     };
+      //   try {
+      //     const config = {
+      //       headers: {
+      //         'Content-Type': 'application/json',
+      //       },
+      //     };
 
-    //     //body obj to send
-    //     const body = JSON.stringify(newUser);
+      //     //body obj to send
+      //     const body = JSON.stringify(newUser);
 
-    //     const res = await axios.post('/api/users', body, config);
+      //     const res = await axios.post('/api/users', body, config);
 
-    //     console.log(res.data);
-    //   } catch (err) {}
-    // }
+      //     console.log(res.data);
+      //   } catch (err) {}
+    }
   };
 
   return (

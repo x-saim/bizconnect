@@ -18,7 +18,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
-//React Router
+//React
 import { Link } from 'react-router-dom';
 
 function Copyright(props) {

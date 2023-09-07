@@ -23,6 +23,9 @@ import Register from './components/auth/Register';
 import Landing from './components/layout/Landing';
 import Navbar from './components/layout/Navbar';
 import Profiles from './components/profiles/Profiles';
+import Profile from './components/profile/Profile';
+
+//Layout
 
 //Redux
 import { Provider } from 'react-redux';
@@ -42,12 +45,9 @@ const App = () => (
         </Routes>
 
         <Routes>
-          <Route path='/register' element={<Register />} />
-          <Route path='/login' element={<Login />} />
-          <Route path='/' element={<Landing />} />
           <Route path='register' element={<Register />} />
           <Route path='login' element={<Login />} />
-          <Route path='profiles' element={<Profiles />} />
+          <Route path='/profiles' element={<Profiles />} />
           <Route path='profile/:id' element={<Profile />} />
 
           {/* The following will become protected routes */}

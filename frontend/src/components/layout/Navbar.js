@@ -11,7 +11,10 @@ const Navbar = () => {
       </h1>
       <ul>
         <li>
-          <Link to='/posts'>Forum</Link>
+          <Link to='/posts'>Posts</Link>
+        </li>
+        <li>
+          <Link to='/jobposts'>Job Posts</Link>
         </li>
 
         {/* <li>
@@ -21,7 +24,7 @@ const Navbar = () => {
           </a>
         </li> */}
         <li>
-          <Link to='/profiles'>Job Board</Link>
+          <Link to='/profiles'>Network</Link>
         </li>
         <li>
           <Link to='/dashboard'>

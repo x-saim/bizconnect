@@ -10,7 +10,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
+//import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
@@ -18,7 +18,8 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
-//
+//React Router
+import { Link } from 'react-router-dom';
 
 function Copyright(props) {
   return (
@@ -74,7 +75,12 @@ const Login = () => {
           <Typography component='h1' variant='h5'>
             Sign in
           </Typography>
-          <Box component='form' onSubmit={onSubmit} noValidate sx={{ mt: 1 }}>
+          <Box
+            component='form'
+            onSubmit={(e) => onSubmit(e)}
+            noValidate
+            sx={{ mt: 1 }}
+          >
             <TextField
               margin='normal'
               required
@@ -84,6 +90,8 @@ const Login = () => {
               name='email'
               autoComplete='email'
               autoFocus
+              value={email}
+              onChange={(e) => onChange(e)}
             />
             <TextField
               margin='normal'
@@ -94,6 +102,8 @@ const Login = () => {
               type='password'
               id='password'
               autoComplete='current-password'
+              value={password}
+              onChange={(e) => onChange(e)}
             />
             <FormControlLabel
               control={<Checkbox value='remember' color='primary' />}
@@ -104,17 +114,18 @@ const Login = () => {
               fullWidth
               variant='contained'
               sx={{ mt: 3, mb: 2 }}
+              value='Login'
             >
               Sign In
             </Button>
             <Grid container>
               <Grid item xs>
-                <Link href='#' variant='body2'>
+                <Link to='#' variant='body2'>
                   Forgot password?
                 </Link>
               </Grid>
               <Grid item>
-                <Link href='#' variant='body2'>
+                <Link to='/register' variant='body2'>
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>

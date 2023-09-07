@@ -25,7 +25,7 @@ import Navbar from './components/layout/Navbar';
 
 //Redux
 import { Provider } from 'react-redux';
-import store from './components/stash/redux/store';
+import store from '../src/store';
 
 //import { useSelector } from 'react-redux/es/hooks/useSelector';
 

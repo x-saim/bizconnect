@@ -11,7 +11,23 @@ const Navbar = () => {
       </h1>
       <ul>
         <li>
-          <Link to='/profiles'>Profile Board</Link>
+          <Link to='/posts'>Forum</Link>
+        </li>
+
+        {/* <li>
+          <a onClick={logout} href='#!'>
+            <i className='fas fa-sign-out-alt' />{' '}
+            <span className='hide-sm'>Logout</span>
+          </a>
+        </li> */}
+        <li>
+          <Link to='/profiles'>Job Board</Link>
+        </li>
+        <li>
+          <Link to='/dashboard'>
+            <i className='fas fa-user' />{' '}
+            <span className='hide-sm'>Dashboard</span>
+          </Link>
         </li>
         <li>
           <Link to='/register'>Register</Link>

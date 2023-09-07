@@ -2,8 +2,8 @@ import { createStore, applyMiddleware, combineReducers } from 'redux';
 import { configureStore } from '@reduxjs/toolkit';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
-import { userReducer } from './reducers/userReducer';
-import { alertsReducer } from './reducers/alertsReducer';
+import { userReducer } from './redux/reducers/userReducer';
+import { alertsReducer } from './redux/reducers/alertsReducer';
 
 const rootReducer = combineReducers({
   userReducer: userReducer,

@@ -9,7 +9,7 @@ function Register() {
 
   function register(values) {
     console.log(values);
-    delete values.cpassword;
+    // delete values.cpassword;
     dispatch(userRegister(values));
   }
 
@@ -19,8 +19,16 @@ function Register() {
 
       <Form onFinish={register}>
         <Form.Item
-          label='username'
-          name='username'
+          label='name'
+          name='name'
+          rules={[{ required: true }]}
+        >
+          <Input />
+        </Form.Item>
+
+        <Form.Item
+          label='email'
+          name='email'
           rules={[{ required: true }]}
         >
           <Input />
@@ -29,21 +37,14 @@ function Register() {
         <Form.Item
           label='password'
           name='password'
-          rules={[{ required: true }]}
-        >
-          <Input />
-        </Form.Item>
 
-        <Form.Item
-          label='confirm password'
-          name='cpassword'
           rules={[{ required: true }]}
         >
-          <Input />
+          <Input type='password'/>
         </Form.Item>
 
         <Button htmlType='submit'>Register</Button>
-
+        <br/><br/>
         <Link to='/login'>Already registered, click here to login</Link>
       </Form>
     </div>

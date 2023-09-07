@@ -37,8 +37,9 @@ function App() {
             <Route path='/' element={<Welcome />} />
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />
-            {/* <ProtectedRoute path='/usersHome' element={<UsersHome />} /> */}
+            <Route path='/usersHome' element={<UsersHome />} />
           </Routes>
+          {/* <ProtectedRoute path='/usersHome' element={<UsersHome />} /> */}
         </div>
       </Router>
     </Provider>

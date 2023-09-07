@@ -22,10 +22,12 @@ import Login from './components/auth/Login';
 import Register from './components/auth/Register';
 import Landing from './components/layout/Landing';
 import Navbar from './components/layout/Navbar';
+import Profiles from './components/profiles/Profiles';
 
 //Redux
 import { Provider } from 'react-redux';
 import store from '../src/store';
+import Dashboard from './components/dashboard/Dashboard';
 
 //import { useSelector } from 'react-redux/es/hooks/useSelector';
 
@@ -39,12 +41,18 @@ const App = () => (
           <Route path='/' element={<Landing />} />
         </Routes>
 
-        <section className='container'>
-          <Routes>
-            <Route path='/register' element={<Register />} />
-            <Route path='/login' element={<Login />} />
-          </Routes>
-        </section>
+        <Routes>
+          <Route path='/register' element={<Register />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/' element={<Landing />} />
+          <Route path='register' element={<Register />} />
+          <Route path='login' element={<Login />} />
+          <Route path='profiles' element={<Profiles />} />
+          <Route path='profile/:id' element={<Profile />} />
+
+          {/* The following will become protected routes */}
+          <Route path='/dashboard' element={<Dashboard />} />
+        </Routes>
       </>
     </Router>
   </Provider>

@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-import logo from '../images/logo.png'
-import dropdown from '../images/dropdown.png'
-import '../index.css'
-
+import logo from '../../img/logo.png'
+import dropdown from '../../img/dropdown.png'
 
 const Nav =()=>{
 

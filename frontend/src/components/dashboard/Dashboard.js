@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import Nav from '../components/Nav';
-import About from '../components/About';
-import Posts from '../components/Posts';
-import Photo from '../components/Photo';
-import image1 from '../images/img1.png';
+import Nav from './Nav';
+import About from './About';
+import Posts from './Posts';
+import Photo from './Photo';
+import image1 from '../../img/img1.png';
 
 const MyProfile = () => {
   const [about, setAbout] = useState(true);
@@ -30,7 +30,6 @@ const MyProfile = () => {
 
   return (
     <>
-      <Nav></Nav>
       <div className='bg-[#E8E7EF] pt-8 pb-5 lg:xl:py-9 px-16'>
         <div className='flex items-center justify-center space-x-4'>
           <img

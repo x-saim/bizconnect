@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+//import { Link } from 'react-router-dom';
 //import axios from 'axios';
 
 //MaterialUI
@@ -30,13 +30,14 @@ function Copyright(props) {
     >
       {'Copyright © '}
       <Link color='inherit' href='https://mui.com/'>
-        Your Website
+        BizConnect
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
     </Typography>
   );
 }
+const defaultTheme = createTheme();
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -56,38 +57,106 @@ const Login = () => {
   };
 
   return (
-    <>
-      <h1 className='large text-primary'>Sign In</h1>
-      <p className='lead'>
-        <i className='fas fa-user'></i> Sign Into Your Account
-      </p>
-      <form className='form' onSubmit={(e) => onSubmit(e)}>
-        <div className='form-group'>
-          <input
-            type='email'
-            placeholder='Email Address'
-            name='email'
-            value={email}
-            onChange={(e) => onChange(e)}
-          />
-        </div>
-        <div className='form-group'>
-          <input
-            type='password'
-            placeholder='Password'
-            name='password'
-            minLength='6'
-            value={password}
-            onChange={(e) => onChange(e)}
-          />
-        </div>
+    <ThemeProvider theme={defaultTheme}>
+      <Container component='main' maxWidth='xs'>
+        <CssBaseline />
+        <Box
+          sx={{
+            marginTop: 8,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+          }}
+        >
+          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+            <LockOutlinedIcon />
+          </Avatar>
+          <Typography component='h1' variant='h5'>
+            Sign in
+          </Typography>
+          <Box component='form' onSubmit={onSubmit} noValidate sx={{ mt: 1 }}>
+            <TextField
+              margin='normal'
+              required
+              fullWidth
+              id='email'
+              label='Email Address'
+              name='email'
+              autoComplete='email'
+              autoFocus
+            />
+            <TextField
+              margin='normal'
+              required
+              fullWidth
+              name='password'
+              label='Password'
+              type='password'
+              id='password'
+              autoComplete='current-password'
+            />
+            <FormControlLabel
+              control={<Checkbox value='remember' color='primary' />}
+              label='Remember me'
+            />
+            <Button
+              type='submit'
+              fullWidth
+              variant='contained'
+              sx={{ mt: 3, mb: 2 }}
+            >
+              Sign In
+            </Button>
+            <Grid container>
+              <Grid item xs>
+                <Link href='#' variant='body2'>
+                  Forgot password?
+                </Link>
+              </Grid>
+              <Grid item>
+                <Link href='#' variant='body2'>
+                  {"Don't have an account? Sign Up"}
+                </Link>
+              </Grid>
+            </Grid>
+          </Box>
+        </Box>
+        <Copyright sx={{ mt: 8, mb: 4 }} />
+      </Container>
+    </ThemeProvider>
 
-        <input type='submit' className='btn btn-primary' value='Login' />
-      </form>
-      <p className='my-1'>
-        Don't have an account? <Link to='/register'>Sign Up</Link>
-      </p>
-    </>
+    // <>
+    //   <h1 className='large text-primary'>Sign In</h1>
+    //   <p className='lead'>
+    //     <i className='fas fa-user'></i> Sign Into Your Account
+    //   </p>
+    //   <form className='form' onSubmit={(e) => onSubmit(e)}>
+    //     <div className='form-group'>
+    //       <input
+    //         type='email'
+    //         placeholder='Email Address'
+    //         name='email'
+    //         value={email}
+    //         onChange={(e) => onChange(e)}
+    //       />
+    //     </div>
+    //     <div className='form-group'>
+    //       <input
+    //         type='password'
+    //         placeholder='Password'
+    //         name='password'
+    //         minLength='6'
+    //         value={password}
+    //         onChange={(e) => onChange(e)}
+    //       />
+    //     </div>
+
+    //     <input type='submit' className='btn btn-primary' value='Login' />
+    //   </form>
+    //   <p className='my-1'>
+    //     Don't have an account? <Link to='/register'>Sign Up</Link>
+    //   </p>
+    // </>
   );
 };
 

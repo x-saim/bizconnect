@@ -18,8 +18,8 @@ function Login() {
 
       <Form onFinish={login}>
         <Form.Item
-          label='username'
-          name='username'
+          label='email'
+          name='email'
           rules={[{ required: true }]}
         >
           <Input />
@@ -30,7 +30,7 @@ function Login() {
           name='password'
           rules={[{ required: true }]}
         >
-          <Input />
+          <Input type='password'/>
         </Form.Item>
 
         <Button htmlType='submit'>Login</Button>

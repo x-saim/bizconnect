@@ -2,7 +2,6 @@ import React from 'react';
 
 const Profile = () => {
   const profile = {
-    // Replace with your profile data
     firstname: 'John',
     lastname: 'Doe',
     username: 'johndoe123',

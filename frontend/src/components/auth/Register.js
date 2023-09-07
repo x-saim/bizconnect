@@ -19,6 +19,7 @@ import { Link } from 'react-router-dom';
 
 //State Management
 import { useState } from 'react';
+import axios from 'axios';
 
 function Copyright(props) {
   return (
@@ -42,12 +43,13 @@ const defaultTheme = createTheme();
 
 const Register = () => {
   const [formData, setFormData] = useState({
-    name: '',
+    firstname: '',
+    lastname: '',
     email: '',
     password: '',
     password2: '',
   });
-  const { name, email, password, password2 } = formData;
+  const { firstname, lastname, email, password, password2 } = formData;
 
   //Can use this onChange for any field since we are using e.target.name
   const onChange = (e) =>
@@ -60,7 +62,30 @@ const Register = () => {
       console.log('Passwords do not match.');
     } else {
       console.log('Success');
-    }
+      console.log(formData);
+
+    //   const newUser = {
+    //     firstname,
+    //     lastname,
+    //     email,
+    //     password,
+    //   };
+
+    //   try {
+    //     const config = {
+    //       headers: {
+    //         'Content-Type': 'application/json',
+    //       },
+    //     };
+
+    //     //body obj to send
+    //     const body = JSON.stringify(newUser);
+
+    //     const res = await axios.post('/api/users', body, config);
+
+    //     console.log(res.data);
+    //   } catch (err) {}
+    // }
   };
 
   return (
@@ -81,18 +106,23 @@ const Register = () => {
           <Typography component='h1' variant='h5'>
             Sign up
           </Typography>
-          <Box component='form' noValidate onSubmit={onSubmit} sx={{ mt: 3 }}>
+          <Box
+            component='form'
+            noValidate
+            onSubmit={(e) => onSubmit(e)}
+            sx={{ mt: 3 }}
+          >
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
                 <TextField
                   autoComplete='given-name'
-                  name='firstName'
+                  name='firstname'
                   required
                   fullWidth
-                  id='firstName'
+                  id='firstname'
                   label='First Name'
                   autoFocus
-                  value={name}
+                  value={firstname}
                   onChange={onChange}
                 />
               </Grid>
@@ -100,10 +130,12 @@ const Register = () => {
                 <TextField
                   required
                   fullWidth
-                  id='lastName'
+                  id='lastname'
                   label='Last Name'
-                  name='lastName'
+                  name='lastname'
                   autoComplete='family-name'
+                  value={lastname}
+                  onChange={onChange}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -137,9 +169,9 @@ const Register = () => {
                   fullWidth
                   name='password2'
                   label='Confirm Password'
-                  type='password2'
+                  type='password'
                   id='password2'
-                  autoComplete='new-password2'
+                  autoComplete='new-password'
                   value={password2}
                   onChange={onChange}
                 />
@@ -158,6 +190,7 @@ const Register = () => {
               fullWidth
               variant='contained'
               sx={{ mt: 3, mb: 2 }}
+              value='Register'
             >
               Sign Up
             </Button>

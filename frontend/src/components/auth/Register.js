@@ -20,6 +20,10 @@ import { Link } from 'react-router-dom';
 //State Management
 import { useState } from 'react';
 import axios from 'axios';
+// import { useForm } from 'react-hook-form';
+import { useDispatch, useSelector } from 'react-redux';
+//import Spinner from '../../components/layout/Spinner';
+import { registerUser } from '../../features/auth/authActions';
 
 function Copyright(props) {
   return (
@@ -59,10 +63,15 @@ const Register = () => {
     e.preventDefault();
 
     if (password !== password2) {
+      alert('Password mismatch');
       console.log('Passwords do not match.');
     } else {
       console.log('Success');
       console.log(formData);
+
+      /// transform email string to lowercase to avoid case sensitivity issues in login
+      e.email = e.email.toLowerCase();
+      //dispatch(registerUser(data));
 
       //   const newUser = {
       //     firstname,

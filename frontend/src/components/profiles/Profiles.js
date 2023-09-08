@@ -6,7 +6,6 @@ const Profiles = () => {
   const [loading, setLoading] = useState(true);
   const [profiles, setProfiles] = useState([]);
 
-  // Replace this useEffect with your actual data fetching logic
   useEffect(() => {
     // Simulate fetching profiles from an API or database
     setTimeout(() => {

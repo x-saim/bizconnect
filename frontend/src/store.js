@@ -3,9 +3,6 @@
 // import { userReducer } from './redux/reducers/userReducer';
 // import { alertsReducer } from './redux/reducers/alertsReducer';
 
-import { configureStore } from '@reduxjs/toolkit';
-import authReducer from '../src/features/auth/authSlice';
-
 // const rootReducer = combineReducers({
 //   userReducer: userReducer,
 //   alertsReducer: alertsReducer,
@@ -18,6 +15,8 @@ import authReducer from '../src/features/auth/authSlice';
 //   composeEnhancers(applyMiddleware(thunk))
 // );
 
+import { configureStore } from '@reduxjs/toolkit';
+import authReducer from '../src/features/auth/authSlice';
 const store = configureStore({
   reducer: {
     auth: authReducer,

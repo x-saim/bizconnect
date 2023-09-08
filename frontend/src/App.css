@@ -36,3 +36,35 @@
     transform: rotate(360deg);
   }
 }
+
+
+/* css added by Mitali */
+
+.App {
+  background-color: rgba(188, 186, 186, 0.42);
+}
+
+.form {
+  margin-left: 120px;
+  margin-right: 120px; 
+  margin-top: 50px;
+}
+
+.spinner-border {
+  position: fixed;
+  top: 15%;
+  z-index: 999;
+}
+
+.mt {
+  margin-top: 15%;
+}
+
+.fontsize {
+  font-size:x-large;
+}
+
+input[type='file']{
+  border: none;
+}
+

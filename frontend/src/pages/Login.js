@@ -13,30 +13,36 @@ function Login() {
   }
 
   return (
-    <div>
-      <h1>Login page</h1>
+    <div >
 
-      <Form onFinish={login}>
-        <Form.Item
-          label='email'
-          name='email'
-          rules={[{ required: true }]}
-        >
-          <Input />
-        </Form.Item>
+      <Row justify='center'>
+        <Col lg={12}>
+         
+          <Form onFinish={login} className='form'>
+          <h1>Login page</h1>
+          <br/>
+            <Form.Item
+              label='email'
+              name='email'
+              rules={[{ required: true }]}
+            >
+              <Input />
+            </Form.Item>
 
-        <Form.Item
-          label='password'
-          name='password'
-          rules={[{ required: true }]}
-        >
-          <Input type='password'/>
-        </Form.Item>
+            <Form.Item
+              label='password'
+              name='password'
+              rules={[{ required: true }]}
+            >
+              <Input type='password'/>
+            </Form.Item>
 
-        <Button htmlType='submit'>Login</Button>
-
-        <Link to='/register'>Not registered, click here to register</Link>
-      </Form>
+            <Button htmlType='submit'>Login</Button>
+            <br/><br/>
+            <Link to='/register'>Not registered, click here to register</Link>
+          </Form>
+        </Col>
+      </Row>
     </div>
   );
 }

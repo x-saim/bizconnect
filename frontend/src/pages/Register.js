@@ -14,39 +14,45 @@ function Register() {
   }
 
   return (
-    <div>
-      <h1>Register page</h1>
+    <div >
 
-      <Form onFinish={register}>
-        <Form.Item
-          label='name'
-          name='name'
-          rules={[{ required: true }]}
-        >
-          <Input />
-        </Form.Item>
+      <Row justify='center'>
+        <Col lg={12}>
+          
+          <Form onFinish={register} className='form'>
+            <h1>Registration</h1>
+            <br/>
+            <Form.Item
+              label='name'
+              name='name'
+              rules={[{ required: true }]}
+            >
+              <Input />
+            </Form.Item>
 
-        <Form.Item
-          label='email'
-          name='email'
-          rules={[{ required: true }]}
-        >
-          <Input />
-        </Form.Item>
+            <Form.Item
+              label='email'
+              name='email'
+              rules={[{ required: true }]}
+            >
+              <Input />
+            </Form.Item>
 
-        <Form.Item
-          label='password'
-          name='password'
+            <Form.Item
+              label='password'
+              name='password'
 
-          rules={[{ required: true }]}
-        >
-          <Input type='password'/>
-        </Form.Item>
+              rules={[{ required: true }]}
+            >
+              <Input type='password'/>
+            </Form.Item>
 
-        <Button htmlType='submit'>Register</Button>
-        <br/><br/>
-        <Link to='/login'>Already registered, click here to login</Link>
-      </Form>
+            <Button htmlType='submit'>Register</Button>
+            <br/><br/>
+            <Link to='/login'>Already registered, click here to login</Link>
+          </Form>
+        </Col>
+      </Row>
     </div>
   );
 }

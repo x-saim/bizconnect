@@ -4,6 +4,7 @@ import MyProfile from './pages/MyProfile';
 import JobBoard from './pages/JobBoard';
 import Welcome from './pages/Welcome';
 import './index.css';
+import './App.css';
 import {
   BrowserRouter as Router,
   Route,
@@ -14,23 +15,25 @@ import {
 import Login from './pages/Login';
 import Register from './pages/Register';
 import UsersHome from './pages/UsersHome';
+import Addpost from './pages/Addpost';
 
 //Redux
 import { Provider } from 'react-redux';
 import store from '../src/redux/store';
-//import { useSelector } from 'react-redux/es/hooks/useSelector';
+import { useSelector } from 'react-redux/es/hooks/useSelector';
 
 function App() {
   // const { loading } = useSelector((state) => state.alertReducer);
   return (
     <Provider store={store}>
-      <Router>
+    
         <div className='App'>
           {/* {loading && (
-        <div className='spinner-border' role='status'>
-          <span class='sr-only'>Loading...</span>
-        </div>
-      )} */}
+          <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+          )} */}
+        <Router>
           <Routes>
             <Route path='/my-profile' element={<MyProfile />} />
             <Route path='/job-board' element={<JobBoard />} />
@@ -38,10 +41,13 @@ function App() {
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />
             <Route path='/usersHome' element={<UsersHome />} />
+            <Route path='/addpost' element={<Addpost />} />
+            {/* <ProtectedRoute path='/usersHome' element={<UsersHome />} /> */}
+            <Route path='/usersHome' element={<ProtectedRoute><UsersHome /></ProtectedRoute>}/>
           </Routes>
-          {/* <ProtectedRoute path='/usersHome' element={<UsersHome />} /> */}
+        </Router> 
         </div>
-      </Router>
+    
     </Provider>
   );
 }

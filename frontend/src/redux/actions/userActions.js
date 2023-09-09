@@ -34,6 +34,7 @@ export const userLogin = (values) => async (dispatch) => {
     window.location.href = '/publicposts'; //UPDATE TO HOME FEED /publicposts, should rename later
   } catch (error) {
     console.log(error);
+    console.log(error.response.data.errors);
     dispatch({ type: 'LOADING', payload: false });
     message.error('Invalid credentials');
   }

@@ -1,10 +1,8 @@
 //Redux State Management & React
-import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { Link, Navigate } from 'react-router-dom';
 import { useState } from 'react';
-import { userLogin } from '../../redux/actions/userActions';
+// import { userLogin } from '../../redux/actions/userActions';
 import { connect } from 'react-redux';
-import { setAlert } from '../../redux/actions/alertActions';
 import { login } from '../../redux/actions/authActions';
 import PropTypes from 'prop-types';
 
@@ -43,7 +41,7 @@ function Copyright(props) {
 }
 const defaultTheme = createTheme();
 
-function Login({ login }) {
+function Login({ login, isAuthenticated }) {
   // Initialize the local component state for form input values
   const [formData, setFormData] = useState({
     email: '',
@@ -65,6 +63,12 @@ function Login({ login }) {
     e.preventDefault();
     login(email, password);
   };
+
+  //Redirect user if logged in
+
+  if (isAuthenticated) {
+    return <Navigate to='/dashboard' />;
+  }
 
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -149,6 +153,12 @@ function Login({ login }) {
 
 Login.propTypes = {
   login: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool,
 };
 
-export default connect(null, { login })(Login);
+//Get the auth state
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.userReducer.isAuthenticated,
+});
+
+export default connect(mapStateToProps, { login })(Login);

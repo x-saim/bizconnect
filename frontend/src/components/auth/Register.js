@@ -1,5 +1,5 @@
 //Redux State Management & React
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 // import { useDispatch } from 'react-redux';
 // import { userRegister } from '../../redux/actions/userActions';
 import { useState } from 'react';
@@ -43,10 +43,10 @@ function Copyright(props) {
 }
 const defaultTheme = createTheme();
 
-function Register({ setAlert, register }) {
-  // const dispatch = useDispatch();
+function Register({ setAlert, register, isAuthenticated }) {
+  //const navigate = useNavigate();
 
-  // Initialize the component state for form input values
+  // Initialize the local component state for form input values
   const [formData, setFormData] = useState({
     firstname: '',
     lastname: '',
@@ -73,15 +73,19 @@ function Register({ setAlert, register }) {
     console.log(firstname, lastname, email, password, password2);
 
     if (password !== password2) {
-      setAlert('Password do not much.', 'danger'); //sending message and alert type
+      //sending message and alert type
+      setAlert('Password do not much.', 'danger');
       console.log('Passwords do not match.');
     } else {
       register({ firstname, lastname, email, password });
-
-      // Dispatch registration action with formData
-      // dispatch(userRegister(formData));
     }
   };
+
+  //Redirect user to dashboard if authenticated
+  if (isAuthenticated) {
+    //navigate('/dashboard');
+    return <Navigate to='/dashboard' />;
+  }
 
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -208,9 +212,15 @@ Register.propTypes = {
   //with ES7 snippets, we can do type pt to get this proptype as a shortcut
   setAlert: PropTypes.func.isRequired,
   register: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool,
 };
 
-export default connect(null, { setAlert, register })(Register);
+//Get the auth state
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.userReducer.isAuthenticated,
+});
+
+export default connect(mapStateToProps, { setAlert, register })(Register);
 //connect is used to connect a React component to the Redux store. Actions need to be passed into connect.
 
 //First parameter deals with state, second deals with actions/props, third param is for merging props

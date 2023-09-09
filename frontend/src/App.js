@@ -29,8 +29,8 @@ if (localStorage.token) {
 }
 
 const App = () => {
-  //When App component mounts, the dispatches the loadUser action
-  //Load user data into the Redux store when the component mounts.
+  //When App component mounts, useEffect will dispatch the loadUser action
+  //Loads user data into the Redux store when the component mounts.
   useEffect(() => {
     store.dispatch(loadUser());
   }, []);

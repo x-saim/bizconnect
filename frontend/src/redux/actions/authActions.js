@@ -57,3 +57,30 @@ export const register =
       });
     }
   };
+
+//Login user
+export const login = (email, password) => async (dispatch) => {
+  const config = {
+    headers: { 'Content-Type': 'application/json' },
+  };
+  const body = JSON.stringify({ email, password });
+
+  try {
+    const res = await axios.post('/api/auth', body, config);
+    dispatch({
+      type: LOGIN_SUCESS,
+      payload: res.data, //data we get back is a token
+    });
+  } catch (err) {
+    const errors = err.response.data.errors; //errors array from response
+
+    if (errors) {
+      //for each error occurance, a setAlert action will be exected and message will be displayed.
+      errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
+    }
+
+    dispatch({
+      type: LOGIN_FAIL,
+    });
+  }
+};

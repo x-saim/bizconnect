@@ -1,4 +1,9 @@
-import { REGISTER_SUCESS, REGISTER_FAIL } from '../actions/types';
+import {
+  REGISTER_SUCESS,
+  REGISTER_FAIL,
+  USER_LOADED,
+  AUTH_ERROR,
+} from '../actions/types';
 
 const initialState = {
   token: localStorage.getItem('token'), //accessing token through vanilla JS
@@ -11,6 +16,13 @@ export const userReducer = (state = initialState, action) => {
   const { type, payload } = action;
 
   switch (type) {
+    case USER_LOADED:
+      return {
+        ...state,
+        isAuthenticated: true,
+        loading: false,
+        user: payload, //payload includes user info except password.
+      };
     case REGISTER_SUCESS:
       localStorage.setItem('token', payload.token); //on sucess, we set the token
       return {
@@ -21,6 +33,7 @@ export const userReducer = (state = initialState, action) => {
       };
 
     case REGISTER_FAIL:
+    case AUTH_ERROR:
       localStorage.removeItem('token'); //remove token from localStorage
       return {
         ...state,

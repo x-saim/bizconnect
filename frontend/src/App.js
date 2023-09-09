@@ -2,6 +2,7 @@ import React from 'react';
 //import './index.css';
 import './App.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { useEffect } from 'react';
 
 //Page Components
 import Login from './components/auth/Login';
@@ -20,8 +21,20 @@ import Alert from './components/layout/Alert';
 //Redux
 import { Provider } from 'react-redux';
 import store from '../src/redux/store';
+import { loadUser } from './redux/actions/authActions';
+import setAuthToken from './utils/setAuthToken';
+
+if (localStorage.token) {
+  setAuthToken(localStorage.token);
+}
 
 const App = () => {
+  //When App component mounts, the dispatches the loadUser action
+  //Load user data into the Redux store when the component mounts.
+  useEffect(() => {
+    store.dispatch(loadUser());
+  }, []);
+
   return (
     <Provider store={store}>
       <div className='App'>

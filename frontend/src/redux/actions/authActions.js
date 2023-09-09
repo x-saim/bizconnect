@@ -84,7 +84,7 @@ export const login = (email, password) => async (dispatch) => {
 
     if (errors) {
       //for each error occurance, a setAlert action will be exected and message will be displayed.
-      errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
+      errors.forEach((error) => dispatch(setAlert(error.message, 'danger')));
     }
 
     dispatch({

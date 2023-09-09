@@ -16,6 +16,10 @@ const MyNavbar = ({ auth: { isAuthenticated, loading }, logout }) => {
         Job Posts
       </Nav.Link>
 
+      <Nav.Link as={Link} to='/profiles'>
+        Network
+      </Nav.Link>
+
       <Nav.Link as={Link} to='/dashboard'>
         <i className='fas fa-user' /> Dashboard
       </Nav.Link>
@@ -28,8 +32,8 @@ const MyNavbar = ({ auth: { isAuthenticated, loading }, logout }) => {
 
   const guestLinks = (
     <>
-      <Nav.Link as={Link} to='/profiles'>
-        Network
+      <Nav.Link as={Link} to='/about'>
+        About
       </Nav.Link>
       <Nav.Link as={Link} to='/register'>
         Register

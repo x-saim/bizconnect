@@ -5,6 +5,7 @@ import {
   AUTH_ERROR,
   LOGIN_SUCESS,
   LOGIN_FAIL,
+  LOGOUT,
 } from '../actions/types';
 
 const initialState = {
@@ -25,6 +26,7 @@ export const userReducer = (state = initialState, action) => {
         loading: false,
         user: payload, //payload includes user info except password.
       };
+
     case REGISTER_SUCESS:
     case LOGIN_SUCESS:
       localStorage.setItem('token', payload.token); //on sucess, we set the token
@@ -38,6 +40,7 @@ export const userReducer = (state = initialState, action) => {
     case REGISTER_FAIL:
     case AUTH_ERROR:
     case LOGIN_FAIL:
+    case LOGOUT:
       localStorage.removeItem('token'); //remove token from localStorage
       return {
         ...state,

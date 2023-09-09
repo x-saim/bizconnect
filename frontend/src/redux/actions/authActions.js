@@ -4,6 +4,8 @@ import {
   REGISTER_FAIL,
   USER_LOADED,
   AUTH_ERROR,
+  LOGIN_SUCESS,
+  LOGIN_FAIL,
 } from './types';
 import { setAlert } from './alertActions';
 import setAuthToken from '../../utils/setAuthToken';
@@ -44,6 +46,8 @@ export const register =
         type: REGISTER_SUCESS,
         payload: res.data, //data we get back is a token
       });
+
+      dispatch(loadUser());
     } catch (err) {
       const errors = err.response.data.errors; //errors array from response
 
@@ -71,6 +75,8 @@ export const login = (email, password) => async (dispatch) => {
       type: LOGIN_SUCESS,
       payload: res.data, //data we get back is a token
     });
+
+    dispatch(loadUser());
   } catch (err) {
     const errors = err.response.data.errors; //errors array from response
 

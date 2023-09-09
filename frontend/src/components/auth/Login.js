@@ -1,10 +1,12 @@
 //Redux State Management & React
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { useState } from 'react';
 import { userLogin } from '../../redux/actions/userActions';
 import { connect } from 'react-redux';
-// import { setAlert } from '../../redux/actions/alertActions';
-// import PropTypes from 'prop-types';
+import { setAlert } from '../../redux/actions/alertActions';
+import { login } from '../../redux/actions/authActions';
+import PropTypes from 'prop-types';
 
 //MaterialUI;
 import * as React from 'react';
@@ -41,21 +43,29 @@ function Copyright(props) {
 }
 const defaultTheme = createTheme();
 
-function Login() {
-  const dispatch = useDispatch();
+function Login({ login }) {
+  // Initialize the local component state for form input values
+  const [formData, setFormData] = useState({
+    email: '',
+    password: '',
+  });
+
+  // Destructure input values from formData
+  const { email, password } = formData;
+
+  // Handle form input changes and update formData state
+  const onChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    //console.log(e);
-    const email = e.target.email.value;
-    const password = e.target.password.value;
-    // console.log(email);
-    // console.log(password);
-    // Dispatch login action
-    dispatch(userLogin({ email, password }));
-
-    console.log('Success');
+    login(email, password);
   };
+
   return (
     <ThemeProvider theme={defaultTheme}>
       <Container component='main' maxWidth='xs'>
@@ -89,6 +99,8 @@ function Login() {
               name='email'
               autoComplete='email'
               autoFocus
+              value={email}
+              onChange={onChange}
             />
             <TextField
               margin='normal'
@@ -99,6 +111,8 @@ function Login() {
               type='password'
               id='password'
               autoComplete='current-password'
+              value={password}
+              onChange={onChange}
             />
             <FormControlLabel
               control={<Checkbox value='remember' color='primary' />}
@@ -133,4 +147,8 @@ function Login() {
   );
 }
 
-export default connect(null)(Login);
+Login.propTypes = {
+  login: PropTypes.func.isRequired,
+};
+
+export default connect(null, { login })(Login);

@@ -26,6 +26,7 @@ export const userReducer = (state = initialState, action) => {
         user: payload, //payload includes user info except password.
       };
     case REGISTER_SUCESS:
+    case LOGIN_SUCESS:
       localStorage.setItem('token', payload.token); //on sucess, we set the token
       return {
         ...state,
@@ -36,6 +37,7 @@ export const userReducer = (state = initialState, action) => {
 
     case REGISTER_FAIL:
     case AUTH_ERROR:
+    case LOGIN_FAIL:
       localStorage.removeItem('token'); //remove token from localStorage
       return {
         ...state,

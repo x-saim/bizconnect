@@ -1,9 +1,10 @@
 //State Management
-//import { Row, Col, Form, Input, Button } from 'antd';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { userRegister } from '../../redux/actions/userActions';
 import { useState } from 'react';
+import { connect } from 'react-redux';
+import { setAlert } from '../../redux/actions/alertActions';
 
 //MaterialUI
 import * as React from 'react';
@@ -46,7 +47,7 @@ const defaultTheme = createTheme();
 //   dispatch(userRegister(values));
 // }
 
-function Register() {
+function Register(props) {
   const dispatch = useDispatch();
 
   // Initialize the component state for form input values
@@ -69,14 +70,14 @@ function Register() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     // Access input values from formData
     console.log(firstname, lastname, email, password, password2);
 
     if (password !== password2) {
-      alert('Password mismatch');
+      props.setAlert('Password do not much.', 'danger');
       console.log('Passwords do not match.');
     } else {
       console.log('Success');
@@ -207,4 +208,7 @@ function Register() {
   );
 }
 
-export default Register;
+export default connect(null, { setAlert })(Register);
+//connect is used to connect a React component to the Redux store. Actions need to be passed into connect.
+
+//First parameter deals with state, second deals with actions/props, third param is for merging props

@@ -3,11 +3,11 @@ import { configureStore } from '@reduxjs/toolkit';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 import { userReducer } from './reducers/userReducer';
-import { alertsReducer } from './reducers/alertsReducer';
+import { alertReducer } from './reducers/alertReducer';
 
 const rootReducer = combineReducers({
-  userReducer: userReducer,
-  alertsReducer: alertsReducer,
+  userReducer,
+  alertReducer,
 });
 
 const composeEnhancers = composeWithDevTools({});

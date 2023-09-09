@@ -2,7 +2,7 @@ import { SET_ALERT, REMOVE_ALERT } from '../actions/types';
 
 const initialState = [];
 
-export const alertsReducer = (state = initialState, action) => {
+export const alertReducer = (state = initialState, action) => {
   const { type, payload } = action;
 
   //dispatch type, we return state array with payload with new alert

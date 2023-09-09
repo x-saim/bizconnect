@@ -21,6 +21,7 @@ import Addpost from './components/posts/Addpost';
 //Layout Components
 import Landing from './components/layout/Landing';
 import Navbar from './components/layout/Navbar';
+import Alert from './components/layout/Alert';
 
 //Redux
 import { Provider } from 'react-redux';

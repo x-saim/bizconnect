@@ -1,10 +1,11 @@
-//State Management
+//Redux State Management & React
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { userRegister } from '../../redux/actions/userActions';
 import { useState } from 'react';
 import { connect } from 'react-redux';
 import { setAlert } from '../../redux/actions/alertActions';
+import PropTypes from 'prop-types';
 
 //MaterialUI
 import * as React from 'react';
@@ -47,7 +48,7 @@ const defaultTheme = createTheme();
 //   dispatch(userRegister(values));
 // }
 
-function Register(props) {
+function Register({ setAlert }) {
   const dispatch = useDispatch();
 
   // Initialize the component state for form input values
@@ -207,6 +208,10 @@ function Register(props) {
     </ThemeProvider>
   );
 }
+
+Register.PropTypes = {
+  setAlert: PropTypes.func.isRequired, //with ES7 snippets, we can do type ptfr to get this proptype as a shortcut
+};
 
 export default connect(null, { setAlert })(Register);
 //connect is used to connect a React component to the Redux store. Actions need to be passed into connect.

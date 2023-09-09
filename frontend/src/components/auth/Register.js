@@ -5,6 +5,7 @@ import { userRegister } from '../../redux/actions/userActions';
 import { useState } from 'react';
 import { connect } from 'react-redux';
 import { setAlert } from '../../redux/actions/alertActions';
+import { register } from '../../redux/actions/authActions';
 import PropTypes from 'prop-types';
 
 //MaterialUI
@@ -42,7 +43,7 @@ function Copyright(props) {
 }
 const defaultTheme = createTheme();
 
-function Register({ setAlert }) {
+function Register({ setAlert, register }) {
   const dispatch = useDispatch();
 
   // Initialize the component state for form input values
@@ -75,10 +76,10 @@ function Register({ setAlert }) {
       setAlert('Password do not much.', 'danger'); //sending message and alert type
       console.log('Passwords do not match.');
     } else {
-      console.log('Success');
+      register({ firstname, lastname, email, password });
 
       // Dispatch registration action with formData
-      dispatch(userRegister(formData));
+      // dispatch(userRegister(formData));
     }
   };
 
@@ -204,10 +205,12 @@ function Register({ setAlert }) {
 }
 
 Register.propTypes = {
-  setAlert: PropTypes.func.isRequired, //with ES7 snippets, we can do type ptfr to get this proptype as a shortcut
+  //with ES7 snippets, we can do type pt to get this proptype as a shortcut
+  setAlert: PropTypes.func.isRequired,
+  register: PropTypes.func.isRequired,
 };
 
-export default connect(null, { setAlert })(Register);
+export default connect(null, { setAlert, register })(Register);
 //connect is used to connect a React component to the Redux store. Actions need to be passed into connect.
 
 //First parameter deals with state, second deals with actions/props, third param is for merging props

@@ -15,8 +15,10 @@ const User = require('../../models/User');
 router.post(
   '/',
   [
-    // Validation middleware for 'name' field
-    check('name', 'Name is required').not().isEmpty(),
+    // Validation middleware for 'firstname' field
+    check('firstname', 'Name is required').not().isEmpty(),
+    // Validation middleware for 'lastname' field
+    check('lastname', 'Name is required').not().isEmpty(),
 
     // Validation middleware for 'email' field
     check('email', 'Please include a valid email').isEmail(),
@@ -37,7 +39,7 @@ router.post(
 
     // If validation passes, extract params from req.body.
 
-    const { name, email, password } = req.body;
+    const { firstname, lastname, email, password } = req.body;
 
     try {
       // Check if the user already exists in the database
@@ -58,7 +60,8 @@ router.post(
 
       // Create a new user instance
       user = new User({
-        name,
+        firstname,
+        lastname,
         email,
         avatar,
         password,

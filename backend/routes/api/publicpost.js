@@ -30,7 +30,8 @@ router.post(
       //Setup Post obj structure
       const newPublicPost = new PublicPost({
         text: req.body.text,
-        name: user.name,
+        firstname: user.firstname,
+        lastname: user.lastname,
         avatar: user.avatar,
         user: req.user.id,
       });
@@ -207,7 +208,8 @@ router.post(
       //Create comment obj with params to be displayed
       const newComment = {
         text: req.body.text,
-        name: user.name,
+        firstname: user.firstname,
+        lastname: user.lastname,
         avatar: user.avatar,
         user: req.user.id,
       };

@@ -94,7 +94,7 @@ router.post(
       //Check if profile exists.
       let profile = await Profile.findOne({ user: req.user.id });
 
-      // Create new profile or update existing
+      // Update existing profile
       if (profile) {
         profile = await Profile.findOneAndUpdate(
           { user: req.user.id },

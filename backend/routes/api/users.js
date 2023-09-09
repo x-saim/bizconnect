@@ -16,17 +16,17 @@ router.post(
   '/',
   [
     // Validation middleware for 'firstname' field
-    check('firstname', 'Name is required').not().isEmpty(),
+    check('firstname', 'First Name is required.').not().isEmpty(),
     // Validation middleware for 'lastname' field
-    check('lastname', 'Name is required').not().isEmpty(),
+    check('lastname', 'Last Name is required.').not().isEmpty(),
 
     // Validation middleware for 'email' field
-    check('email', 'Please include a valid email').isEmail(),
+    check('email', 'Please include a valid email.').isEmail(),
 
     // Validation middleware for 'password' field
     check(
       'password',
-      'Please enter a password with 6 or more characters'
+      'Please enter a password with 6 or more characters.'
     ).isLength({ min: 6 }),
   ],
   async (req, res) => {

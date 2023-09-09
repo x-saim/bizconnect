@@ -94,7 +94,7 @@ router.post(
       //Check if profile exists.
       let profile = await Profile.findOne({ user: req.user.id });
 
-      // Update existing profile
+      // Create new profile or update existing
       if (profile) {
         profile = await Profile.findOneAndUpdate(
           { user: req.user.id },
@@ -127,7 +127,7 @@ router.get('/', async (req, res) => {
       'lastname',
       'avatar',
     ]);
-    res.json({ count: profiles.length, data: profiles });
+    res.json(profiles);
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Server Error');

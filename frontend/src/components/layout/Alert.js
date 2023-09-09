@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 //need to fetch alert state, map through alerts state array and provide conditionals to set the component view.
 
-//alerts is destructured state obj from alerts reducer
+//alerts is destructured state obj from alerts reducer and mapStateToProps
 const Alert = ({ alerts }) => {
   return (
     <div className='alert-wrapper'>

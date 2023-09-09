@@ -42,12 +42,6 @@ function Copyright(props) {
 }
 const defaultTheme = createTheme();
 
-// function register(values) {
-//   console.log(values);
-//   // delete values.cpassword;
-//   dispatch(userRegister(values));
-// }
-
 function Register({ setAlert }) {
   const dispatch = useDispatch();
 
@@ -78,7 +72,7 @@ function Register({ setAlert }) {
     console.log(firstname, lastname, email, password, password2);
 
     if (password !== password2) {
-      setAlert('Password do not much.', 'danger');
+      setAlert('Password do not much.', 'danger'); //sending message and alert type
       console.log('Passwords do not match.');
     } else {
       console.log('Success');

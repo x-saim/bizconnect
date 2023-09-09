@@ -12,6 +12,6 @@ export const setAlert =
       payload: { msg, alertType, id },
     });
 
-    // Set a timeout to remove the alert after the specified duration
+    // Set a timeout to remove the alert after the specified duration (default set to 5s)
     setTimeout(() => dispatch({ type: REMOVE_ALERT, payload: id }), timeout);
   };

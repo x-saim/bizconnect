@@ -24,4 +24,4 @@ Alert.propTypes = {
 
 const mapStateToProps = (state) => ({ alerts: state.alertReducer }); //state.alert from store.js - combineReducers
 
-export default Alert;
+export default connect(mapStateToProps)(Alert);

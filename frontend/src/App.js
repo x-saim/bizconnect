@@ -26,39 +26,34 @@ import Alert from './components/layout/Alert';
 //Redux
 import { Provider } from 'react-redux';
 import store from '../src/redux/store';
-// import { useSelector } from 'react-redux/es/hooks/useSelector';
 
 const App = () => {
-  // const { loading } = useSelector((state) => state.alertReducer);
   return (
     <Provider store={store}>
       <div className='App'>
-        {/* {loading && (
-          <div class="spinner-border" role="status">
-            <span class="sr-only">Loading...</span>
-          </div>
-          )} */}
         <Router>
           <>
             <Navbar />
-            <Routes>
-              <Route path='/' element={<Landing />} />
-              <Route path='/login' element={<Login />} />
-              <Route path='/register' element={<Register />} />
-              <Route path='/jobposts' element={<JobPosts />} />
-              <Route path='/addpost' element={<Addpost />} />
+            <section className='container'>
+              <Alert />
+              <Routes>
+                <Route path='/' element={<Landing />} />
+                <Route path='/login' element={<Login />} />
+                <Route path='/register' element={<Register />} />
+                <Route path='/jobposts' element={<JobPosts />} />
+                <Route path='/addpost' element={<Addpost />} />
 
-              {/* The following will become protected routes */}
-              <Route path='/dashboard' element={<Dashboard />} />
-              <Route path='/profiles' element={<Profiles />} />
-              <Route path='/profile/:id' element={<Profile />} />
+                {/* The following will become protected routes */}
+                <Route path='/dashboard' element={<Dashboard />} />
+                <Route path='/profiles' element={<Profiles />} />
+                <Route path='/profile/:id' element={<Profile />} />
 
-              {/* The following are to be removed eventually */}
-              {/* <ProtectedRoute path='/usersHome' element={<UsersHome />} /> */}
-              {/* <Route path='/my-profile' element={<MyProfile />} />
+                {/* The following are to be removed eventually */}
+                {/* <ProtectedRoute path='/usersHome' element={<UsersHome />} /> */}
+                {/* <Route path='/my-profile' element={<MyProfile />} />
             <Route path='/job-board' element={<JobBoard />} /> */}
-              {/* <Route path='/usersHome' element={<UsersHome />} /> */}
-              {/* <Route
+                {/* <Route path='/usersHome' element={<UsersHome />} /> */}
+                {/* <Route
                 path='/usersHome'
                 element={
                   <ProtectedRoute>
@@ -66,7 +61,8 @@ const App = () => {
                   </ProtectedRoute>
                 }
               /> */}
-            </Routes>
+              </Routes>
+            </section>
           </>
         </Router>
       </div>

@@ -78,7 +78,7 @@ function Register({ setAlert }) {
     console.log(firstname, lastname, email, password, password2);
 
     if (password !== password2) {
-      props.setAlert('Password do not much.', 'danger');
+      setAlert('Password do not much.', 'danger');
       console.log('Passwords do not match.');
     } else {
       console.log('Success');
@@ -209,7 +209,7 @@ function Register({ setAlert }) {
   );
 }
 
-Register.PropTypes = {
+Register.propTypes = {
   setAlert: PropTypes.func.isRequired, //with ES7 snippets, we can do type ptfr to get this proptype as a shortcut
 };
 

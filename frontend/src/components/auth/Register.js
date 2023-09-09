@@ -1,7 +1,7 @@
 //Redux State Management & React
 import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { userRegister } from '../../redux/actions/userActions';
+// import { useDispatch } from 'react-redux';
+// import { userRegister } from '../../redux/actions/userActions';
 import { useState } from 'react';
 import { connect } from 'react-redux';
 import { setAlert } from '../../redux/actions/alertActions';
@@ -44,7 +44,7 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 function Register({ setAlert, register }) {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   // Initialize the component state for form input values
   const [formData, setFormData] = useState({

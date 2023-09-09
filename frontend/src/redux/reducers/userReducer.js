@@ -15,7 +15,7 @@ export const userReducer = (state = initialState, action) => {
       localStorage.setItem('token', payload.token); //on sucess, we set the token
       return {
         ...state,
-        payload,
+        ...payload,
         isAuthenticated: true,
         loading: false, //we've gotten the response and it's been loaded.
       };

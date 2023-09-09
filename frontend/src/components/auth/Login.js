@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { userLogin } from '../../redux/actions/userActions';
 import { connect } from 'react-redux';
-import { setAlert } from '../../redux/actions/alertActions';
-import PropTypes from 'prop-types';
+// import { setAlert } from '../../redux/actions/alertActions';
+// import PropTypes from 'prop-types';
 
 //MaterialUI;
 import * as React from 'react';

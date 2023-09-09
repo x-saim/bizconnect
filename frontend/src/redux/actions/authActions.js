@@ -6,10 +6,13 @@ import { setAlert } from './alertActions';
 export const register =
   ({ firstname, lastname, email, password }) =>
   async (dispatch) => {
+    const config = {
+      headers: { 'Content-Type': 'application/json' },
+    };
     const body = JSON.stringify({ firstname, lastname, email, password });
 
     try {
-      const res = await axios.post('/api/users', body);
+      const res = await axios.post('/api/users', body, config);
       dispatch({
         type: REGISTER_SUCESS,
         payload: res.data, //data we get back is a token

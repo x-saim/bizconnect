@@ -1,13 +1,7 @@
 import React from 'react';
 //import './index.css';
 import './App.css';
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  Redirect,
-  Navigate,
-} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 //Page Components
 import Login from './components/auth/Login';

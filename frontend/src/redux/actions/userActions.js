@@ -14,7 +14,9 @@ export const userRegister = (values) => async (dispatch) => {
     window.location.href = '/login'; ////UPDATE TO HOME FEED /publicposts
   } catch (error) {
     console.log(error);
+
     dispatch({ type: 'LOADING', payload: false });
+
     message.error('something went wrong');
   }
 };

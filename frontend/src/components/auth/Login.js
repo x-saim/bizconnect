@@ -41,7 +41,7 @@ const defaultTheme = createTheme();
 function Login() {
   const dispatch = useDispatch();
 
-  const onSubmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     //console.log(e);
     const email = e.target.email.value;
@@ -71,7 +71,12 @@ function Login() {
           <Typography component='h1' variant='h5'>
             Sign in
           </Typography>
-          <Box component='form' onSubmit={onSubmit} noValidate sx={{ mt: 1 }}>
+          <Box
+            component='form'
+            onSubmit={handleSubmit}
+            noValidate
+            sx={{ mt: 1 }}
+          >
             <TextField
               margin='normal'
               required

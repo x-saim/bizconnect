@@ -11,7 +11,14 @@ export const getCurrentProfile = () => async (dispatch) => {
       type: GET_PROFILE,
       payload: res.data,
     });
-  } catch (error) {
+  } catch (err) {
+    const errors = err.response.data.errors; //errors array from response
+
+    if (errors) {
+      //for each error occurance, a setAlert action will be exected and message will be displayed.
+      errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
+    }
+
     dispatch({
       type: PROFILE_ERROR,
       payload: { msg: err.response.statusText, status: err.response.status },

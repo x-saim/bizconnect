@@ -61,21 +61,15 @@ export const getProfiles = () => async (dispatch) => {
 
 //Get profile by id
 export const getProfileByID = (userID) => async (dispatch) => {
+  console.log('Fetching profile for userID:', userID);
   try {
-    const res = await axios.get(`api/profile/user/${userID}`);
-
+    const res = await axios.get(`/api/profile/user/${userID}`);
+    console.log('URL:', res.config.url); // Log the URL being use
     dispatch({
-      type: GET_PROFILES,
+      type: GET_PROFILE,
       payload: res.data,
     });
   } catch (err) {
-    const errors = err.response.data.errors; //errors array from response
-
-    if (errors) {
-      //for each error occurance, a setAlert action will be exected and message will be displayed.
-      errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
-    }
-
     dispatch({
       type: PROFILE_ERROR,
       payload: { msg: err.response.statusText, status: err.response.status },

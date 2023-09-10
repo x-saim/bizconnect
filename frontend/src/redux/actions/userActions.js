@@ -11,7 +11,7 @@ export const userRegister = (values) => async (dispatch) => {
 
     message.success('User registered successfully');
 
-    window.location.href = '/login'; ////UPDATE TO HOME FEED /publicposts
+    window.location.href = '/login';
   } catch (error) {
     console.log(error);
 

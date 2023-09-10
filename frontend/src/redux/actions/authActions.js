@@ -7,7 +7,6 @@ import {
   LOGIN_SUCESS,
   LOGIN_FAIL,
   LOGOUT,
-  LOGOUT_FAIL,
   CLEAR_PROFILE,
 } from './types';
 import { setAlert } from './alertActions';

@@ -20,9 +20,8 @@ const Dashboard = ({
   //Upon mount, execute getCurrentProfile
   useEffect(() => {
     getCurrentProfile();
-  }, []);
+  }, [getCurrentProfile]);
 
-  console.log(profile);
   return (
     <section className='container'>
       {loading && profile === null ? (
@@ -32,16 +31,17 @@ const Dashboard = ({
           <>
             <h1 className='large text-primary'>Dashboard</h1>
 
-            {/* <p>
-          Name: {profile.user.firstname} {profile.user.lastname}
-        </p> */}
+            <h2 className='medium'>User Information</h2>
+            <p>
+              Name: {profile.user.firstname} {profile.user.lastname}
+            </p>
 
             <p>Company: {profile.company}</p>
             <p>Website: {profile.website}</p>
             <p>Location: {profile.location}</p>
             <p>Status: {profile.status}</p>
 
-            <h2>Skills</h2>
+            <h2 className='medium'>Skills</h2>
             <ul>
               {profile.skills ? (
                 profile.skills.map((skill, index) => (
@@ -52,10 +52,10 @@ const Dashboard = ({
               )}
             </ul>
 
-            <h2>Bio</h2>
+            <h2 className='medium'>Bio</h2>
             <p>{profile.bio}</p>
 
-            <h2>Experience</h2>
+            <h2 className='medium'>Experience</h2>
             {profile.experience ? (
               profile.experience.map((experience) => (
                 <div key={experience._id}>

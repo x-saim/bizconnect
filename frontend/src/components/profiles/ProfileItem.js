@@ -1,13 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { ArrowRight } from '../../icons';
 
 const ProfileItem = ({ profile }) => {
   const {
-    _id,
-    firstname,
-    lastname,
-    avatar,
+    user: { _id, firstname, lastname, avatar },
     status,
     company,
     location,
@@ -19,7 +17,7 @@ const ProfileItem = ({ profile }) => {
       <img src={avatar} alt='' className='round-img' />
       <div>
         <h2>
-          {firstname}, {lastname}
+          {firstname} {lastname}
         </h2>
         <p>
           {status} {company && <span> at {company}</span>}
@@ -30,6 +28,17 @@ const ProfileItem = ({ profile }) => {
           View Profile
         </Link>
       </div>
+
+      <ul>
+        {skills.slice(0, 4).map((skill, index) => (
+          <li key={index} className='text-primary'>
+            <span className='mr-2'>
+              <ArrowRight />
+            </span>
+            {skill}
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };

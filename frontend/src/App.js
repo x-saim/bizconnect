@@ -26,6 +26,7 @@ import store from '../src/redux/store';
 import { loadUser } from './redux/actions/authActions';
 import setAuthToken from './utils/setAuthToken';
 import AboutPage from './components/layout/AboutPage';
+import { EditProfile } from './components/dashboard/EditProfile';
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -83,6 +84,11 @@ const App = () => {
                 <Route
                   path='/home'
                   element={<PrivateRoute component={Posts} />}
+                />
+                <Route />
+                <Route
+                  path='/edit-profile'
+                  element={<PrivateRoute component={EditProfile} />}
                 />
                 <Route />
 

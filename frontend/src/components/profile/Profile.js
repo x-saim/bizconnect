@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getProfileByID } from '../../redux/actions/profileActions';
 import { Link, useParams } from 'react-router-dom';
-
+import ProfileTop from './ProfileTop';
 const Profile = ({ getProfileByID, user, profile: { profile, loading } }) => {
   const { id } = useParams();
 
@@ -31,9 +31,13 @@ const Profile = ({ getProfileByID, user, profile: { profile, loading } }) => {
                 </Link>
               )}
 
-            <h2 className='medium'>User Information</h2>
+            <div className='profile-grid my-1'>
+              <ProfileTop profile={profile} />
+            </div>
+
+            {/* <h2 className='medium'>User Information</h2>
             <img
-              src={user.user.avatar}
+              src={profile.user.avatar}
               alt=''
               className='round-img'
               style={{ width: '100px', height: '100px' }} // Adjust width and height as needed
@@ -92,7 +96,7 @@ const Profile = ({ getProfileByID, user, profile: { profile, loading } }) => {
               ))
             ) : (
               <p>No education available.</p>
-            )}
+            )} */}
           </>
         )
       )}

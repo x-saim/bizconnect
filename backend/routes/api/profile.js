@@ -64,7 +64,7 @@ router.post(
       twitter,
       instagram,
       linkedin,
-      githubusername,
+      github,
     } = req.body;
 
     // Build Profile Object
@@ -88,7 +88,7 @@ router.post(
     if (twitter) profileFields.social.twitter = twitter;
     if (instagram) profileFields.social.instagram = instagram;
     if (linkedin) profileFields.social.linkedin = linkedin;
-    if (githubusername) profileFields.social.githubusername = githubusername;
+    if (github) profileFields.social.github = github;
 
     try {
       //Check if profile exists.

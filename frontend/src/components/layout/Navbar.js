@@ -51,7 +51,8 @@ const MyNavbar = ({ auth: { isAuthenticated, loading }, logout }) => {
     <Navbar bg='dark' variant='dark' expand='lg'>
       <Navbar.Brand>
         <Link to='/'>
-          <i className='fas fa-code'></i> BizConnect
+          <i class='fa-solid fa-globe'></i>
+          BizConnect
         </Link>
       </Navbar.Brand>
       <Navbar.Toggle aria-controls='basic-navbar-nav' />

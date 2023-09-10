@@ -87,24 +87,10 @@ const App = () => {
                 <Route />
 
                 {/* The following are to be removed eventually */}
-                {/* <Route path='/dashboard' element={<Dashboard />} /> */}
-                {/* <Route path='/jobposts' element={<JobPosts />} /> */}
-
-                {/* <Route path='/profile/:id' element={<Profile />} /> */}
-                {/* <Route path='/profiles' element={<Profiles />} /> */}
 
                 {/* <ProtectedRoute path='/usersHome' element={<UsersHome />} /> */}
                 {/* <Route path='/my-profile' element={<MyProfile />} />
             <Route path='/job-board' element={<JobBoard />} /> */}
-                {/* <Route path='/usersHome' element={<UsersHome />} /> */}
-                {/* <Route
-                path='/usersHome'
-                element={
-                  <ProtectedRoute>
-                    <UsersHome />
-                  </ProtectedRoute>
-                }
-              /> */}
               </Routes>
             </section>
           </>

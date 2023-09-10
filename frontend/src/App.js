@@ -17,6 +17,7 @@ import Addpost from './components/posts/Addpost';
 import Landing from './components/layout/Landing';
 import Navbar from './components/layout/Navbar';
 import Alert from './components/layout/Alert';
+import PrivateRoute from './components/routing/PrivateRoute';
 
 //Redux
 import { Provider } from 'react-redux';
@@ -51,15 +52,40 @@ const App = () => {
               <Routes>
                 <Route path='/login' element={<Login />} />
                 <Route path='/register' element={<Register />} />
-                <Route path='/jobposts' element={<JobPosts />} />
+
+                {/* Need to convert the following into protected route eventually. */}
                 <Route path='/addpost' element={<Addpost />} />
 
-                {/* The following will become protected routes */}
-                <Route path='/dashboard' element={<Dashboard />} />
-                <Route path='/profiles' element={<Profiles />} />
-                <Route path='/profile/:id' element={<Profile />} />
+                {/* The following are protected routes */}
+
+                <Route
+                  path='/dashboard'
+                  element={<PrivateRoute component={Dashboard} />}
+                />
+                <Route />
+                <Route
+                  path='/profiles'
+                  element={<PrivateRoute component={Profiles} />}
+                />
+                <Route />
+                <Route
+                  path='/profile/:id'
+                  element={<PrivateRoute component={Profile} />}
+                />
+                <Route />
+                <Route
+                  path='/jobposts'
+                  element={<PrivateRoute component={JobPosts} />}
+                />
+                <Route />
 
                 {/* The following are to be removed eventually */}
+                {/* <Route path='/dashboard' element={<Dashboard />} /> */}
+                {/* <Route path='/jobposts' element={<JobPosts />} /> */}
+
+                {/* <Route path='/profile/:id' element={<Profile />} /> */}
+                {/* <Route path='/profiles' element={<Profiles />} /> */}
+
                 {/* <ProtectedRoute path='/usersHome' element={<UsersHome />} /> */}
                 {/* <Route path='/my-profile' element={<MyProfile />} />
             <Route path='/job-board' element={<JobBoard />} /> */}

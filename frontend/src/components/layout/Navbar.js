@@ -10,14 +10,14 @@ const MyNavbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   const authLinks = (
     <>
       <Nav.Link as={Link} to='/publicposts'>
-        Posts
+        Home Feed
       </Nav.Link>
       <Nav.Link as={Link} to='/jobposts'>
         Job Posts
       </Nav.Link>
 
       <Nav.Link as={Link} to='/profiles'>
-        Network
+        Profiles
       </Nav.Link>
 
       <Nav.Link as={Link} to='/dashboard'>

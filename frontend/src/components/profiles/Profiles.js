@@ -16,7 +16,6 @@ const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
         <Spinner />
       ) : (
         <>
-          <h1 className='large text-primary'>Profiles</h1>
           <p className='lead'>
             <i className='fab fa-connectdevelop' /> Browse and connect with
             professionals from various industries.

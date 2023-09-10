@@ -3,7 +3,7 @@ import Spinner from '../layout/Spinner';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getProfileByID } from '../../redux/actions/profileActions';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 const Profile = ({ getProfileByID, user, profile: { profile, loading } }) => {
   const { id } = useParams();
@@ -19,7 +19,17 @@ const Profile = ({ getProfileByID, user, profile: { profile, loading } }) => {
       ) : (
         profile && (
           <>
-            <h1 className='large text-primary'>Profile Page</h1>
+            <Link to='/profiles' className='btn btn-light'>
+              Back to Profiles
+            </Link>
+
+            {user.isAuthenticated &&
+              user.loading === false &&
+              user.user._id === profile.user._id && (
+                <Link to='/edit-profile' className='btn btn-dark'>
+                  Edit Profile
+                </Link>
+              )}
 
             <h2 className='medium'>User Information</h2>
             <img

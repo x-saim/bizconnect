@@ -1,38 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import Spinner from '../layout/Spinner';
 import ProfileItem from './ProfileItem';
+import { connect } from 'react-redux';
+import { getProfiles } from '../../redux/actions/profileActions';
+import PropTypes from 'prop-types';
 
-const Profiles = () => {
-  const [loading, setLoading] = useState(true);
-  const [profiles, setProfiles] = useState([]);
-
+const Profiles = ({ getProfiles, profile: { profiles, loading } }) => {
   useEffect(() => {
-    // Simulate fetching profiles from an API or database
-    setTimeout(() => {
-      const fetchedProfiles = [
-        {
-          _id: 1,
-          firstname: 'John',
-          lastname: 'Doe',
-          username: 'johndoe123',
-          avatar: 'frontend/src/img/img1.png',
-          status: 'Frontend Developer',
-          company: 'Comapny Name',
-          location: 'New York, NY',
-          skills: ['HTML', 'CSS', 'JavaScript'],
-          social: {
-            website: 'https://www.example.com',
-            twitter: 'https://twitter.com/johndoe',
-            linkedin: 'https://www.linkedin.com/in/johndoe',
-            github: 'https://github.com/johndoe',
-          },
-        },
-        // Add more profiles here
-      ];
-
-      setProfiles(fetchedProfiles);
-      setLoading(false);
-    }, 2000); // Simulated loading delay
+    getProfiles();
   }, []);
 
   return (
@@ -61,4 +36,12 @@ const Profiles = () => {
   );
 };
 
-export default Profiles;
+Profiles.propTypes = {
+  getProfiles: PropTypes.func.isRequired,
+  profile: PropTypes.object.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  profile: state.profileReducer,
+});
+export default connect(mapStateToProps, { getProfiles })(Profiles);

@@ -1,6 +1,12 @@
+import { Typography } from "@mui/material"
+import BasicTable from "./Table"
+
 export const AddEduction = () => {
     return (
-        <div class="inner-table">
+        <>
+            <Typography sx={{marginY: '12px'}} variant='h3'>Education</Typography>
+            <BasicTable />
+        {/* <div class="inner-table">
             <div class="table-heading">
                 <h4>Education</h4>
             </div>
@@ -23,6 +29,7 @@ export const AddEduction = () => {
                     </td>
                 </tr>
             </table>
-        </div>
+        </div> */}
+        </>
     )
 }

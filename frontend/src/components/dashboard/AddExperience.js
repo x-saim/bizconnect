@@ -1,7 +1,7 @@
 export const AddExperience = () => {
     return (
         <div class="inner-table">
-            <div class="table-heading" style={{ marginTop: "50px" }}>
+            <div class="table-heading" >
                 <h4>Experience</h4>
             </div>
             <table class="table" >

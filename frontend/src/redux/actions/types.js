@@ -22,3 +22,7 @@ export const CLEAR_PROFILE = 'CLEAR_PROFILE';
 //Profile
 export const GET_PROFILE = 'GET_PROFILE';
 export const PROFILE_ERROR = 'PROFILE_ERROR';
+
+//Profiles
+
+export const GET_PROFILES = 'GET_PROFILES';

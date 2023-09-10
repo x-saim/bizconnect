@@ -11,6 +11,7 @@ import Dashboard from './components/dashboard/Dashboard';
 import Profiles from './components/profiles/Profiles';
 import Profile from './components/profile/Profile';
 import JobPosts from './components/jobposts/JobPosts';
+import Posts from './components/posts/Posts';
 import Addpost from './components/posts/Addpost';
 
 //Layout Components
@@ -74,8 +75,13 @@ const App = () => {
                 />
                 <Route />
                 <Route
-                  path='/jobposts'
+                  path='/jobs'
                   element={<PrivateRoute component={JobPosts} />}
+                />
+                <Route />
+                <Route
+                  path='/home'
+                  element={<PrivateRoute component={Posts} />}
                 />
                 <Route />
 

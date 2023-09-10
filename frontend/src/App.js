@@ -25,6 +25,7 @@ import { Provider } from 'react-redux';
 import store from '../src/redux/store';
 import { loadUser } from './redux/actions/authActions';
 import setAuthToken from './utils/setAuthToken';
+import AboutPage from './components/layout/AboutPage';
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -53,7 +54,7 @@ const App = () => {
               <Routes>
                 <Route path='/login' element={<Login />} />
                 <Route path='/register' element={<Register />} />
-
+                <Route path='/about' element={<AboutPage />} />
                 {/* Need to convert the following into protected route eventually. */}
                 <Route path='/addpost' element={<Addpost />} />
 

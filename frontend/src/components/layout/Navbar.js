@@ -9,6 +9,9 @@ import { logout } from '../../redux/actions/authActions';
 const MyNavbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   const authLinks = (
     <>
+      <Nav.Link as={Link} to='/about'>
+        About
+      </Nav.Link>
       <Nav.Link as={Link} to='/home'>
         Home Feed
       </Nav.Link>

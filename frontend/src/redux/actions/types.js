@@ -17,6 +17,7 @@ export const LOGIN_FAIL = 'LOGIN_FAIL';
 //Logout
 export const LOGOUT = 'LOGOUT';
 export const LOGOUT_FAIL = 'LOGOUT_FAIL';
+export const CLEAR_PROFILE = 'CLEAR_PROFILE';
 
 //Profile
 export const GET_PROFILE = 'GET_PROFILE';

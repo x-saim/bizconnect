@@ -28,62 +28,66 @@ const Dashboard = ({
       {loading && profile === null ? (
         <Spinner />
       ) : (
-        <>
-          <h1 className='large text-primary'>Dashboard</h1>
+        profile && (
+          <>
+            <h1 className='large text-primary'>Dashboard</h1>
 
-          <p>
-            Name: {profile.user.firstname} {profile.user.lastname}
-          </p>
+            {/* <p>
+          Name: {profile.user.firstname} {profile.user.lastname}
+        </p> */}
 
-          <p>Company: {profile.company}</p>
-          <p>Website: {profile.website}</p>
-          <p>Location: {profile.location}</p>
-          <p>Status: {profile.status}</p>
+            <p>Company: {profile.company}</p>
+            <p>Website: {profile.website}</p>
+            <p>Location: {profile.location}</p>
+            <p>Status: {profile.status}</p>
 
-          <h2>Skills</h2>
-          <ul>
-            {profile.skills ? (
-              profile.skills.map((skill, index) => <li key={index}>{skill}</li>)
+            <h2>Skills</h2>
+            <ul>
+              {profile.skills ? (
+                profile.skills.map((skill, index) => (
+                  <li key={index}>{skill}</li>
+                ))
+              ) : (
+                <li>No skills available.</li>
+              )}
+            </ul>
+
+            <h2>Bio</h2>
+            <p>{profile.bio}</p>
+
+            <h2>Experience</h2>
+            {profile.experience ? (
+              profile.experience.map((experience) => (
+                <div key={experience._id}>
+                  <p>Title: {experience.title}</p>
+                  <p>Company: {experience.company}</p>
+                  <p>Location: {experience.location}</p>
+                  <p>From: {experience.from}</p>
+                  <p>To: {experience.to}</p>
+                  <p>Description: {experience.description}</p>
+                </div>
+              ))
             ) : (
-              <li>No skills available.</li>
+              <p>No experience available.</p>
             )}
-          </ul>
 
-          <h2>Bio</h2>
-          <p>{profile.bio}</p>
-
-          <h2>Experience</h2>
-          {profile.experience ? (
-            profile.experience.map((experience) => (
-              <div key={experience._id}>
-                <p>Title: {experience.title}</p>
-                <p>Company: {experience.company}</p>
-                <p>Location: {experience.location}</p>
-                <p>From: {experience.from}</p>
-                <p>To: {experience.to}</p>
-                <p>Description: {experience.description}</p>
-              </div>
-            ))
-          ) : (
-            <p>No experience available.</p>
-          )}
-
-          <h2>Education</h2>
-          {profile.education ? (
-            profile.education.map((education) => (
-              <div key={education._id}>
-                <p>School: {education.school}</p>
-                <p>Degree: {education.degree}</p>
-                <p>Field of Study: {education.fieldofstudy}</p>
-                <p>From: {education.from}</p>
-                <p>To: {education.to}</p>
-                <p>Description: {education.description}</p>
-              </div>
-            ))
-          ) : (
-            <p>No education available.</p>
-          )}
-        </>
+            <h2>Education</h2>
+            {profile.education ? (
+              profile.education.map((education) => (
+                <div key={education._id}>
+                  <p>School: {education.school}</p>
+                  <p>Degree: {education.degree}</p>
+                  <p>Field of Study: {education.fieldofstudy}</p>
+                  <p>From: {education.from}</p>
+                  <p>To: {education.to}</p>
+                  <p>Description: {education.description}</p>
+                </div>
+              ))
+            ) : (
+              <p>No education available.</p>
+            )}
+          </>
+        )
       )}
     </section>
   );

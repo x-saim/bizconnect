@@ -5,11 +5,13 @@ import thunk from 'redux-thunk';
 import { userReducer } from './reducers/userReducer';
 import { alertReducer } from './reducers/alertReducer';
 import { profileReducer } from './reducers/profileReducer';
+import { postsReducer } from './reducers/postsReducer';
 
 const rootReducer = combineReducers({
   userReducer,
   alertReducer,
   profileReducer,
+  postsReducer,
 });
 
 const composeEnhancers = composeWithDevTools({});

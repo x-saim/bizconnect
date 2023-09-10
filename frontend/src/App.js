@@ -21,11 +21,12 @@ import Alert from './components/layout/Alert';
 import PrivateRoute from './components/routing/PrivateRoute';
 
 //Redux
-import { Provider } from 'react-redux';
+import { Provider, useDispatch } from 'react-redux';
 import store from '../src/redux/store';
 import { loadUser } from './redux/actions/authActions';
 import setAuthToken from './utils/setAuthToken';
 import AboutPage from './components/layout/AboutPage';
+import { getAllPosts } from './redux/actions/postActions';
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -37,6 +38,15 @@ const App = () => {
   useEffect(() => {
     store.dispatch(loadUser());
   }, []);
+
+  // Mitali's code
+  // eventually will merge both useEffect()
+  // calling getallposts action from App.js
+  // because whenever you change the page, the data will be remains constants in the reducer
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(getAllPosts())
+  }, [])
 
   return (
     <Provider store={store}>
@@ -83,6 +93,13 @@ const App = () => {
                 <Route
                   path='/home'
                   element={<PrivateRoute component={Posts} />}
+                />
+                <Route />
+
+                {/* Mitali's code */}
+                <Route
+                  path='/addpost'
+                  element={<PrivateRoute component={Addpost} />}
                 />
                 <Route />
 

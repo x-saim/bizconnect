@@ -30,6 +30,12 @@ const MyNavbar = ({ auth: { isAuthenticated, loading }, logout }) => {
       <Nav.Link as={Link} to='/login' onClick={logout}>
         Logout
       </Nav.Link>
+
+      {/* Mitali's code */}
+      <Nav.Link as={Link} to='/addpost'>
+        Add Post
+      </Nav.Link>
+
     </>
   );
 

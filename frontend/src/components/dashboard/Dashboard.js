@@ -5,30 +5,91 @@
 // import image1 from '../../images/img1.png';
 
 //Redux State Management & React
-import React, { useEffect } from 'react';
+// import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
 import { getCurrentProfile } from '../../redux/actions/profileActions';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-const Dashboard = ({ getCurrentProfile }) => {
+const Dashboard = ({ getCurrentProfile, user, profile }) => {
   //Upon mount, execute getCurrentProfile
   useEffect(() => {
     getCurrentProfile();
   }, []);
 
-  return <div>Dashboard</div>;
+  console.log(profile);
+  return (
+    <section className='container'>
+      <div>
+        <h1 className='large text-primary'>Dashboard</h1>
+        {profile && profile.user && (
+          <p>
+            Name: {profile.user.firstname} {profile.user.lastname}
+          </p>
+        )}
+        {profile && <p>Company: {profile.company}</p>}
+        {profile && <p>Website: {profile.website}</p>}
+        {profile && <p>Location: {profile.location}</p>}
+        {profile && <p>Status: {profile.status}</p>}
+
+        <h2>Skills</h2>
+        <ul>
+          {profile && profile.skills ? (
+            profile.skills.map((skill, index) => <li key={index}>{skill}</li>)
+          ) : (
+            <li>No skills available</li>
+          )}
+        </ul>
+
+        <h2>Bio</h2>
+        {profile && <p>{profile.bio}</p>}
+
+        <h2>Experience</h2>
+        {profile && profile.experience ? (
+          profile.experience.map((experience) => (
+            <div key={experience._id}>
+              <p>Title: {experience.title}</p>
+              <p>Company: {experience.company}</p>
+              <p>Location: {experience.location}</p>
+              <p>From: {experience.from}</p>
+              <p>To: {experience.to}</p>
+              <p>Description: {experience.description}</p>
+            </div>
+          ))
+        ) : (
+          <p>No experience available</p>
+        )}
+
+        <h2>Education</h2>
+        {profile && profile.education ? (
+          profile.education.map((education) => (
+            <div key={education._id}>
+              <p>School: {education.school}</p>
+              <p>Degree: {education.degree}</p>
+              <p>Field of Study: {education.fieldofstudy}</p>
+              <p>From: {education.from}</p>
+              <p>To: {education.to}</p>
+              <p>Description: {education.description}</p>
+            </div>
+          ))
+        ) : (
+          <p>No education available</p>
+        )}
+      </div>
+    </section>
+  );
 };
 
 Dashboard.propTypes = {
   getCurrentProfile: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired,
+  user: PropTypes.object.isRequired,
+  profile: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  auth: state.userReducer,
-  profile: state.profileReducer,
+  user: state.userReducer,
+  profile: state.profileReducer.profile,
 });
-
 export default connect(mapStateToProps, { getCurrentProfile })(Dashboard);
 
 // const Dashboard = () => {

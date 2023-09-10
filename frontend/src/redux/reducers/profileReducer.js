@@ -1,13 +1,13 @@
-import { GET_PROFILE, PROFILE_ERROR } from './types';
+import { GET_PROFILE, PROFILE_ERROR } from '../actions/types';
 
-initialState = {
+const initialState = {
   profile: null, //holds profile info upon logging in, and user profile visited
   profiles: [], // for /profiles page
   loading: true,
   error: {}, //for any errors in the requests
 };
 
-export const profileReducer = (state = initialStae, action) => {
+export const profileReducer = (state = initialState, action) => {
   const { type, payload } = action;
 
   switch (type) {

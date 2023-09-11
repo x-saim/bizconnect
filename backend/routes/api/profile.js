@@ -67,6 +67,8 @@ router.post(
       github,
     } = req.body;
 
+    console.log('here');
+    
     // Build Profile Object
     const profileFields = {};
     profileFields.user = req.user.id;

@@ -4,9 +4,9 @@ import { useState } from "react"
 import { Link } from "react-router-dom"
 
 import '../../assets/css/editprofiledashboard.css'
-import { AddEduction } from './AddEducation';
-import { AddExperience } from './AddExperience';
-import { Edit } from "./Edit"
+import AddEduction from './AddEducation';
+import AddExperience from './AddExperience';
+import Edit from "./Edit"
 
 export const EditProfile = () => {
   const [current, setCurrent] = useState('overview')

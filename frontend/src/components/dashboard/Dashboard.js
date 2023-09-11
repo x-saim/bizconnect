@@ -35,9 +35,13 @@ const Dashboard = ({
       ) : (
         profile !== null ? (
           <>
-            <h1 className='large text-primary'>Dashboard</h1>
+              <h1 className='large text-primary'>Dashboard</h1>
+            <Box sx={{display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
+              <h2 className='medium'>User Information</h2>
 
-            <h2 className='medium'>User Information</h2>
+              <button onClick={() => navigate('/edit-profile')} className='btn btn-dark'>Edit</button>
+            </Box>
+
             <p>
               Name: {profile.user.firstname} {profile.user.lastname}
             </p>

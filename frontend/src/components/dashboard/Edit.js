@@ -1,8 +1,11 @@
 import { Box, Button, Grid, TextField } from "@mui/material"
 import { useState } from "react";
 import { createOrUpdateProfile } from "../../redux/actions/profileActions";
+import { connect } from "react-redux";
+import { setAlert } from '../../redux/actions/alertActions';
+import PropTypes from 'prop-types';
 
-export const Edit = () => {
+const Edit = ({setAlert, createOrUpdateProfile, isAuthenticated}) => {
     const [formData, setFormData] = useState({
         company: '',
         website: '',
@@ -19,21 +22,23 @@ export const Edit = () => {
     });
 
     // Destructure input values from formData
-  const { company, website, location, bio, status, skills, youtube, facebook, twitter, instagram, linkedin, github } = formData;
+    const { company, website, location, bio, status, skills, youtube, facebook, twitter, instagram, linkedin, github } = formData;
 
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(company, website, location, bio, status, skills, youtube, facebook, twitter, instagram, linkedin, github)
-        
-        createOrUpdateProfile({company, website, location, bio, status, skills, youtube, facebook, twitter, instagram, linkedin, github})
+
+        createOrUpdateProfile({ company, website, location, bio, status, skills, youtube, facebook, twitter, instagram, linkedin, github })
+        console.log("sdsds")
     }
 
     const onChange = (e) => {
         setFormData({
-          ...formData,
-          [e.target.name]: e.target.value,
+            ...formData,
+            [e.target.name]: e.target.value,
         });
-      };
+    };
+    
     return (
         <>
             <Box sx={{}}>
@@ -48,7 +53,6 @@ export const Edit = () => {
                             id='company'
                             label='Company'
                             name='company'
-                            autoComplete=''
                             autoFocus
                             value={company}
                             onChange={onChange}
@@ -61,7 +65,6 @@ export const Edit = () => {
                             id='website'
                             label='Website'
                             name='website'
-                            autoComplete=''
                             autoFocus
                             value={website}
                             onChange={onChange}
@@ -74,7 +77,6 @@ export const Edit = () => {
                             id='location'
                             label='Location'
                             name='location'
-                            autoComplete=''
                             autoFocus
                             value={location}
                             onChange={onChange}
@@ -87,7 +89,6 @@ export const Edit = () => {
                             id='bio'
                             label='Bio'
                             name='bio'
-                            autoComplete=''
                             autoFocus
                             value={bio}
                             onChange={onChange}
@@ -101,7 +102,6 @@ export const Edit = () => {
                             id='status'
                             label='Status'
                             name='status'
-                            autoComplete=''
                             autoFocus
                             value={status}
                             onChange={onChange}
@@ -115,7 +115,6 @@ export const Edit = () => {
                             id='skills'
                             label='Skills'
                             name='skills'
-                            autoComplete=''
                             autoFocus
                             value={skills}
                             onChange={onChange}
@@ -128,7 +127,6 @@ export const Edit = () => {
                             id='youtube'
                             label='Youtube'
                             name='youtube'
-                            autoComplete=''
                             autoFocus
                             value={youtube}
                             onChange={onChange}
@@ -141,7 +139,6 @@ export const Edit = () => {
                             id='facebook'
                             label='Facebook'
                             name='facebook'
-                            autoComplete=''
                             autoFocus
                             value={facebook}
                             onChange={onChange}
@@ -154,7 +151,6 @@ export const Edit = () => {
                             id='twitter'
                             label='Twitter'
                             name='twitter'
-                            autoComplete=''
                             autoFocus
                             value={twitter}
                             onChange={onChange}
@@ -167,7 +163,6 @@ export const Edit = () => {
                             id='instagram'
                             label='Instagram'
                             name='instagram'
-                            autoComplete=''
                             autoFocus
                             value={instagram}
                             onChange={onChange}
@@ -180,7 +175,6 @@ export const Edit = () => {
                             id='linkedin'
                             label='Linkedin'
                             name='linkedin'
-                            autoComplete=''
                             autoFocus
                             value={linkedin}
                             onChange={onChange}
@@ -193,7 +187,6 @@ export const Edit = () => {
                             id='github'
                             label='Github'
                             name='github'
-                            autoComplete=''
                             autoFocus
                             value={github}
                             onChange={onChange}
@@ -202,6 +195,7 @@ export const Edit = () => {
                     <Grid item xs={12} md={7}>
                         <Button
                             type='submit'
+                            onClick={handleSubmit}
                             fullWidth
                             variant='contained'
                             sx={{ mt: 3, mb: 2 }}
@@ -215,3 +209,10 @@ export const Edit = () => {
         </>
     )
 }
+
+//Get the auth state
+const mapStateToProps = (state) => ({
+    isAuthenticated: state.userReducer.isAuthenticated,
+});
+
+export default connect(mapStateToProps, { setAlert, createOrUpdateProfile })(Edit);

@@ -11,6 +11,10 @@ import { getCurrentProfile } from '../../redux/actions/profileActions';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Spinner from '../layout/Spinner';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+import Box from '@mui/material/Box';
+import { useNavigate } from 'react-router-dom';
 
 const Dashboard = ({
   getCurrentProfile,
@@ -22,16 +26,22 @@ const Dashboard = ({
     getCurrentProfile();
   }, [getCurrentProfile]);
 
+  const navigate = useNavigate();
+
   return (
     <section className='container'>
       {loading && profile === null ? (
         <Spinner />
       ) : (
-        profile && (
+        profile !== null ? (
           <>
-            <h1 className='large text-primary'>Dashboard</h1>
+              <h1 className='large text-primary'>Dashboard</h1>
+            <Box sx={{display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
+              <h2 className='medium'>User Information</h2>
 
-            <h2 className='medium'>User Information</h2>
+              <button onClick={() => navigate('/edit-profile')} className='btn btn-dark'>Edit</button>
+            </Box>
+
             <p>
               Name: {profile.user.firstname} {profile.user.lastname}
             </p>
@@ -86,6 +96,17 @@ const Dashboard = ({
             ) : (
               <p>No education available.</p>
             )}
+          </>
+        ) : (
+          <>
+            <h1 className='large text-dark'>Dashboard</h1>
+            <Typography variant='p' >You have not currently set up your profile </Typography>
+            <Typography variant='p' >Your profile shows up here </Typography>
+            <Box sx={{width: '100%', marginY: '12px'}}> 
+              <button onClick={() => navigate('/edit-profile')} className='btn btn-dark'>Set up Profile Now</button>
+              {/* <Button onClick={() => navigate('/edit-profile')} variant='contained'></Button> */}
+            </Box>
+            
           </>
         )
       )}

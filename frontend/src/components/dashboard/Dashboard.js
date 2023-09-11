@@ -99,11 +99,12 @@ const Dashboard = ({
           </>
         ) : (
           <>
-            <h1 className='large text-primary'>Dashboard</h1>
+            <h1 className='large text-dark'>Dashboard</h1>
             <Typography variant='p' >You have not currently set up your profile </Typography>
             <Typography variant='p' >Your profile shows up here </Typography>
             <Box sx={{width: '100%', marginY: '12px'}}> 
-              <Button onClick={() => navigate('/edit-profile')} variant='contained'>Set up Profile Now</Button>
+              <button onClick={() => navigate('/edit-profile')} className='btn btn-dark'>Set up Profile Now</button>
+              {/* <Button onClick={() => navigate('/edit-profile')} variant='contained'></Button> */}
             </Box>
             
           </>

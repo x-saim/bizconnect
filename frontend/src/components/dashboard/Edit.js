@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { setAlert } from '../../redux/actions/alertActions';
 import PropTypes from 'prop-types';
 
-const Edit = ({setAlert, createOrUpdateProfile, isAuthenticated}) => {
+const Edit = ({ setAlert, createOrUpdateProfile, isAuthenticated }) => {
     const [formData, setFormData] = useState({
         company: '',
         website: '',
@@ -29,7 +29,23 @@ const Edit = ({setAlert, createOrUpdateProfile, isAuthenticated}) => {
         console.log(company, website, location, bio, status, skills, youtube, facebook, twitter, instagram, linkedin, github)
 
         createOrUpdateProfile({ company, website, location, bio, status, skills, youtube, facebook, twitter, instagram, linkedin, github })
-        console.log("sdsds")
+        setFormData(prev => {
+            return {
+                ...prev,
+                company: '',
+                website: '',
+                location: '',
+                bio: '',
+                status: '',
+                skills: '',
+                youtube: '',
+                facebook: '',
+                twitter: '',
+                instagram: '',
+                linkedin: '',
+                github: '',
+            }
+        })
     }
 
     const onChange = (e) => {
@@ -38,7 +54,7 @@ const Edit = ({setAlert, createOrUpdateProfile, isAuthenticated}) => {
             [e.target.name]: e.target.value,
         });
     };
-    
+
     return (
         <>
             <Box sx={{}}>

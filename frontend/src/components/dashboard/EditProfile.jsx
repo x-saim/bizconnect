@@ -9,21 +9,21 @@ import AddExperience from './AddExperience';
 import Edit from "./Edit"
 
 export const EditProfile = () => {
-  const [current, setCurrent] = useState('overview')
+  const [current, setCurrent] = useState('edit-profile')
   return (
     <>
       <Box sx={{marginTop: '24px'}}>
-        <Link to='/profiles' className='btn btn-light'>
+        <Link to='/dashboard' className='btn btn-light'>
           Go Back
         </Link>
         <Box sx={{display: 'flex', flexWrap: 'wrap', marginTop:'16px'}}>
-          <button onClick={() => setCurrent('overview')} className={`btn my-2 ${current === 'overview' ? 'btn-dark' : 'btn-light'}`}>Overview</button>
+          {/* <button onClick={() => setCurrent('overview')} className={`btn my-2 ${current === 'overview' ? 'btn-dark' : 'btn-light'}`}>Overview</button> */}
           <button onClick={() => setCurrent('edit-profile')} className={`btn my-2 ${current === 'edit-profile' ? 'btn-dark' : 'btn-light'}`}>Edit</button>
           <button onClick={() => setCurrent('add-education')} className={`btn my-2 ${current === 'add-education' ? 'btn-dark' : 'btn-light'}`}>Add Education</button>
           <button onClick={() => setCurrent('add-experience')} className={`btn my-2 ${current === 'add-experience' ? 'btn-dark' : 'btn-light'}`}>Add Experience</button>
         </Box>
         <div class="main-section">
-          {current === 'overview' ? <h1>Overview</h1> : current === 'edit-profile' ? <Edit/> : current === 'add-education' ? <AddEduction /> : current === 'add-experience' ? <AddExperience /> : null}
+          {current === 'edit-profile' ? <Edit/> : current === 'add-education' ? <AddEduction /> : current === 'add-experience' ? <AddExperience /> : null}
         </div>
       </Box>
     </>

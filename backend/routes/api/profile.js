@@ -68,7 +68,7 @@ router.post(
     } = req.body;
 
     console.log('here');
-    
+
     // Build Profile Object
     const profileFields = {};
     profileFields.user = req.user.id;
@@ -263,6 +263,7 @@ router.put(
   ],
   async (req, res) => {
     const errors = validationResult(req);
+    console.log('here')
 
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
@@ -271,6 +272,7 @@ router.put(
     //req.body will include school, degree, fieldofstudy, from, to, current, description.
     const newEdu = { ...req.body };
 
+    console.log(newEdu)
     try {
       const profile = await Profile.findOne({ user: req.user.id });
 

@@ -1,34 +1,42 @@
 import { Typography } from "@mui/material"
-import BasicTable from "./Table"
+// import BasicTable from "./EducationTable"
+import ExperienceTable from './ExperienceTable'
 import { Box, Button, Grid, TextField } from "@mui/material"
 import { useState } from "react";
-import { addEductionField } from "../../redux/actions/profileActions";
+import { addExperienceField } from "../../redux/actions/profileActions";
 import { connect } from "react-redux";
 import { setAlert } from '../../redux/actions/alertActions';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import dayjs from "dayjs";
 
-const AddExperience = ({ setAlert, addEductionField, profile }) => {
+const AddExperience = ({ setAlert, addExperienceField, profile }) => {
     const [formData, setFormData] = useState({
-        school: '',
-        degree: '',
-        fieldOfStudy: '',
+        company: '',
+        title: '',
+        location: '',
+        description: '',
         // from: dayjs(''),
         // to: dayjs(''),
     });
     const [from, setFrom] = useState(dayjs(''))
     const [to, setTo] = useState(dayjs(''))
 
-    console.log(addEductionField)
-
-    console.log(profile?.education)
     // Destructure input values from formData
-    const { school, degree, fieldOfStudy } = formData;
+    const { company, title, location, description } = formData;
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        addEductionField({ school, degree, fieldOfStudy, from, to })
+        addExperienceField({ company, title, location, from, to, description })
+        setFormData(prev => {
+            return {
+                ...prev,
+                company: '',
+                title: '',
+                location: '',
+                description: '',
+            }
+        })
     }
 
     const onChange = (e) => {
@@ -41,7 +49,7 @@ const AddExperience = ({ setAlert, addEductionField, profile }) => {
     return (
         <>
             <Typography sx={{ marginY: '12px' }} variant='h3'>Education</Typography>
-            <BasicTable col1='Company' col2='Title' col3='Location' col4='From' col5='To' rows={[['scholl', 'degree', 'sad', 'sds']]} />
+            <ExperienceTable rows={profile ? profile.experience : []} />
             <Box sx={{}}>
                 <Typography sx={{ marginY: '12px' }} variant='h5'>Add New Experience</Typography>
                 <Grid direction="row"
@@ -52,11 +60,11 @@ const AddExperience = ({ setAlert, addEductionField, profile }) => {
                         <TextField
                             margin='normal'
                             fullWidth
-                            id='school'
+                            id='company'
                             label='Company'
-                            name='school'
+                            name='company'
                             autoFocus
-                            value={school}
+                            value={company}
                             onChange={onChange}
                         />
                     </Grid>
@@ -64,11 +72,11 @@ const AddExperience = ({ setAlert, addEductionField, profile }) => {
                         <TextField
                             margin='normal'
                             fullWidth
-                            id='degree'
+                            id='title'
                             label='Title'
-                            name='degree'
+                            name='title'
                             autoFocus
-                            value={degree}
+                            value={title}
                             onChange={onChange}
                         />
                     </Grid>
@@ -76,11 +84,11 @@ const AddExperience = ({ setAlert, addEductionField, profile }) => {
                         <TextField
                             margin='normal'
                             fullWidth
-                            id='fieldOfStudy'
+                            id='location'
                             label='Location'
-                            name='fieldOfStudy'
+                            name='location'
                             autoFocus
-                            value={fieldOfStudy}
+                            value={location}
                             onChange={onChange}
                         />
                     </Grid>
@@ -88,7 +96,7 @@ const AddExperience = ({ setAlert, addEductionField, profile }) => {
                         <DatePicker
                             label="From"
                             fullWidth
-                            margin= 'normal'
+                            margin='normal'
                             value={from}
                             onChange={(value) => setFrom(value)}
                         />
@@ -97,9 +105,21 @@ const AddExperience = ({ setAlert, addEductionField, profile }) => {
                         <DatePicker
                             label="To"
                             fullWidth
-                            margin= 'normal'
+                            margin='normal'
                             value={to}
                             onChange={(value) => setTo(value)}
+                        />
+                    </Grid>
+                    <Grid item xs={12}>
+                        <TextField
+                            id="outlined-multiline-static"
+                            label="Description"
+                            name='description'
+                            multiline
+                            fullWidth
+                            rows={4}
+                            value={description}
+                            onChange={onChange}
                         />
                     </Grid>
                     <Grid item xs={12} md={7}>
@@ -122,7 +142,7 @@ const AddExperience = ({ setAlert, addEductionField, profile }) => {
 
 //Get the auth state
 const mapStateToProps = (state) => ({
-    profiles: state.profileReducer.profiles,
+    profile: state.profileReducer.profile,
 });
 
-export default connect(mapStateToProps, { setAlert, addEductionField })(AddExperience);
+export default connect(mapStateToProps, { setAlert, addExperienceField })(AddExperience);

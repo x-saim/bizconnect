@@ -1,5 +1,5 @@
 import { Typography } from "@mui/material"
-import BasicTable from "./Table"
+import EducationTable from "./EducationTable"
 import { Box, Button, Grid, TextField } from "@mui/material"
 import { useState } from "react";
 import { addEductionField } from "../../redux/actions/profileActions";
@@ -12,7 +12,8 @@ const AddEduction = ({ setAlert, addEductionField, profile }) => {
     const [formData, setFormData] = useState({
         school: '',
         degree: '',
-        fieldOfStudy: '',
+        fieldofstudy: '',
+        description: '',
         // from: dayjs(''),
         // to: dayjs(''),
     });
@@ -20,15 +21,22 @@ const AddEduction = ({ setAlert, addEductionField, profile }) => {
     const [to, setTo] = useState(dayjs(''))
 
     console.log(addEductionField)
-
-    console.log(profile?.education)
     // Destructure input values from formData
-    const { school, degree, fieldOfStudy } = formData;
+    const { school, degree, fieldofstudy, description } = formData;
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        addEductionField({ school, degree, fieldOfStudy, from, to })
+        addEductionField({ school, degree, fieldofstudy, from, to, description })
+        setFormData(prev => {
+            return {
+                ...prev,
+                school: '',
+                degree: '',
+                fieldofstudy: '',
+                description: '',
+            }
+        })
     }
 
     const onChange = (e) => {
@@ -41,7 +49,7 @@ const AddEduction = ({ setAlert, addEductionField, profile }) => {
     return (
         <>
             <Typography sx={{ marginY: '12px' }} variant='h3'>Education</Typography>
-            <BasicTable col1='School' col2='Degree' col3='Field Of Study' col4='From' col5='To' rows={[['scholl', 'degree', 'sad', 'sds']]} />
+            <EducationTable rows={profile ? profile.education : []} />
             <Box sx={{}}>
                 <Typography sx={{ marginY: '12px' }} variant='h5'>Add New Education</Typography>
                 <Grid direction="row"
@@ -76,11 +84,11 @@ const AddEduction = ({ setAlert, addEductionField, profile }) => {
                         <TextField
                             margin='normal'
                             fullWidth
-                            id='fieldOfStudy'
+                            id='fieldofstudy'
                             label='Field of study'
-                            name='fieldOfStudy'
+                            name='fieldofstudy'
                             autoFocus
-                            value={fieldOfStudy}
+                            value={fieldofstudy}
                             onChange={onChange}
                         />
                     </Grid>
@@ -88,7 +96,7 @@ const AddEduction = ({ setAlert, addEductionField, profile }) => {
                         <DatePicker
                             label="From"
                             fullWidth
-                            margin= 'normal'
+                            margin='normal'
                             value={from}
                             onChange={(value) => setFrom(value)}
                         />
@@ -97,9 +105,20 @@ const AddEduction = ({ setAlert, addEductionField, profile }) => {
                         <DatePicker
                             label="To"
                             fullWidth
-                            margin= 'normal'
+                            margin='normal'
                             value={to}
                             onChange={(value) => setTo(value)}
+                        />
+                    </Grid>
+                    <Grid item xs={12}>
+                        <TextField
+                            id="outlined-multiline-static"
+                            label="Description"
+                            multiline
+                            name="description"
+                            fullWidth
+                            rows={4}
+                            onChange={onChange}
                         />
                     </Grid>
                     <Grid item xs={12} md={7}>
@@ -122,7 +141,7 @@ const AddEduction = ({ setAlert, addEductionField, profile }) => {
 
 //Get the auth state
 const mapStateToProps = (state) => ({
-    profiles: state.profileReducer.profiles,
+    profile: state.profileReducer.profile,
 });
 
 export default connect(mapStateToProps, { setAlert, addEductionField })(AddEduction);

@@ -46,6 +46,7 @@ const Edit = ({ setAlert, createOrUpdateProfile, isAuthenticated }) => {
                 github: '',
             }
         })
+        setAlert('Profile Updated', 'success');
     }
 
     const onChange = (e) => {

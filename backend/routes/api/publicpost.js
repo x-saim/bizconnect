@@ -55,7 +55,7 @@ router.get('/', auth, async (req, res) => {
     //sorted by most recent post
     const posts = await PublicPost.find().sort({ date: -1 });
 
-    res.json({ count: posts.length, data: posts });
+    res.json(posts);
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Server Error.');

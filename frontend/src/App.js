@@ -28,7 +28,7 @@ import setAuthToken from './utils/setAuthToken';
 import AboutPage from './components/layout/AboutPage';
 import { EditProfile } from './components/dashboard/EditProfile';
 import { LocalizationProvider } from '@mui/x-date-pickers';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -107,7 +107,6 @@ const App = () => {
         </div>
       </Provider>
     </LocalizationProvider>
-
   );
 };
 

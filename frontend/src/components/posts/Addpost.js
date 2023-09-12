@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Col, Row, Form, Input, Button } from 'antd';
 import { useDispatch } from 'react-redux';
-import { addPost } from '../../redux/actions/postActions';
+// import { addPost } from '../../redux/actions/postActions';
 
 const { TextArea } = Input;
 
@@ -19,16 +19,16 @@ function Addpost() {
     };
   }
 
-  function addpost(values) {
-    values.image = image;
-    console.log(values);
-    dispatch(addPost(values));
-  }
+  // function addpost(values) {
+  //   values.image = image;
+  //   console.log(values);
+  //   dispatch(addPost(values));
+  // }
 
   return (
     <Row justify='center'>
       <Col lg={12}>
-        <Form className='mt fontsize' layout='vertical' onFinish={addpost}>
+        <Form className='mt fontsize' layout='vertical'>
           <h3>Add new post</h3>
           <Form.Item name='description' label='Description'>
             <TextArea />
@@ -47,3 +47,4 @@ function Addpost() {
 }
 
 export default Addpost;
+// onFinish={''}

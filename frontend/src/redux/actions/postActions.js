@@ -63,6 +63,41 @@ export const getPosts = () => async (dispatch) => {
   }
 };
 
+//Add like to post
+export const addLike = (postID) => async (dispatch) => {
+  try {
+    //updating the post
+    const res = await api.put(`/api/publicposts/like/${postID}`);
+
+    dispatch({
+      type: UPDATE_LIKES,
+      payload: { postID, likes: res.data },
+    });
+  } catch (err) {
+    dispatch({
+      type: POST_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
+
+// Remove like from post
+export const removeLike = (postID) => async (dispatch) => {
+  try {
+    const res = await api.put(`/api/publicposts/unlike/${postID}`);
+
+    dispatch({
+      type: UPDATE_LIKES,
+      payload: { postID, likes: res.data },
+    });
+  } catch (err) {
+    dispatch({
+      type: POST_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
+
 //Get post
 
 //Delete post

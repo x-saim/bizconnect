@@ -32,6 +32,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import JobPost from '../../frontend/src/components/jobpost/JobPost';
 import JobPostForm from './components/jobposts/JobPostForm';
+import JobApp from './components/jobpost/JobApp';
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -95,6 +96,11 @@ const App = () => {
                   <Route
                     path='/jobposts/create'
                     element={<PrivateRoute component={JobPostForm} />}
+                  />
+                  <Route />
+                  <Route
+                    path='/jobposts/apply/:id'
+                    element={<PrivateRoute component={JobApp} />}
                   />
                   <Route />
 

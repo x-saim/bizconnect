@@ -63,10 +63,10 @@ export const applyForJob = (jobPostId) => async (dispatch) => {
   }
 };
 
-// Get job applications
-export const getJobApplications = () => async (dispatch) => {
+// Get job applications by job ID
+export const getJobApplications = (jobPostId) => async (dispatch) => {
   try {
-    const res = await axios.get('/api/jobposts/applications');
+    const res = await axios.get(`/api/jobposts/applications/${jobPostId}`);
 
     dispatch({
       type: GET_APPS,

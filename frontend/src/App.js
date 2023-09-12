@@ -30,6 +30,7 @@ import AboutPage from './components/layout/AboutPage';
 import { EditProfile } from './components/dashboard/EditProfile';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import JobPost from '../../frontend/src/components/jobpost/JobPost';
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -81,8 +82,13 @@ const App = () => {
                   />
                   <Route />
                   <Route
-                    path='/jobs'
+                    path='/jobposts'
                     element={<PrivateRoute component={JobPosts} />}
+                  />
+                  <Route />
+                  <Route
+                    path='/jobposts/:id'
+                    element={<PrivateRoute component={JobPost} />}
                   />
                   <Route />
                   <Route

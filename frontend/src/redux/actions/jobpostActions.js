@@ -27,7 +27,7 @@ export const getJobPosts = () => async (dispatch) => {
   }
 };
 
-// Get job post
+// Get job post by id
 export const getJobPost = (id) => async (dispatch) => {
   try {
     const res = await axios.get(`/api/jobposts/${id}`);

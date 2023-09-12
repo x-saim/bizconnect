@@ -4,13 +4,17 @@ import { getJobPost } from '../../redux/actions/jobpostActions';
 import PropTypes from 'prop-types';
 import { Link, useParams } from 'react-router-dom';
 
-const JobPostDetails = ({ getJobPost, jobPost: { jobPost } }) => {
-  const { id } = useParams;
+const JobPost = ({ getJobPost, jobPost }) => {
+  const { id } = useParams();
 
   useEffect(() => {
     getJobPost(id);
   }, [getJobPost, id]);
 
+  // Add conditional rendering to handle cases where jobPost is null or still loading
+  if (!jobPost) {
+    return <p>Loading...</p>;
+  }
   return (
     <div className='job-post-details'>
       <h2>{jobPost.title}</h2>
@@ -21,13 +25,13 @@ const JobPostDetails = ({ getJobPost, jobPost: { jobPost } }) => {
   );
 };
 
-JobPostDetails.propTypes = {
+JobPost.propTypes = {
   jobPost: PropTypes.object.isRequired,
   getJobPost: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  jobPost: state.jobPostReducer,
+  jobPost: state.jobPostReducer.jobPost,
 });
 
-export default connect(mapStateToProps, { getJobPost })(JobPostDetails);
+export default connect(mapStateToProps, { getJobPost })(JobPost);

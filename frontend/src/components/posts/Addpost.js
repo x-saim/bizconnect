@@ -26,7 +26,7 @@ function Addpost() {
   // }
 
   return (
-    <Row justify='center'>
+    <Row justify='left'>
       <Col lg={12}>
         <Form className='mt fontsize' layout='vertical'>
           <h3>Add new post</h3>

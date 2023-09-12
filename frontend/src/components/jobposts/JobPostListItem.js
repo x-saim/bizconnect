@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import moment from 'moment';
+import { deleteJobPost } from '../../redux/actions/jobpostActions';
 
 const JobPostListItem = ({ jobPost }) => {
   const formattedDate = moment(jobPost.date).format('YYYY-MM-DD');

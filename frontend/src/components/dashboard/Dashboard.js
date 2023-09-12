@@ -15,6 +15,11 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import { useNavigate } from 'react-router-dom';
+import EducationTable from './EducationTable';
+
+import { addEductionField } from '../../redux/actions/profileActions';
+
+//Components
 
 const Dashboard = ({
   getCurrentProfile,
@@ -32,83 +37,85 @@ const Dashboard = ({
     <section className='container'>
       {loading && profile === null ? (
         <Spinner />
+      ) : profile !== null ? (
+        <>
+          <h1 className='large text-primary'>Dashboard</h1>
+          <Box
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+            }}
+          >
+            <h2 className='medium'>User Information</h2>
+
+            <button
+              onClick={() => navigate('/edit-profile')}
+              className='btn btn-dark'
+            >
+              Edit
+            </button>
+          </Box>
+
+          <p>
+            Name: {profile.user.firstname} {profile.user.lastname}
+          </p>
+
+          <p>Company: {profile.company}</p>
+          <p>Website: {profile.website}</p>
+          <p>Location: {profile.location}</p>
+          <p>Status: {profile.status}</p>
+
+          <h2 className='medium'>Skills</h2>
+          <ul>
+            {profile.skills ? (
+              profile.skills.map((skill, index) => <li key={index}>{skill}</li>)
+            ) : (
+              <li>No skills available.</li>
+            )}
+          </ul>
+
+          <h2 className='medium'>Bio</h2>
+          <p>{profile.bio}</p>
+
+          <h2 className='medium'>Experience</h2>
+          {profile.experience ? (
+            profile.experience.map((experience) => (
+              <div key={experience._id}>
+                <p>Title: {experience.title}</p>
+                <p>Company: {experience.company}</p>
+                <p>Location: {experience.location}</p>
+                <p>From: {experience.from}</p>
+                <p>To: {experience.to}</p>
+                <p>Description: {experience.description}</p>
+              </div>
+            ))
+          ) : (
+            <p>No experience available.</p>
+          )}
+
+          <h2>Education</h2>
+          <EducationTable
+            rows={profile ? profile.education : <p>No education available.</p>}
+          />
+        </>
       ) : (
-        profile !== null ? (
-          <>
-              <h1 className='large text-primary'>Dashboard</h1>
-            <Box sx={{display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
-              <h2 className='medium'>User Information</h2>
-
-              <button onClick={() => navigate('/edit-profile')} className='btn btn-dark'>Edit</button>
-            </Box>
-
-            <p>
-              Name: {profile.user.firstname} {profile.user.lastname}
-            </p>
-
-            <p>Company: {profile.company}</p>
-            <p>Website: {profile.website}</p>
-            <p>Location: {profile.location}</p>
-            <p>Status: {profile.status}</p>
-
-            <h2 className='medium'>Skills</h2>
-            <ul>
-              {profile.skills ? (
-                profile.skills.map((skill, index) => (
-                  <li key={index}>{skill}</li>
-                ))
-              ) : (
-                <li>No skills available.</li>
-              )}
-            </ul>
-
-            <h2 className='medium'>Bio</h2>
-            <p>{profile.bio}</p>
-
-            <h2 className='medium'>Experience</h2>
-            {profile.experience ? (
-              profile.experience.map((experience) => (
-                <div key={experience._id}>
-                  <p>Title: {experience.title}</p>
-                  <p>Company: {experience.company}</p>
-                  <p>Location: {experience.location}</p>
-                  <p>From: {experience.from}</p>
-                  <p>To: {experience.to}</p>
-                  <p>Description: {experience.description}</p>
-                </div>
-              ))
-            ) : (
-              <p>No experience available.</p>
-            )}
-
-            <h2>Education</h2>
-            {profile.education ? (
-              profile.education.map((education) => (
-                <div key={education._id}>
-                  <p>School: {education.school}</p>
-                  <p>Degree: {education.degree}</p>
-                  <p>Field of Study: {education.fieldofstudy}</p>
-                  <p>From: {education.from}</p>
-                  <p>To: {education.to}</p>
-                  <p>Description: {education.description}</p>
-                </div>
-              ))
-            ) : (
-              <p>No education available.</p>
-            )}
-          </>
-        ) : (
-          <>
-            <h1 className='large text-dark'>Dashboard</h1>
-            <Typography variant='p' >You have not currently set up your profile </Typography>
-            <Typography variant='p' >Your profile shows up here </Typography>
-            <Box sx={{width: '100%', marginY: '12px'}}> 
-              <button onClick={() => navigate('/edit-profile')} className='btn btn-dark'>Set up Profile Now</button>
-              {/* <Button onClick={() => navigate('/edit-profile')} variant='contained'></Button> */}
-            </Box>
-            
-          </>
-        )
+        <>
+          <h1 className='large text-dark'>Dashboard</h1>
+          <Typography variant='p'>
+            You have not currently set up your profile{' '}
+          </Typography>
+          <Typography variant='p'>Your profile shows up here </Typography>
+          <Box sx={{ width: '100%', marginY: '12px' }}>
+            <button
+              onClick={() => navigate('/edit-profile')}
+              className='btn btn-dark'
+            >
+              Set up Profile Now
+            </button>
+            {/* <Button onClick={() => navigate('/edit-profile')} variant='contained'></Button> */}
+          </Box>
+        </>
       )}
     </section>
   );

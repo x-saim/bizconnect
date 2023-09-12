@@ -159,7 +159,10 @@ export const deletePost = (postID) => async (dispatch) => {
 // Add comment
 export const addComment = (postId, formData) => async (dispatch) => {
   try {
-    const res = await axios.post(`/publicposts/comment/${postId}`, formData);
+    const res = await axios.post(
+      `/api/publicposts/comment/${postId}`,
+      formData
+    );
 
     dispatch({
       type: ADD_COMMENT,
@@ -178,7 +181,7 @@ export const addComment = (postId, formData) => async (dispatch) => {
 // Delete comment
 export const deleteComment = (postId, commentId) => async (dispatch) => {
   try {
-    await axios.delete(`/publicposts/comment/${postId}/${commentId}`);
+    await axios.delete(`/api/publicposts/comment/${postId}/${commentId}`);
 
     dispatch({
       type: REMOVE_COMMENT,

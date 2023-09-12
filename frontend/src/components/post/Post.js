@@ -3,56 +3,59 @@ import PropTypes from 'prop-types';
 import { Link, useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
-import PostItem from '../posts/PostItem';
+import CommentForm from './CommentForm';
 
 import { getPost } from '../../redux/actions/postActions';
 
-const Post = ({
-  auth,
-  getPost,
-  post: {
-    post: { _id, user, firstname, lastname, avatar, text, comments, date },
-    loading,
-  },
-}) => {
+const Post = ({ auth, getPost, post: { post, loading } }) => {
   const { id } = useParams();
 
   useEffect(() => {
     getPost(id);
   }, [getPost, id]);
 
-  return (
-    <div className='container'>
-      <Link to='/publicposts' className='btn btn-dark'>
-        Back To Posts
-      </Link>
-      <div className='post bg-white p-1 my-1'>
-        <div className='avatar-container'>
-          <Link to={`/profile/${user}`}>
-            <img
-              className='round-img'
-              src={avatar}
-              alt='profile-pic'
-              style={{ height: '100px', width: '100px' }}
-            />
-          </Link>
-          <h4>
-            {firstname} {lastname}
-          </h4>
-        </div>
+  // Check if post is null or loading
+  if (loading || post === null) {
+    return <Spinner />;
+  }
 
-        <div>
-          <div className='text-container'>
-            {' '}
-            <div>
-              <p className='my-1 text-overflow'>{text}</p>{' '}
-            </div>
+  const { _id, user, firstname, lastname, avatar, text, comments, date } = post;
+
+  return (
+    <>
+      <div className='container'>
+        <Link to='/publicposts' className='btn btn-dark'>
+          Back To Posts
+        </Link>
+        <div className='post bg-white p-1 my-1'>
+          <div className='avatar-container'>
+            <Link to={`/profile/${user}`}>
+              <img
+                className='round-img'
+                src={avatar}
+                alt='profile-pic'
+                style={{ height: '100px', width: '100px' }}
+              />
+            </Link>
+            <h4>
+              {firstname} {lastname}
+            </h4>
           </div>
 
-          <p className='post-date'>Posted on {date}</p>
+          <div>
+            <div className='text-container'>
+              {' '}
+              <div>
+                <p className='my-1 text-overflow'>{text}</p>{' '}
+              </div>
+            </div>
+
+            <p className='post-date'>Posted on {date}</p>
+          </div>
         </div>
       </div>
-    </div>
+      <CommentForm postId={_id} />
+    </>
   );
 };
 

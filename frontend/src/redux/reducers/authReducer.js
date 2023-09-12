@@ -15,7 +15,7 @@ const initialState = {
   user: null, //track user data, email, avatar, etc.
 };
 
-export const userReducer = (state = initialState, action) => {
+export const authReducer = (state = initialState, action) => {
   const { type, payload } = action;
 
   switch (type) {

@@ -1,8 +1,9 @@
-import React from 'react';
+// import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { Like, Unlike } from '../../redux/actions/postActions';
 
 // import {
 //   LikeOutlined,
@@ -17,10 +18,12 @@ const dummyUser = {
   firstname: 'Geroge',
 };
 
-function PostItem({
+const PostItem = ({
+  Like,
+  Unlike,
   auth,
   post: { _id, text, name, avatar, user, likes, comments, date },
-}) {
+}) => {
   return (
     <div className='post bg-white p-1 my-1'>
       <div>
@@ -33,11 +36,19 @@ function PostItem({
         <p className='my-1'>{text}</p>
         <p className='post-date'>Posted on {date}</p>
 
-        <button type='button' className='btn btn-light'>
+        <button
+          type='button'
+          className='btn btn-light'
+          onClick={() => Like(_id)} //_id is the postID
+        >
           <i className='fas fa-thumbs-up' />{' '}
           <span>{likes.length > 0 && <span>{likes.length}</span>}</span>
         </button>
-        <button type='button' className='btn btn-light'>
+        <button
+          type='button'
+          className='btn btn-light'
+          onClick={() => Unlike(_id)}
+        >
           <i className='fas fa-thumbs-down' />
         </button>
         <Link to={`/publicposts/${_id}`} className='btn btn-primary'>
@@ -89,14 +100,16 @@ function PostItem({
     //   </footer>
     // </article>
   );
-}
+};
 
 PostItem.propTypes = {
   post: PropTypes.object.isRequired,
   auth: PropTypes.object.isRequired,
+  Like: PropTypes.func.isRequired,
+  Unlike: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  auth: state.userReducer,
+  auth: state.authReducer,
 });
-export default connect(mapStateToProps, {})(PostItem);
+export default connect(mapStateToProps, { Like, Unlike })(PostItem);

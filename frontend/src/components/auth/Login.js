@@ -158,7 +158,7 @@ Login.propTypes = {
 
 //Get the auth state
 const mapStateToProps = (state) => ({
-  isAuthenticated: state.userReducer.isAuthenticated,
+  isAuthenticated: state.authReducer.isAuthenticated,
 });
 
 export default connect(mapStateToProps, { login })(Login);

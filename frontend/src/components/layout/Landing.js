@@ -35,7 +35,7 @@ Landing.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  isAuthenticated: state.userReducer.isAuthenticated,
+  isAuthenticated: state.authReducer.isAuthenticated,
 });
 
 export default connect(mapStateToProps)(Landing);

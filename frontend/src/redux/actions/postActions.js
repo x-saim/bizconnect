@@ -64,16 +64,17 @@ export const getPosts = () => async (dispatch) => {
 };
 
 //Add like to post
-export const addLike = (postID) => async (dispatch) => {
+export const Like = (postID) => async (dispatch) => {
   try {
-    //updating the post
-    const res = await api.put(`/api/publicposts/like/${postID}`);
-
+    console.log('Like action started');
+    const res = await axios.put(`/api/publicposts/like/${postID}`);
+    console.log('Like action completed');
     dispatch({
       type: UPDATE_LIKES,
       payload: { postID, likes: res.data },
     });
   } catch (err) {
+    console.log('Like action error:', err);
     dispatch({
       type: POST_ERROR,
       payload: { msg: err.response.statusText, status: err.response.status },
@@ -82,10 +83,10 @@ export const addLike = (postID) => async (dispatch) => {
 };
 
 // Remove like from post
-export const removeLike = (postID) => async (dispatch) => {
+export const Unlike = (postID) => async (dispatch) => {
   try {
-    const res = await api.put(`/api/publicposts/unlike/${postID}`);
-
+    const res = await axios.put(`/api/publicposts/unlike/${postID}`);
+    console.log('post unliked');
     dispatch({
       type: UPDATE_LIKES,
       payload: { postID, likes: res.data },

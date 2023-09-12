@@ -4,7 +4,7 @@ import { Link, useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Spinner from '../layout/Spinner';
 import CommentForm from './CommentForm';
-
+import CommentItem from './CommentItem';
 import { getPost } from '../../redux/actions/postActions';
 
 const Post = ({ auth, getPost, post: { post, loading } }) => {
@@ -55,6 +55,12 @@ const Post = ({ auth, getPost, post: { post, loading } }) => {
         </div>
       </div>
       <CommentForm postId={_id} />
+
+      <div className='comments'>
+        {comments.map((comment) => (
+          <CommentItem key={comment._id} comment={comment} postId={post._id} />
+        ))}
+      </div>
     </>
   );
 };

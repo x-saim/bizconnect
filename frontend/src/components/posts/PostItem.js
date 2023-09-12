@@ -16,6 +16,8 @@ const PostItem = ({
   auth,
   post: { _id, text, firstname, lastname, avatar, user, likes, comments, date },
 }) => {
+  const formattedDate = moment(date).format('YYYY-MM-DD');
+
   return (
     <div className='post bg-white p-1 my-1'>
       <div className='avatar-container'>
@@ -40,7 +42,7 @@ const PostItem = ({
           </div>
         </div>
 
-        <p className='post-date'>Posted on {date}</p>
+        <p className='post-date'>Posted on {formattedDate}</p>
 
         <button
           type='button'

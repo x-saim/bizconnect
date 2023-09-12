@@ -160,4 +160,28 @@ router.post('/jobposts/apply/:id', auth, async (req, res) => {
   }
 });
 
+// @route   GET api/jobposts/applications/:id
+// @desc    Get job post applications by job ID
+// @access  Private
+
+router.get('/jobposts/applications/:id', auth, async (req, res) => {
+  try {
+    const jobPost = await JobPost.findById(req.params.id);
+
+    if (!jobPost) {
+      return res.status(404).json({ msg: 'Job posting not found.' });
+    }
+
+    //user must be the owner of the job post to view applications
+    if (jobPost.user.toString() !== req.user.id) {
+      return res.status(401).json({ msg: 'Unauthorized.' });
+    }
+    // Return the applications specific to this job post.
+    res.json(jobPost.applications);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error.');
+  }
+});
+
 module.exports = router;

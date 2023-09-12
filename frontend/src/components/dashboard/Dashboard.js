@@ -80,7 +80,7 @@ const Dashboard = ({
                           </div>
                         </MDBCardBody>
 
-                        <MDBCardBody className='text-center'>
+                        {/* <MDBCardBody className='text-center'>
                           <div className='d-flex justify-content-center mb-2'>
                             <MDBBtn>Add Experience</MDBBtn>
 
@@ -88,7 +88,7 @@ const Dashboard = ({
                               Add Education
                             </MDBBtn>
                           </div>
-                        </MDBCardBody>
+                        </MDBCardBody> */}
                       </MDBCard>
 
                       <MDBCard className='mb-4 mb-lg-0'>

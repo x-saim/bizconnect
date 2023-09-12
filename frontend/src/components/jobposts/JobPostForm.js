@@ -5,6 +5,8 @@ import { Box, Button, Grid, TextField, Typography } from '@mui/material';
 import { setAlert } from '../../redux/actions/alertActions';
 import PropTypes from 'prop-types';
 import { Container } from 'react-bootstrap';
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
 
 const JobPostForm = ({ addJobPost }) => {
   const [formData, setFormData] = useState({
@@ -35,9 +37,9 @@ const JobPostForm = ({ addJobPost }) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    addJobPost(formData);
+    await addJobPost(formData);
 
     // Clear the form data
     setFormData({
@@ -124,15 +126,21 @@ const JobPostForm = ({ addJobPost }) => {
               />
             </Grid>
             <Grid item xs={12} md={6}>
-              <TextField
-                margin='normal'
-                fullWidth
-                id='employmentType'
-                label='Employment Type'
+              <Select
+                labelId='employment-type-select'
+                id='employment-type'
                 name='employmentType'
                 value={employmentType}
                 onChange={onChange}
-              />
+                fullWidth
+                margin='normal'
+              >
+                <MenuItem value='Full-Time'>Full-Time</MenuItem>
+                <MenuItem value='Part-Time'>Part-Time</MenuItem>
+                <MenuItem value='Contract'>Contract</MenuItem>
+                <MenuItem value='Freelance'>Freelance</MenuItem>
+                <MenuItem value='Internship'>Internship</MenuItem>
+              </Select>
             </Grid>
             <Grid item xs={12} md={6}>
               <TextField
@@ -152,8 +160,10 @@ const JobPostForm = ({ addJobPost }) => {
                 id='contactEmail'
                 label='Contact Email'
                 name='contactEmail'
+                type='email'
                 value={contactEmail}
                 onChange={onChange}
+                required
               />
             </Grid>
             <Grid item xs={12}>

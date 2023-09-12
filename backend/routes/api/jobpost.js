@@ -17,7 +17,6 @@ router.post(
   [
     auth,
     [
-      check('text', 'Text is required').not().isEmpty(),
       check('title', 'Title is requried').not().isEmpty(),
       check('company', 'Company is requried').not().isEmpty(),
       check('description', 'Job Description is requried').not().isEmpty(),

@@ -2,38 +2,50 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addPost } from '../../redux/actions/postActions';
-import { Col, Row, Form, Input, Button } from 'antd';
-import { useDispatch } from 'react-redux';
-
-const { TextArea } = Input;
+import { Form, Input, Button } from 'antd';
 
 const PostForm = ({ addPost }) => {
-  const [image, setimage] = useState('');
+  const [image, setImage] = useState(null);
   const [text, setText] = useState('');
-  const [charCount, setCharCount] = useState(0);
 
   //Image Upload Handler
   function handleImageFileInput(e) {
     const file = e.target.files[0];
-    const reader = new FileReader(file);
-    reader.readAsDataURL(file);
-    reader.onloadend = () => {
-      // get Base64 string & set state
-      setimage(reader.result);
-    };
+
+    if (file) {
+      const reader = new FileReader(file);
+
+      reader.readAsDataURL(file);
+
+      // Create a new FormData object
+      reader.onloadend = () => {
+        const formData = new FormData();
+        formData.append('image', file); // Set the 'image' field with the selected file
+        setImage(formData);
+      };
+    }
   }
+
+  // Handle form submission
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+
+    // Append the 'text' and 'image' fields to the FormData object
+    formData.append('text', text);
+    if (image) {
+      formData.append('image', image.get('image'));
+    }
+
+    addPost(formData);
+    setText('');
+    setImage(null);
+  };
 
   return (
     <>
       <div className='post-form'>
-        <form
-          className='form my-1'
-          onSubmit={(e) => {
-            e.preventDefault();
-            addPost({ text });
-            setText('');
-          }}
-        >
+        <form className='form my-1' onSubmit={handleSubmit}>
           <div className='bg-primary p'>
             <h3>Add a new post!</h3>
           </div>
@@ -53,7 +65,14 @@ const PostForm = ({ addPost }) => {
           <Form.Item name='image' label='Image'>
             <Input type='file' onChange={handleImageFileInput} />
           </Form.Item>
-          {image !== '' && <img src={image} height='200' width='200' />}
+          {image && (
+            <img
+              src={URL.createObjectURL(image.get('image'))}
+              height='100px'
+              width='100px'
+              alt='Uploaded'
+            />
+          )}
 
           <input type='submit' className='btn btn-dark my-1' value='Submit' />
         </form>

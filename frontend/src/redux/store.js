@@ -6,14 +6,14 @@ import { authReducer } from './reducers/authReducer';
 import { alertReducer } from './reducers/alertReducer';
 import { profileReducer } from './reducers/profileReducer';
 import { postReducer } from './reducers/postReducer';
-import { jobpostReducer } from './reducers/jobpostReducer';
+import { jobPostReducer } from './reducers/jobPostReducer';
 
 const rootReducer = combineReducers({
   authReducer,
   alertReducer,
   profileReducer,
   postReducer,
-  jobpostReducer,
+  jobPostReducer,
 });
 
 const composeEnhancers = composeWithDevTools({});

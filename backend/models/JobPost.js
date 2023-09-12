@@ -10,6 +10,9 @@ const JobPostSchema = new Schema({
     type: String,
     required: true,
   },
+  logo: {
+    type: String,
+  },
   company: {
     type: String,
     required: true,
@@ -54,7 +57,6 @@ const JobPostSchema = new Schema({
       },
       file: {
         type: String,
-        required: true,
       },
       date: {
         type: Date,

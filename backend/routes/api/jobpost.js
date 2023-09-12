@@ -133,7 +133,7 @@ router.delete('/:id', auth, async (req, res) => {
 // @desc    Apply to job post by id
 // @access  Private
 
-router.post('/jobposts/apply/:id', auth, async (req, res) => {
+router.post('/apply/:id', auth, async (req, res) => {
   try {
     const jobPost = await JobPost.findById(req.params.id);
 
@@ -164,7 +164,7 @@ router.post('/jobposts/apply/:id', auth, async (req, res) => {
 // @desc    Get job post applications by job ID
 // @access  Private
 
-router.get('/jobposts/applications/:id', auth, async (req, res) => {
+router.get('/applications/:id', auth, async (req, res) => {
   try {
     const jobPost = await JobPost.findById(req.params.id);
 

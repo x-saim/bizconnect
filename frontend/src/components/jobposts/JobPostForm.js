@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { addJobPost } from '../actions/jobPostActions';
+import { addJobPost } from '../../redux/actions/jobpostActions';
 import { Box, Button, Grid, TextField, Typography } from '@mui/material';
 import { setAlert } from '../../redux/actions/alertActions';
+import PropTypes from 'prop-types';
 
 const JobPostForm = ({ addJobPost }) => {
   const [formData, setFormData] = useState({
@@ -33,7 +34,7 @@ const JobPostForm = ({ addJobPost }) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const onSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     addJobPost(formData);
 
@@ -55,117 +56,119 @@ const JobPostForm = ({ addJobPost }) => {
 
   return (
     <>
-      <Box sx={{}}>
-        <Grid container spacing={2}>
-          <Grid item xs={12}>
-            <Typography variant='h2'>Create a Job Post</Typography>
+      <section className='.container'>
+        <Box sx={{}}>
+          <Grid container spacing={2}>
+            <Grid item xs={12}>
+              <Typography variant='h4'>Create a Job Post</Typography>
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <TextField
+                margin='normal'
+                fullWidth
+                id='title'
+                label='Job Title'
+                name='title'
+                autoFocus
+                value={title}
+                onChange={onChange}
+              />
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <TextField
+                margin='normal'
+                fullWidth
+                id='company'
+                label='Company'
+                name='company'
+                value={company}
+                onChange={onChange}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                margin='normal'
+                fullWidth
+                id='description'
+                label='Job Description'
+                name='description'
+                multiline
+                rows={4}
+                value={description}
+                onChange={onChange}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                margin='normal'
+                fullWidth
+                id='requirements'
+                label='Job Requirements'
+                name='requirements'
+                multiline
+                rows={4}
+                value={requirements}
+                onChange={onChange}
+              />
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <TextField
+                margin='normal'
+                fullWidth
+                id='location'
+                label='Location'
+                name='location'
+                value={location}
+                onChange={onChange}
+              />
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <TextField
+                margin='normal'
+                fullWidth
+                id='employmentType'
+                label='Employment Type'
+                name='employmentType'
+                value={employmentType}
+                onChange={onChange}
+              />
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <TextField
+                margin='normal'
+                fullWidth
+                id='salary'
+                label='Salary'
+                name='salary'
+                value={salary}
+                onChange={onChange}
+              />
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <TextField
+                margin='normal'
+                fullWidth
+                id='contactEmail'
+                label='Contact Email'
+                name='contactEmail'
+                value={contactEmail}
+                onChange={onChange}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <Button
+                type='submit'
+                onClick={handleSubmit}
+                fullWidth
+                variant='contained'
+                sx={{ mt: 3 }}
+              >
+                Create Job Post
+              </Button>
+            </Grid>
           </Grid>
-          <Grid item xs={12} md={6}>
-            <TextField
-              margin='normal'
-              fullWidth
-              id='title'
-              label='Job Title'
-              name='title'
-              autoFocus
-              value={title}
-              onChange={onChange}
-            />
-          </Grid>
-          <Grid item xs={12} md={6}>
-            <TextField
-              margin='normal'
-              fullWidth
-              id='company'
-              label='Company'
-              name='company'
-              value={company}
-              onChange={onChange}
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <TextField
-              margin='normal'
-              fullWidth
-              id='description'
-              label='Job Description'
-              name='description'
-              multiline
-              rows={4}
-              value={description}
-              onChange={onChange}
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <TextField
-              margin='normal'
-              fullWidth
-              id='requirements'
-              label='Job Requirements'
-              name='requirements'
-              multiline
-              rows={4}
-              value={requirements}
-              onChange={onChange}
-            />
-          </Grid>
-          <Grid item xs={12} md={6}>
-            <TextField
-              margin='normal'
-              fullWidth
-              id='location'
-              label='Location'
-              name='location'
-              value={location}
-              onChange={onChange}
-            />
-          </Grid>
-          <Grid item xs={12} md={6}>
-            <TextField
-              margin='normal'
-              fullWidth
-              id='employmentType'
-              label='Employment Type'
-              name='employmentType'
-              value={employmentType}
-              onChange={onChange}
-            />
-          </Grid>
-          <Grid item xs={12} md={6}>
-            <TextField
-              margin='normal'
-              fullWidth
-              id='salary'
-              label='Salary'
-              name='salary'
-              value={salary}
-              onChange={onChange}
-            />
-          </Grid>
-          <Grid item xs={12} md={6}>
-            <TextField
-              margin='normal'
-              fullWidth
-              id='contactEmail'
-              label='Contact Email'
-              name='contactEmail'
-              value={contactEmail}
-              onChange={onChange}
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <Button
-              type='submit'
-              onClick={handleSubmit}
-              fullWidth
-              variant='contained'
-              sx={{ mt: 3 }}
-            >
-              Create Job Post
-            </Button>
-          </Grid>
-        </Grid>
-      </Box>
+        </Box>
+      </section>
     </>
     // <div className='job-post-form'>
     //   <h2>Create a Job Post</h2>

@@ -11,7 +11,8 @@ const JobPostListItem = ({ jobPost }) => {
       <div className='profile bg-light'>
         <div className='part1'>
           <div>
-            <h2>{jobPost.company}</h2>
+            <h2>{jobPost.title}</h2>
+            <b>{jobPost.company}</b>
             <p className='my-1'>{jobPost.location}</p>
           </div>
 
@@ -35,7 +36,7 @@ const JobPostListItem = ({ jobPost }) => {
           </Link>
           <div></div>
           <br></br>
-          <Link to={`/jobposts/${jobPost._id}`} className='btn btn-primary'>
+          <Link to={`/jobposts/${jobPost._id}`} className='btn btn-dark'>
             Apply
           </Link>
         </div>

@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import { getJobPost } from '../../redux/actions/jobpostActions';
 import PropTypes from 'prop-types';
 import { Link, useParams } from 'react-router-dom';
-
-const JobPost = ({ getJobPost, jobPost }) => {
+import Spinner from '../layout/Spinner';
+const JobPost = ({ getJobPost, jobPost: { jobPost, loading } }) => {
   const { id } = useParams();
 
   useEffect(() => {
@@ -12,8 +12,9 @@ const JobPost = ({ getJobPost, jobPost }) => {
   }, [getJobPost, id]);
 
   // Add conditional rendering to handle cases where jobPost is null or still loading
-  if (!jobPost) {
-    return <p>Loading...</p>;
+
+  if (loading || jobPost === null) {
+    return <Spinner />;
   }
   return (
     <div className='job-post-details'>
@@ -31,7 +32,7 @@ JobPost.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  jobPost: state.jobPostReducer.jobPost,
+  jobPost: state.jobPostReducer,
 });
 
 export default connect(mapStateToProps, { getJobPost })(JobPost);

@@ -17,12 +17,20 @@ const JobPostsList = ({ getJobPosts, jobPosts }) => {
   }, [jobPosts]);
 
   return (
-    <div className='job-post-list'>
-      {filteredJobPosts?.map((jobPost) => (
-        <div key={jobPost._id} className='job-post-item'>
-          <JobPostListItem key={jobPost._id} jobPost={jobPost} />
-        </div>
-      ))}
+    <div className='container'>
+      <div>
+        <Link to='/jobposts/create' className='btn btn-success'>
+          Create a Job Posting
+        </Link>
+      </div>
+      <br></br>
+      <div className='job-post-list'>
+        {filteredJobPosts?.map((jobPost) => (
+          <div key={jobPost._id} className='job-post-item'>
+            <JobPostListItem key={jobPost._id} jobPost={jobPost} />
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

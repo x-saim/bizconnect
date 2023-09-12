@@ -3,7 +3,11 @@ import { Link } from 'react-router-dom';
 import moment from 'moment';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Like, Unlike } from '../../redux/actions/postActions';
+import {
+  likePost,
+  unlikePost,
+  deletePost,
+} from '../../redux/actions/postActions';
 
 // import {
 //   LikeOutlined,
@@ -19,8 +23,9 @@ const dummyUser = {
 };
 
 const PostItem = ({
-  Like,
-  Unlike,
+  likePost,
+  unlikePost,
+  deletePost,
   auth,
   post: { _id, text, name, avatar, user, likes, comments, date },
 }) => {
@@ -39,7 +44,7 @@ const PostItem = ({
         <button
           type='button'
           className='btn btn-light'
-          onClick={() => Like(_id)} //_id is the postID
+          onClick={() => likePost(_id)} //_id is the postID
         >
           <i className='fas fa-thumbs-up' />{' '}
           <span>{likes.length > 0 && <span>{likes.length}</span>}</span>
@@ -47,7 +52,7 @@ const PostItem = ({
         <button
           type='button'
           className='btn btn-light'
-          onClick={() => Unlike(_id)}
+          onClick={() => unlikePost(_id)}
         >
           <i className='fas fa-thumbs-down' />
         </button>
@@ -58,7 +63,11 @@ const PostItem = ({
           )}
         </Link>
         {!auth.loading && user === auth.user._id && (
-          <button type='button' className='btn btn-danger'>
+          <button
+            type='button'
+            className='btn btn-danger'
+            onClick={() => deletePost(_id)}
+          >
             <i className='fas fa-times' />
           </button>
         )}
@@ -105,11 +114,14 @@ const PostItem = ({
 PostItem.propTypes = {
   post: PropTypes.object.isRequired,
   auth: PropTypes.object.isRequired,
-  Like: PropTypes.func.isRequired,
-  Unlike: PropTypes.func.isRequired,
+  likePost: PropTypes.func.isRequired,
+  unlikePost: PropTypes.func.isRequired,
+  deletePost: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   auth: state.authReducer,
 });
-export default connect(mapStateToProps, { Like, Unlike })(PostItem);
+export default connect(mapStateToProps, { likePost, unlikePost, deletePost })(
+  PostItem
+);

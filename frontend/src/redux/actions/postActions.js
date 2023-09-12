@@ -64,7 +64,7 @@ export const getPosts = () => async (dispatch) => {
 };
 
 //Add like to post
-export const Like = (postID) => async (dispatch) => {
+export const likePost = (postID) => async (dispatch) => {
   try {
     console.log('Like action started');
     const res = await axios.put(`/api/publicposts/like/${postID}`);
@@ -83,7 +83,7 @@ export const Like = (postID) => async (dispatch) => {
 };
 
 // Remove like from post
-export const Unlike = (postID) => async (dispatch) => {
+export const unlikePost = (postID) => async (dispatch) => {
   try {
     const res = await axios.put(`/api/publicposts/unlike/${postID}`);
     console.log('post unliked');
@@ -101,4 +101,23 @@ export const Unlike = (postID) => async (dispatch) => {
 
 //Get post
 
-//Delete post
+//Add post
+
+// Delete post
+export const deletePost = (postID) => async (dispatch) => {
+  try {
+    await axios.delete(`/api/publicposts/${postID}`);
+
+    dispatch({
+      type: DELETE_POST,
+      payload: postID,
+    });
+
+    dispatch(setAlert('Post Removed!', 'success'));
+  } catch (err) {
+    dispatch({
+      type: POST_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};

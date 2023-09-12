@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 const Landing = ({ isAuthenticated }) => {
   //Redirect user if logged in
   if (isAuthenticated) {
-    return <Navigate to='/home' />;
+    return <Navigate to='/publicposts' />;
   }
   return (
     <section className='landing'>

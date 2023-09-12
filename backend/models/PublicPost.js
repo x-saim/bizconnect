@@ -10,17 +10,23 @@ const PublicPostSchema = new Schema({
     type: String,
     required: true,
   },
-  name: {
+  firstname: {
+    type: String,
+  },
+  lastname: {
     type: String,
   },
   avatar: {
+    type: String,
+  },
+  image: {
     type: String,
   },
   likes: [
     {
       user: {
         type: Schema.Types.ObjectId,
-        refer: 'users',
+        ref: 'users',
       },
     },
   ],
@@ -28,13 +34,16 @@ const PublicPostSchema = new Schema({
     {
       user: {
         type: Schema.Types.ObjectId,
-        refer: 'users',
+        ref: 'users',
       },
       text: {
         type: String,
         required: true,
       },
-      name: {
+      firstname: {
+        type: String,
+      },
+      lastname: {
         type: String,
       },
       avatar: {

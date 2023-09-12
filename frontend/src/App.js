@@ -12,6 +12,7 @@ import Profiles from './components/profiles/Profiles';
 import Profile from './components/profile/Profile';
 import JobPosts from './components/jobposts/JobPosts';
 import Posts from './components/posts/Posts';
+import Post from './components/post/Post';
 import Addpost from './components/posts/Addpost';
 
 //Layout Components
@@ -85,8 +86,12 @@ const App = () => {
                   />
                   <Route />
                   <Route
-                    path='/home'
+                    path='/publicposts'
                     element={<PrivateRoute component={Posts} />}
+                  />
+                  <Route
+                    path='/publicposts/:id'
+                    element={<PrivateRoute component={Post} />}
                   />
                   <Route />
                   <Route

@@ -13,7 +13,7 @@ const MyNavbar = ({ auth: { isAuthenticated, loading }, logout }) => {
       <Nav.Link as={Link} to='/about'>
         About
       </Nav.Link>
-      <Nav.Link as={Link} to='/home'>
+      <Nav.Link as={Link} to='/publicposts'>
         Home Feed
       </Nav.Link>
       <Nav.Link as={Link} to='/jobs'>

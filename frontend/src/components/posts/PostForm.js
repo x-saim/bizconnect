@@ -10,6 +10,7 @@ const { TextArea } = Input;
 const PostForm = ({ addPost }) => {
   const [image, setimage] = useState('');
   const [text, setText] = useState('');
+  const [charCount, setCharCount] = useState(0);
 
   //Image Upload Handler
   function handleImageFileInput(e) {
@@ -22,33 +23,42 @@ const PostForm = ({ addPost }) => {
     };
   }
 
-  const handleFormSubmit = (values) => {
-    addPost({ text: values.text });
-    setText('');
-  };
-
   return (
-    <Row justify='left'>
-      <Col lg={12}>
-        <Form
-          className='mt fontsize'
-          layout='vertical'
-          onFinish={handleFormSubmit}
+    <>
+      <div className='post-form'>
+        <form
+          className='form my-1'
+          onSubmit={(e) => {
+            e.preventDefault();
+            addPost({ text });
+            setText('');
+          }}
         >
-          <h3>Add new post</h3>
-          <Form.Item name='text' label='Description'>
-            <TextArea onChange={(e) => setText(e.target.value)} />
-          </Form.Item>
+          <div className='bg-primary p'>
+            <h3>Add a new post!</h3>
+          </div>
+          <textarea
+            name='text'
+            cols='30'
+            rows='3'
+            placeholder='Description'
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+            required
+            wrap='soft'
+            style={{ maxHeight: '200px', overflowY: 'auto' }}
+            maxLength={200}
+          />
+
           <Form.Item name='image' label='Image'>
             <Input type='file' onChange={handleImageFileInput} />
           </Form.Item>
-
           {image !== '' && <img src={image} height='200' width='200' />}
-          <br />
-          <Button htmlType='submit'>Post</Button>
-        </Form>
-      </Col>
-    </Row>
+
+          <input type='submit' className='btn btn-dark my-1' value='Submit' />
+        </form>
+      </div>
+    </>
   );
 };
 

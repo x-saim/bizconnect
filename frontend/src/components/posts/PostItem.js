@@ -1,4 +1,4 @@
-// import { useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
 import { connect } from 'react-redux';
@@ -9,19 +9,6 @@ import {
   deletePost,
 } from '../../redux/actions/postActions';
 
-// import {
-//   LikeOutlined,
-//   CommentOutlined,
-//   EditOutlined,
-//   DeleteOutlined,
-// } from '@ant-design/icons';
-
-//React-FB
-
-const dummyUser = {
-  firstname: 'Geroge',
-};
-
 const PostItem = ({
   likePost,
   unlikePost,
@@ -31,16 +18,28 @@ const PostItem = ({
 }) => {
   return (
     <div className='post bg-white p-1 my-1'>
-      <div>
+      <div className='avatar-container'>
         <Link to={`/profile/${user}`}>
-          <img className='round-img' src={avatar} alt='' />
-          <h4>
-            {firstname} {lastname}
-          </h4>
+          <img
+            className='round-img'
+            src={avatar}
+            alt='profile-pic'
+            style={{ height: '100px', width: '100px' }}
+          />
         </Link>
+        <h4>
+          {firstname} {lastname}
+        </h4>
       </div>
+
       <div>
-        <p className='my-1'>{text}</p>
+        <div className='text-container'>
+          {' '}
+          <div>
+            <p className='my-1 text-overflow'>{text}</p>{' '}
+          </div>
+        </div>
+
         <p className='post-date'>Posted on {date}</p>
 
         <button
@@ -75,41 +74,6 @@ const PostItem = ({
         )}
       </div>
     </div>
-    // <article>
-    //   <header>
-    //     <div class='d-flex justify-content-between'>
-    //       <div>
-    //         <span className='avatar'>{dummyUser.firstname[0]}</span>
-    //         {/* <img src={post.user.avatar} alt='users avatar'/> */}
-    //         <Link className='postitem-user-name'>{dummyUser.firstname}</Link>
-    //         {/* <Link>{post.user.firstname}</Link> */}
-    //         <div>
-    //           <span className='time'>{moment(post.createdAt).fromNow()}</span>
-    //         </div>
-    //       </div>
-    //       {/* if postitem created by logged in user then only will show the edit & delete icon. (need to implement this logic) */}
-    //       <div className='postitem-user-name'>
-    //         <EditOutlined className='mr' />
-    //         <DeleteOutlined />
-    //       </div>
-    //     </div>
-    //   </header>
-
-    //   <p className='description'>{post.text}</p>
-    //   {post.image && <img src={post.image} alt='post image' />}
-
-    //   <footer className='d-flex mt footerfontsize'>
-    //     <div className='d-flex mr'>
-    //       <LikeOutlined />
-
-    //       <p className='ml'>{post.likes.length}</p>
-    //     </div>
-    //     <div className='d-flex'>
-    //       <CommentOutlined />
-    //       <p className='ml'>{post.comments.length}</p>
-    //     </div>
-    //   </footer>
-    // </article>
   );
 };
 

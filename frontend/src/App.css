@@ -69,6 +69,17 @@ img {
   margin-bottom: 1rem;
 }
 
+.text-container {
+  max-width: 700px; /* Adjust the maximum width as needed */
+  word-wrap: break-word; /* Wrap long words */
+}
+
+.text-overflow {
+  margin: 0; /* Reset margin */
+  padding: 0; /* Reset padding */
+}
+
+
 .text-center {
   text-align: center;
 }
@@ -148,6 +159,7 @@ h2 {
 .my-1 {
   margin: 1rem 0;
 }
+
 
 .my-2 {
   margin: 2rem 0;
@@ -374,6 +386,52 @@ button {
   margin: 0 0.3rem;
 }
 
+/* Posts Page */
+.avatar-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0;
+}
+
+.avatar-container img {
+  margin-bottom: 5px; /* Adjust as needed for spacing */
+}
+
+.post-form .post-form-header {
+  background: var(--primary-color);
+  padding: 0.5rem;
+}
+
+.post {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  grid-gap: 2rem;
+  align-items: center;
+}
+
+.post > div:first-child {
+  text-align: center;
+}
+
+.post img {
+  width: 100px;
+}
+
+.post .comment-count {
+  background: var(--light-color);
+  color: var(--primary-color);
+  padding: 0.1rem 0.2rem;
+  border-radius: 5px;
+  font-size: 0.8rem;
+}
+
+.post .post-date {
+  color: #aaa;
+  font-size: 0.8rem;
+  margin-bottom: 0.5rem;
+}
 /* css added by Mitali */
 
 /* .App {
@@ -381,8 +439,8 @@ button {
 } */
 
 .form {
-  margin-left: 120px;
-  margin-right: 120px; 
+  margin-left: 0px;
+  margin-right: 0px; 
   margin-top: 50px;
 }
 

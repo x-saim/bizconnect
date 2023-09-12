@@ -64,10 +64,7 @@ router.get('/', auth, async (req, res) => {
     //sorted by most recent job post
     const jobPosts = await JobPost.find().sort({ date: -1 });
 
-    res.json({
-      count: jobPosts.length,
-      data: jobPosts,
-    });
+    res.json(jobPosts);
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Server Error.');
@@ -136,7 +133,7 @@ router.delete('/:id', auth, async (req, res) => {
 // @desc    Apply to job post by id
 // @access  Private
 
-router.post('/apply/:id', auth, async (req, res) => {
+router.post('/jobposts/apply/:id', auth, async (req, res) => {
   try {
     const jobPost = await JobPost.findById(req.params.id);
 
@@ -146,8 +143,21 @@ router.post('/apply/:id', auth, async (req, res) => {
 
     //Create a new application obj to be submitted.
 
-    const newJobApplication = {};
-  } catch (error) {}
+    const newJobApplication = {
+      user: req.user.id,
+      firstname: req.body.firstname,
+      lastname: req.body.lastname,
+      file: req.body.file,
+    };
+
+    jobPost.applications.unshift(newJobApplication);
+    await jobPost.save();
+
+    res.json(jobPost.applications);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error.');
+  }
 });
 
 module.exports = router;

@@ -44,41 +44,41 @@ export const getJobPost = (id) => async (dispatch) => {
   }
 };
 
-// // Apply for a job
-// export const applyForJob = (jobPostId) => async (dispatch) => {
-//   try {
-//     const res = await axios.post(`/api/jobposts/apply/${jobPostId}`);
+// Apply for a job
+export const applyForJob = (jobPostId) => async (dispatch) => {
+  try {
+    const res = await axios.post(`/api/jobposts/apply/${jobPostId}`);
 
-//     dispatch({
-//       type: APPLY_JOB,
-//       payload: res.data,
-//     });
+    dispatch({
+      type: APPLY_JOB,
+      payload: res.data,
+    });
 
-//     dispatch(setAlert('Application submitted successfully.', 'success'));
-//   } catch (err) {
-//     dispatch({
-//       type: JOBPOST_ERROR,
-//       payload: { msg: err.response.statusText, status: err.response.status },
-//     });
-//   }
-// };
+    dispatch(setAlert('Application submitted successfully.', 'success'));
+  } catch (err) {
+    dispatch({
+      type: JOBPOST_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
 
-// // Get job applications
-// export const getJobApplications = () => async (dispatch) => {
-//   try {
-//     const res = await axios.get('/api/jobposts/applications');
+// Get job applications
+export const getJobApplications = () => async (dispatch) => {
+  try {
+    const res = await axios.get('/api/jobposts/applications');
 
-//     dispatch({
-//       type: GET_APPS,
-//       payload: res.data,
-//     });
-//   } catch (err) {
-//     dispatch({
-//       type: JOBPOST_ERROR,
-//       payload: { msg: err.response.statusText, status: err.response.status },
-//     });
-//   }
-// };
+    dispatch({
+      type: GET_APPS,
+      payload: res.data,
+    });
+  } catch (err) {
+    dispatch({
+      type: JOBPOST_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
 
 // Delete job post
 export const deleteJobPost = (jobPostId) => async (dispatch) => {

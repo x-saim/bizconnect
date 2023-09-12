@@ -4,6 +4,7 @@ import { addJobPost } from '../../redux/actions/jobpostActions';
 import { Box, Button, Grid, TextField, Typography } from '@mui/material';
 import { setAlert } from '../../redux/actions/alertActions';
 import PropTypes from 'prop-types';
+import { Container } from 'react-bootstrap';
 
 const JobPostForm = ({ addJobPost }) => {
   const [formData, setFormData] = useState({
@@ -56,7 +57,7 @@ const JobPostForm = ({ addJobPost }) => {
 
   return (
     <>
-      <section className='.container'>
+      <Container className='.container'>
         <Box sx={{}}>
           <Grid container spacing={2}>
             <Grid item xs={12}>
@@ -168,7 +169,7 @@ const JobPostForm = ({ addJobPost }) => {
             </Grid>
           </Grid>
         </Box>
-      </section>
+      </Container>
     </>
     // <div className='job-post-form'>
     //   <h2>Create a Job Post</h2>

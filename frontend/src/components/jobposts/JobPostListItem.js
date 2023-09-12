@@ -36,7 +36,7 @@ const JobPostListItem = ({ jobPost }) => {
           </Link>
           <div></div>
           <br></br>
-          <Link to={`/jobposts/${jobPost._id}`} className='btn btn-dark'>
+          <Link to={`/jobposts/apply/${jobPost._id}`} className='btn btn-dark'>
             Apply
           </Link>
         </div>

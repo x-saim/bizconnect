@@ -99,7 +99,7 @@ export const deleteJobPost = (jobPostId) => async (dispatch) => {
   }
 };
 
-// Add job post
+// Create job post
 export const addJobPost = (formData) => async (dispatch) => {
   const config = {
     headers: { 'Content-Type': 'application/json' },

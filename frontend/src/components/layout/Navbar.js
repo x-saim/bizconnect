@@ -20,6 +20,7 @@ const MyNavbar = ({ auth: { isAuthenticated, loading }, logout }) => {
       <Nav.Link as={Link} to='/about'>
         <RadarChartOutlined /> About
       </Nav.Link>
+
       <Nav.Link as={Link} to='/publicposts'>
         <HomeOutlined />
         Home Feed

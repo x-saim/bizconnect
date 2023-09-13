@@ -1,15 +1,21 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+import {
+  LikeOutlined,
+  DislikeOutlined,
+  CommentOutlined,
+  DeleteOutlined,
+} from '@ant-design/icons';
 import {
   likePost,
   unlikePost,
   deletePost,
 } from '../../redux/actions/postActions';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
-const PostItem = ({
+function PostItem2({
   likePost,
   unlikePost,
   deletePost,
@@ -18,79 +24,85 @@ const PostItem = ({
     _id,
     text,
     image,
-    firstname,
-    lastname,
-    avatar,
-    user,
+    date,
     likes,
     comments,
-    date,
+    avatar,
+    firstname,
+    lastname,
+    user,
   },
-}) => {
-  const formattedDate = moment(date).format('YYYY-MM-DD');
+}) {
+  const formattedDate = moment(date).fromNow();
 
   return (
-    <div className='post bg-white p-1 my-1'>
-      <div className='avatar-container'>
-        <Link to={`/profile/${user}`}>
-          <img
-            className='round-img'
-            src={avatar}
-            alt='profile-pic'
-            style={{ height: '100px', width: '100px' }}
-          />
-        </Link>
-        <h4>
-          {firstname} {lastname}
-        </h4>
-      </div>
-
-      <div>
-        <div className='text-container'>
-          {' '}
-          <div>
-            <p className='my-1 text-overflow'>{text}</p>{' '}
+    <article>
+      <header>
+        <div className='d-flex justify-content-between'>
+          <div className='d-flex align-items-center'>
+            <Link to={`/profile/${user}`}>
+              <img
+                className='round-img'
+                src={avatar}
+                alt='profile-pic'
+                style={{ height: '50px', width: '50px' }}
+              />
+            </Link>
+            <div className='ml-2'>
+              <Link className='postitem-user-name'>
+                {firstname} {lastname}
+              </Link>
+              <div>
+                <span className='time'>{formattedDate}</span>
+              </div>
+            </div>
+          </div>
+          <div className='postitem-user-name'>
+            {user === auth.user._id && (
+              <DeleteOutlined onClick={() => deletePost(_id)} />
+            )}
           </div>
         </div>
+      </header>
 
-        <p className='post-date'>Posted on {formattedDate}</p>
+      <p className='description'>{text}</p>
+      {image && <img src={image} alt='post image' />}
 
+      <footer className='d-flex mt footerfontsize'>
         <button
           type='button'
           className='btn btn-light'
-          onClick={() => likePost(_id)} //_id is the postID
+          onClick={() => likePost(_id)}
         >
-          <i className='fas fa-thumbs-up' />{' '}
+          <LikeOutlined />{' '}
           <span>{likes.length > 0 && <span>{likes.length}</span>}</span>
         </button>
-        <button
-          type='button'
-          className='btn btn-light'
-          onClick={() => unlikePost(_id)}
-        >
-          <i className='fas fa-thumbs-down' />
-        </button>
-        <Link to={`/publicposts/${_id}`} className='btn btn-primary'>
-          Discussion{' '}
+        {likes.length > 0 && (
+          <button
+            type='button'
+            className='btn btn-light'
+            onClick={() => unlikePost(_id)}
+          >
+            <DislikeOutlined />{' '}
+          </button>
+        )}
+
+        <Link to={`/publicposts/${_id}`} className='btn btn-lightlight'>
+          <CommentOutlined />
           {comments.length > 0 && (
             <span className='comment-count'>{comments.length}</span>
           )}
         </Link>
-        {!auth.loading && user === auth.user._id && (
-          <button
-            type='button'
-            className='btn btn-danger'
-            onClick={() => deletePost(_id)}
-          >
-            <i className='fas fa-times' /> Delete Post
-          </button>
+        {comments !== null && (
+          <div className='d-flex'>
+            {comments.length > 0 && <p className='ml'>{comments.length}</p>}
+          </div>
         )}
-      </div>
-    </div>
+      </footer>
+    </article>
   );
-};
-
-PostItem.propTypes = {
+}
+PostItem2.propTypes = {
   post: PropTypes.object.isRequired,
   auth: PropTypes.object.isRequired,
   likePost: PropTypes.func.isRequired,
@@ -101,6 +113,7 @@ PostItem.propTypes = {
 const mapStateToProps = (state) => ({
   auth: state.authReducer,
 });
+
 export default connect(mapStateToProps, { likePost, unlikePost, deletePost })(
-  PostItem
+  PostItem2
 );

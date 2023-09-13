@@ -7,7 +7,7 @@ import Spinner from '../layout/Spinner';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Addpost from './Addpost';
-import PostItem2 from './PostItem2';
+
 const Posts = ({ getPosts, post: { posts, loading } }) => {
   useEffect(() => {
     getPosts();
@@ -26,7 +26,7 @@ const Posts = ({ getPosts, post: { posts, loading } }) => {
         <Col lg={12}>
           {posts && posts.length > 0 ? (
             posts.map((post) => {
-              return <PostItem2 post={post} key={post._id} />;
+              return <PostItem post={post} key={post._id} />;
             })
           ) : (
             <p>No posts available.</p>

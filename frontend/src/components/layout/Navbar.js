@@ -6,28 +6,33 @@ import Nav from 'react-bootstrap/Nav';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { logout } from '../../redux/actions/authActions';
+import {
+  HomeOutlined,
+  ProfileOutlined,
+  TeamOutlined,
+  LogoutOutlined,
+  RadarChartOutlined,
+} from '@ant-design/icons';
 
 const MyNavbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   const authLinks = (
     <>
       <Nav.Link as={Link} to='/about'>
-        About
+        <RadarChartOutlined /> About
       </Nav.Link>
       <Nav.Link as={Link} to='/publicposts'>
+        <HomeOutlined />
         Home Feed
       </Nav.Link>
-      <Nav.Link as={Link} to='/home'>
-        Test Posts Feed
-      </Nav.Link>
-      <Nav.Link as={Link} to='/addpost'>
-        Test Add Post
-      </Nav.Link>
+
       <Nav.Link as={Link} to='/jobposts'>
-        Job Posts
+        <ProfileOutlined />
+        Job Board
       </Nav.Link>
 
       <Nav.Link as={Link} to='/profiles'>
-        Profiles
+        <TeamOutlined />
+        Network
       </Nav.Link>
 
       <Nav.Link as={Link} to='/dashboard'>
@@ -35,6 +40,7 @@ const MyNavbar = ({ auth: { isAuthenticated, loading }, logout }) => {
       </Nav.Link>
 
       <Nav.Link as={Link} to='/login' onClick={logout}>
+        <LogoutOutlined />
         Logout
       </Nav.Link>
     </>
@@ -43,7 +49,7 @@ const MyNavbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   const guestLinks = (
     <>
       <Nav.Link as={Link} to='/about'>
-        About
+        <RadarChartOutlined /> About
       </Nav.Link>
       <Nav.Link as={Link} to='/register'>
         Register

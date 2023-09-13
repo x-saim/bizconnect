@@ -18,10 +18,6 @@ import JobPost from '../../frontend/src/components/jobpost/JobPost';
 import JobPostForm from './components/jobposts/JobPostForm';
 import JobApp from './components/jobpost/JobApp';
 
-//Test
-import Posts2 from './components/posts/Posts2';
-import Addpost from './components/posts/Addpost';
-
 //Layout Components
 import Landing from './components/layout/Landing';
 import Navbar from './components/layout/Navbar';
@@ -66,8 +62,6 @@ const App = () => {
                   <Route path='/login' element={<Login />} />
                   <Route path='/register' element={<Register />} />
                   <Route path='/about' element={<AboutPage />} />
-                  {/* Need to convert the following into protected route eventually. */}
-                  <Route path='/addpost' element={<Addpost />} />
 
                   {/* The following are protected routes */}
 
@@ -111,16 +105,11 @@ const App = () => {
                     path='/publicposts'
                     element={<PrivateRoute component={Posts} />}
                   />
-                  {/* Mitali's code */}
+
                   <Route
                     path='/home'
-                    element={<PrivateRoute component={Posts2} />}
+                    element={<PrivateRoute component={Posts} />}
                   />
-                  <Route
-                    path='/addpost'
-                    element={<PrivateRoute component={Addpost} />}
-                  />
-                  <Route />
                   <Route
                     path='/publicposts/:id'
                     element={<PrivateRoute component={Post} />}

@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 // import formatDate from '../../utils/formatDate';
 import { deleteComment } from '../../redux/actions/postActions';
 import moment from 'moment';
-
+import { DeleteOutlined } from '@ant-design/icons';
 const CommentItem = ({
   postId,
   comment: { _id, text, firstname, lastname, avatar, user, date },
@@ -38,7 +38,7 @@ const CommentItem = ({
             type='button'
             className='btn btn-danger'
           >
-            <i className='fas fa-times' />
+            <DeleteOutlined />
           </button>
         )}
       </div>

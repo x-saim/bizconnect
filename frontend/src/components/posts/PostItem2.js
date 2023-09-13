@@ -36,19 +36,6 @@ function PostItem2({
 }) {
   const formattedDate = moment(date).fromNow();
 
-  // const [liked, setLiked] = useState(
-  //   likes.some((like) => like.user === auth.user._id)
-  // );
-
-  // const toggleLike = () => {
-  //   if (liked) {
-  //     unlikePost(_id);
-  //   } else {
-  //     likePost(_id);
-  //   }
-  //   setLiked(!liked);
-  // };
-
   return (
     <article>
       <header>
@@ -72,7 +59,6 @@ function PostItem2({
             </div>
           </div>
           <div className='postitem-user-name'>
-            {/* <EditOutlined className='mr' /> */}
             {user === auth.user._id && (
               <DeleteOutlined onClick={() => deletePost(_id)} />
             )}

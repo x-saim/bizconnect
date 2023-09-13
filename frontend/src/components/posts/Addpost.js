@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { Col, Row, Form, Input, Button } from 'antd';
+import { Row, Col, Form, Input, Button, Upload, Typography, Card } from 'antd';
+import { UploadOutlined } from '@ant-design/icons';
 import { useDispatch } from 'react-redux';
-import { addPost2 } from '../../redux/actions/postActions';
 import { addPost } from '../../redux/actions/postActions';
+// import { Grid, TextField, Button, Typography } from '@mui/material';
 const { TextArea } = Input;
 
 function Addpost() {
@@ -15,7 +16,7 @@ function Addpost() {
     reader.readAsDataURL(file);
     reader.onloadend = () => {
       // get Base64 string & set state
-      // console.log(reader.result);
+
       setimage(reader.result);
     };
   }
@@ -28,7 +29,6 @@ function Addpost() {
       values.image = '';
     }
 
-    // Dispatch the appropriate action (addPost or addPost2) based on your requirements
     dispatch(addPost(values));
   }
 
@@ -36,8 +36,41 @@ function Addpost() {
     <>
       <Row justify='center'>
         <Col lg={12}>
+          <Card
+            className='mt'
+            title={
+              <Typography.Title level={3}>Create New Post</Typography.Title>
+            }
+            style={{ border: '2px solid #333' }} // Darker border
+          >
+            <Form layout='vertical' onFinish={createPost}>
+              <Form.Item name='text' label='Description'>
+                <TextArea rows={4} />
+              </Form.Item>
+              <Form.Item name='image' label='Image'>
+                <Input type='file' onChange={handleImageFileInput}></Input>
+              </Form.Item>
+
+              {image && (
+                <div style={{ textAlign: 'center', marginBottom: '16px' }}>
+                  <img src={image} alt='Selected' height='200' width='200' />
+                </div>
+              )}
+              <Button
+                type='primary'
+                htmlType='submit'
+                style={{ backgroundColor: '#1890ff', borderColor: '#1890ff' }} // Custom button style
+              >
+                Post
+              </Button>
+            </Form>
+          </Card>
+        </Col>
+      </Row>
+      {/* <Row justify='center'>
+        <Col lg={12}>
           <Form className='mt fontsize' layout='vertical' onFinish={createPost}>
-            <h3>Add new post</h3>
+            <h3>Create New Post</h3>
             <Form.Item name='text' label='Description'>
               <TextArea />
             </Form.Item>
@@ -46,11 +79,11 @@ function Addpost() {
             </Form.Item>
 
             {image !== '' && <img src={image} height='200' width='200' />}
-            <br />
+
             <Button htmlType='submit'>Post</Button>
           </Form>
         </Col>
-      </Row>
+      </Row> */}
     </>
   );
 }

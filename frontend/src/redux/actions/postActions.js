@@ -1,5 +1,5 @@
 import axios from 'axios';
-// import { message } from 'antd';
+import { message } from 'antd';
 import { setAlert } from './alertActions';
 import {
   GET_POSTS,
@@ -12,7 +12,7 @@ import {
   REMOVE_COMMENT,
 } from './types';
 
-// export const addPost = (values) => async (dispatch) => {
+// export const addPost2 = (values) => async (dispatch) => {
 //   // values.user = JSON.parse(localStorage.getItem('token'))._id
 //   // values.user = JSON.parse(localStorage.getItem('user'))._id
 //   values.likes = [];
@@ -21,7 +21,8 @@ import {
 //   dispatch({ type: 'LOADING', payload: true });
 
 //   try {
-//     await axios.post('/api/posts/addpost', values);
+//     // await axios.post('/api/posts/addpost', values);
+//     await axios.post('/api/publicposts', values);
 //     dispatch({ type: 'LOADING', payload: false });
 //     message.success('Post added successfully');
 //   } catch (error) {
@@ -30,6 +31,43 @@ import {
 //     message.error('something went wrong');
 //   }
 // };
+
+//Add post
+export const addPost = (formData) => async (dispatch) => {
+  try {
+    const res = await axios.post(`/api/publicposts`, formData);
+
+    dispatch({
+      type: ADD_POST,
+      payload: res.data,
+    });
+
+    dispatch(setAlert('Post created!', 'success'));
+  } catch (err) {
+    dispatch({
+      type: POST_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
+// Delete post
+export const deletePost = (postID) => async (dispatch) => {
+  try {
+    await axios.delete(`/api/publicposts/${postID}`);
+
+    dispatch({
+      type: DELETE_POST,
+      payload: postID,
+    });
+
+    dispatch(setAlert('Post Removed!', 'success'));
+  } catch (err) {
+    dispatch({
+      type: POST_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
 
 // export const getAllPosts = () => async (dispatch) => {
 //   dispatch({ type: 'LOADING', payload: true });
@@ -107,47 +145,6 @@ export const unlikePost = (postID) => async (dispatch) => {
       type: UPDATE_LIKES,
       payload: { postID, likes: res.data },
     });
-  } catch (err) {
-    dispatch({
-      type: POST_ERROR,
-      payload: { msg: err.response.statusText, status: err.response.status },
-    });
-  }
-};
-
-//Add post
-export const addPost = (formData) => async (dispatch) => {
-  const config = {
-    headers: { 'Content-Type': 'application/json' },
-  };
-
-  try {
-    const res = await axios.post(`/api/publicposts`, formData, config);
-
-    dispatch({
-      type: ADD_POST,
-      payload: res.data,
-    });
-
-    dispatch(setAlert('Post created!', 'success'));
-  } catch (err) {
-    dispatch({
-      type: POST_ERROR,
-      payload: { msg: err.response.statusText, status: err.response.status },
-    });
-  }
-};
-// Delete post
-export const deletePost = (postID) => async (dispatch) => {
-  try {
-    await axios.delete(`/api/publicposts/${postID}`);
-
-    dispatch({
-      type: DELETE_POST,
-      payload: postID,
-    });
-
-    dispatch(setAlert('Post Removed!', 'success'));
   } catch (err) {
     dispatch({
       type: POST_ERROR,

@@ -13,6 +13,13 @@ import Profile from './components/profile/Profile';
 import JobPosts from './components/jobposts/JobPosts';
 import Posts from './components/posts/Posts';
 import Post from './components/post/Post';
+
+import JobPost from '../../frontend/src/components/jobpost/JobPost';
+import JobPostForm from './components/jobposts/JobPostForm';
+import JobApp from './components/jobpost/JobApp';
+
+//Test
+import Posts2 from './components/posts/Posts2';
 import Addpost from './components/posts/Addpost';
 
 //Layout Components
@@ -30,10 +37,6 @@ import AboutPage from './components/layout/AboutPage';
 import { EditProfile } from './components/dashboard/EditProfile';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import JobPost from '../../frontend/src/components/jobpost/JobPost';
-import JobPostForm from './components/jobposts/JobPostForm';
-import JobApp from './components/jobpost/JobApp';
-
 if (localStorage.token) {
   setAuthToken(localStorage.token);
 }
@@ -108,6 +111,16 @@ const App = () => {
                     path='/publicposts'
                     element={<PrivateRoute component={Posts} />}
                   />
+                  {/* Mitali's code */}
+                  <Route
+                    path='/home'
+                    element={<PrivateRoute component={Posts2} />}
+                  />
+                  <Route
+                    path='/addpost'
+                    element={<PrivateRoute component={Addpost} />}
+                  />
+                  <Route />
                   <Route
                     path='/publicposts/:id'
                     element={<PrivateRoute component={Post} />}
@@ -118,12 +131,6 @@ const App = () => {
                     element={<PrivateRoute component={EditProfile} />}
                   />
                   <Route />
-
-                  {/* The following are to be removed eventually */}
-
-                  {/* <ProtectedRoute path='/usersHome' element={<UsersHome />} /> */}
-                  {/* <Route path='/my-profile' element={<MyProfile />} />
-              <Route path='/job-board' element={<JobBoard />} /> */}
                 </Routes>
               </section>
             </>

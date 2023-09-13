@@ -4,6 +4,10 @@ const Schema = mongoose.Schema;
 
 const postSchema = new Schema(
   {
+    user: {
+      type: Schema.Types.ObjectId,
+      ref: 'User',
+    },
     description: {
       type: String,
       required: true,
@@ -17,7 +21,7 @@ const postSchema = new Schema(
       {
         user: {
           type: Schema.Types.ObjectId,
-          refer: 'users',
+          ref: 'users',
         },
         comment: {
           type: String,
@@ -34,7 +38,7 @@ const postSchema = new Schema(
       {
         user: {
           type: Schema.Types.ObjectId,
-          refer: 'users',
+          ref: 'users',
         },
         date: {
           type: Date,
@@ -42,11 +46,6 @@ const postSchema = new Schema(
         },
       },
     ],
-
-    user: {
-      type: Schema.Types.ObjectId,
-      ref: 'users',
-    },
   },
   { timestamps: true }
 );

@@ -14,7 +14,18 @@ const PostItem = ({
   unlikePost,
   deletePost,
   auth,
-  post: { _id, text, firstname, lastname, avatar, user, likes, comments, date },
+  post: {
+    _id,
+    text,
+    image,
+    firstname,
+    lastname,
+    avatar,
+    user,
+    likes,
+    comments,
+    date,
+  },
 }) => {
   const formattedDate = moment(date).format('YYYY-MM-DD');
 

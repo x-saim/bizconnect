@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Addpost from './Addpost';
 import PostForm from './PostForm';
-
+import PostItem2 from './PostItem2';
 const Posts = ({ getPosts, post: { posts, loading } }) => {
   // const { posts } = useSelector((state) => state.postsReducer.posts);
 
@@ -17,18 +17,32 @@ const Posts = ({ getPosts, post: { posts, loading } }) => {
   }, [getPosts]);
 
   return (
-    <section className='container'>
+    <>
       <h1 className='large text-primary'>Home Feed</h1>
       <p className='lead'>
         <i className='fas fa-user' /> Welcome to the community
       </p>
-      <PostForm />
-      <div className='posts'>
-        {posts.map((post) => (
-          <PostItem key={post._id} post={post} />
-        ))}
-      </div>
-    </section>
+      {/* <PostForm /> */}
+      <Addpost />
+
+      <Row justify='center'>
+        <Col lg={12}>
+          {posts && posts.length > 0 ? (
+            posts.map((post) => {
+              return <PostItem2 post={post} key={post._id} />;
+            })
+          ) : (
+            <p>No posts available.</p>
+          )}
+        </Col>
+      </Row>
+    </>
+
+    // {/* <div className='posts'>
+    //   {posts.map((post) => (
+    //     <PostItem key={post._id} post={post} />
+    //   ))}
+    // </div> */}
   );
 };
 

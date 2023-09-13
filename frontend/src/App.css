@@ -461,6 +461,80 @@ button {
 input[type='file']{
   border: none;
 }
+/* Mitali */
+/* PostItem page */
+article {
+  height: fit-content;
+  width: 95%;
+  border: 1px solid;
+  border-radius: 5px;
+  border-color: rgb(190, 189, 189);
+  margin-top: 50px;
+  padding: 5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+article:hover {
+  box-shadow: 1px 1px 1px 1px rgb(157, 157, 157);
+}
+
+article img {
+  border-radius: 5px;
+}
+
+.avatar {
+  font-weight: bold;
+  font-size: 25px;
+  background-color: rgb(115, 114, 114);
+  border-radius: 50%;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  color: white;
+  margin-right: 7px;
+}
+
+.postitem-user-name {
+  padding-left: 10px;
+  font-size: large;
+}
+
+.time {
+  margin-left: 10px;
+ padding-top: 10px;
+ color: rgb(149, 148, 148);
+}
+
+.description {
+  font-size: larger;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+.mr {
+  margin-right: 20px;
+}
+
+.ml {
+  margin-left: 5px;
+}
+
+.footerfontsize {
+  font-size: larger;
+}
+
+.mt {
+  margin-top: 10px;
+}
+
+.justify-content-between {
+  justify-content: space-between;
+}
+/* css added by Mitali */
+
+
 /* Navbar */
 .navbar {
   display: flex;
@@ -511,6 +585,8 @@ input[type='file']{
   justify-content: center;
   text-align: center;
 }
+
+/* Jobs Page */
 
 .jobs {
   display: flex;

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addPost } from '../../redux/actions/postActions';
 import { Form, Input, Button } from 'antd';
+import Addpost from './Addpost';
 
 const PostForm = ({ addPost }) => {
   const [image, setImage] = useState(null);
@@ -44,7 +45,7 @@ const PostForm = ({ addPost }) => {
 
   return (
     <>
-      <div className='post-form'>
+      {/* <div className='post-form'>
         <form className='form my-1' onSubmit={handleSubmit}>
           <div className='bg-primary p'>
             <h3>Add a new post!</h3>
@@ -76,7 +77,7 @@ const PostForm = ({ addPost }) => {
 
           <input type='submit' className='btn btn-dark my-1' value='Submit' />
         </form>
-      </div>
+      </div> */}
     </>
   );
 };

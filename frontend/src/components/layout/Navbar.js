@@ -16,6 +16,12 @@ const MyNavbar = ({ auth: { isAuthenticated, loading }, logout }) => {
       <Nav.Link as={Link} to='/publicposts'>
         Home Feed
       </Nav.Link>
+      <Nav.Link as={Link} to='/home'>
+        Test Posts Feed
+      </Nav.Link>
+      <Nav.Link as={Link} to='/addpost'>
+        Test Add Post
+      </Nav.Link>
       <Nav.Link as={Link} to='/jobposts'>
         Job Posts
       </Nav.Link>

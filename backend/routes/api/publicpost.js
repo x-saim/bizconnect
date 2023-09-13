@@ -25,27 +25,32 @@ router.post(
     }
 
     try {
-      const uploadResponse = await cloudinary.v2.uploader.upload(
-        req.body.image,
-        {
-          folder: 'bizconnect',
-          use_filename: true,
-        }
-      );
-      req.body.image = uploadResponse.url;
+      let imageUrl = ''; // Initialize imageUrl as an empty string
+
+      if (req.body.image) {
+        // If req.body.image exists, proceed with uploading
+        const uploadResponse = await cloudinary.v2.uploader.upload(
+          req.body.image,
+          {
+            folder: 'bizconnect',
+            use_filename: true,
+          }
+        );
+        imageUrl = uploadResponse.url;
+      }
 
       // Acquire user from User model through id (from token), excluding password.
       const user = await User.findById(req.user.id).select('-password');
 
       const newpost = new PublicPost({
         ...req.body,
+        image: imageUrl,
         firstname: user.firstname,
         lastname: user.lastname,
         avatar: user.avatar,
         user: req.user.id,
       });
       await newpost.save();
-      res.send('PublicPost added successfully');
       res.json(newpost);
     } catch (err) {
       console.error(err.message);
@@ -53,40 +58,6 @@ router.post(
     }
   }
 );
-
-// router.post(
-//   '/',
-//   [auth, [check('text', 'Text is required').not().isEmpty()]],
-//   async (req, res) => {
-//     // Extract validation errors, if any
-//     const errors = validationResult(req);
-
-//     if (!errors.isEmpty()) {
-//       return res.status(400).json({ errors: errors.array() });
-//     }
-
-//     try {
-//       //Acquire user from User model through id (from token), excluding password.
-//       const user = await User.findById(req.user.id).select('-password');
-
-//       //Setup Post obj structure
-//       const newPublicPost = new PublicPost({
-//         text: req.body.text,
-//         firstname: user.firstname,
-//         lastname: user.lastname,
-//         avatar: user.avatar,
-//         user: req.user.id,
-//       });
-
-//       const post = await newPublicPost.save();
-//       console.log(post);
-//       res.json(post);
-//     } catch (err) {
-//       console.error(err.message);
-//       res.status(500).send('Server Error.');
-//     }
-//   }
-// );
 
 // @route   GET api/publicposts
 // @desc    Get all posts

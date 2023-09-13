@@ -8,6 +8,8 @@ const { TextArea } = Input;
 
 function Addpost() {
   const [image, setimage] = useState('');
+  // State to toggle image upload
+  const [showImageUpload, setShowImageUpload] = useState(false);
   const dispatch = useDispatch();
 
   function handleImageFileInput(e) {
@@ -15,15 +17,12 @@ function Addpost() {
     const reader = new FileReader(file);
     reader.readAsDataURL(file);
     reader.onloadend = () => {
-      // get Base64 string & set state
-
-      setimage(reader.result);
+      setimage(reader.result); // get Base64 string & set state
     };
   }
 
   function createPost(values) {
     if (image !== '') {
-      // Include image if one is selected
       values.image = image;
     } else {
       values.image = '';
@@ -35,6 +34,49 @@ function Addpost() {
   return (
     <>
       <Row justify='center'>
+        <Col lg={12}>
+          <Card
+            className='mt'
+            title={
+              <Typography.Title level={3}>Create New Post</Typography.Title>
+            }
+            style={{ border: '1px solid #333' }}
+          >
+            <Form layout='vertical' onFinish={createPost}>
+              <Form.Item name='text' label='Description'>
+                <TextArea rows={3} />
+              </Form.Item>
+              {showImageUpload && ( // Conditionally render the file upload input
+                <Form.Item name='image' label='Image'>
+                  <Input type='file' onChange={handleImageFileInput}></Input>
+                </Form.Item>
+              )}
+
+              {image && (
+                <div style={{ textAlign: 'center', marginBottom: '16px' }}>
+                  <img src={image} alt='Selected' height='200' width='200' />
+                </div>
+              )}
+              <Button
+                type='primary'
+                htmlType='submit'
+                style={{ backgroundColor: '#1890ff', borderColor: '#1890ff' }}
+              >
+                Post
+              </Button>
+
+              <Button
+                type='default'
+                onClick={() => setShowImageUpload(!showImageUpload)} // Toggle image upload visibility
+                style={{ marginLeft: '10px' }}
+              >
+                {showImageUpload ? 'Cancel' : 'Add Image'}
+              </Button>
+            </Form>
+          </Card>
+        </Col>
+      </Row>
+      {/* <Row justify='center'>
         <Col lg={12}>
           <Card
             className='mt'
@@ -66,7 +108,7 @@ function Addpost() {
             </Form>
           </Card>
         </Col>
-      </Row>
+      </Row> */}
       {/* <Row justify='center'>
         <Col lg={12}>
           <Form className='mt fontsize' layout='vertical' onFinish={createPost}>

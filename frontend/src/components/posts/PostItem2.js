@@ -1,10 +1,11 @@
-import React from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
 import {
   LikeOutlined,
+  DislikeOutlined,
   CommentOutlined,
-  EditOutlined,
+  // EditOutlined,
   DeleteOutlined,
 } from '@ant-design/icons';
 import {
@@ -22,7 +23,7 @@ function PostItem2({
   auth,
   post: {
     _id,
-    description,
+    text,
     image,
     date,
     likes,
@@ -34,6 +35,19 @@ function PostItem2({
   },
 }) {
   const formattedDate = moment(date).fromNow();
+
+  // const [liked, setLiked] = useState(
+  //   likes.some((like) => like.user === auth.user._id)
+  // );
+
+  // const toggleLike = () => {
+  //   if (liked) {
+  //     unlikePost(_id);
+  //   } else {
+  //     likePost(_id);
+  //   }
+  //   setLiked(!liked);
+  // };
 
   return (
     <article>
@@ -58,25 +72,44 @@ function PostItem2({
             </div>
           </div>
           <div className='postitem-user-name'>
-            <EditOutlined className='mr' />
-            <DeleteOutlined />
+            {/* <EditOutlined className='mr' /> */}
+            {user === auth.user._id && (
+              <DeleteOutlined onClick={() => deletePost(_id)} />
+            )}
           </div>
         </div>
       </header>
 
-      <p className='description'>{description}</p>
+      <p className='description'>{text}</p>
       {image && <img src={image} alt='post image' />}
 
       <footer className='d-flex mt footerfontsize'>
-        {likes !== null && (
-          <div className='d-flex mr'>
-            <LikeOutlined />
-            {likes.length > 0 && <p className='ml'>{likes.length}</p>}
-          </div>
+        <button
+          type='button'
+          className='btn btn-light'
+          onClick={() => likePost(_id)}
+        >
+          <LikeOutlined />{' '}
+          <span>{likes.length > 0 && <span>{likes.length}</span>}</span>
+        </button>
+        {likes.length > 0 && (
+          <button
+            type='button'
+            className='btn btn-light'
+            onClick={() => unlikePost(_id)}
+          >
+            <DislikeOutlined />{' '}
+          </button>
         )}
+
+        <Link to={`/publicposts/${_id}`} className='btn btn-lightlight'>
+          <CommentOutlined />
+          {comments.length > 0 && (
+            <span className='comment-count'>{comments.length}</span>
+          )}
+        </Link>
         {comments !== null && (
           <div className='d-flex'>
-            <CommentOutlined />
             {comments.length > 0 && <p className='ml'>{comments.length}</p>}
           </div>
         )}

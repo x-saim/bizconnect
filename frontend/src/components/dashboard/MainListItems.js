@@ -23,21 +23,9 @@ const MainListItems = ({
       </ListItemButton>
       <ListItemButton onClick={handleEditProfileClick}>
         <ListItemIcon>
-          <ShoppingCartIcon />
-        </ListItemIcon>
-        <ListItemText primary='Edit Profile' />
-      </ListItemButton>
-      <ListItemButton onClick={handleAddEducationClick}>
-        <ListItemIcon>
           <PeopleIcon />
         </ListItemIcon>
-        <ListItemText primary='Add Education' />
-      </ListItemButton>
-      <ListItemButton onClick={handleAddExperienceClick}>
-        <ListItemIcon>
-          <LayersIcon />
-        </ListItemIcon>
-        <ListItemText primary='Add Experience' />
+        <ListItemText primary='Edit Profile' />
       </ListItemButton>
     </>
   );

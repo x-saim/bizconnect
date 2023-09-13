@@ -8,9 +8,6 @@ import AssignmentIcon from '@mui/icons-material/Assignment';
 const SecondaryListItems = () => {
   return (
     <React.Fragment>
-      <ListSubheader component='div' inset>
-        Features
-      </ListSubheader>
       <ListItemButton>
         <ListItemIcon>
           <AssignmentIcon />

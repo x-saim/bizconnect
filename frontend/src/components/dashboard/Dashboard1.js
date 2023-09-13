@@ -152,7 +152,7 @@ const Dashboard = ({
               handleAddExperienceClick={handleAddExperienceClick}
             />
             <Divider sx={{ my: 1 }} />
-            {SecondaryListItems}
+            <SecondaryListItems />
           </List>
         </Drawer>
         <Box

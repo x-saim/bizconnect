@@ -13,6 +13,7 @@ import Profile from './components/profile/Profile';
 import JobPosts from './components/jobposts/JobPosts';
 import Posts from './components/posts/Posts';
 import Post from './components/post/Post';
+import Dashboard1 from './components/dashboard/Dashboard1';
 
 import JobPost from '../../frontend/src/components/jobpost/JobPost';
 import JobPostForm from './components/jobposts/JobPostForm';
@@ -67,9 +68,10 @@ const App = () => {
 
                   <Route
                     path='/dashboard'
-                    element={<PrivateRoute component={Dashboard} />}
+                    element={<PrivateRoute component={Dashboard1} />}
                   />
                   <Route />
+
                   <Route
                     path='/profiles'
                     element={<PrivateRoute component={Profiles} />}

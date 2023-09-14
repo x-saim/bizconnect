@@ -15,13 +15,7 @@ const Posts = ({ getPosts, post: { posts, loading } }) => {
 
   return (
     <>
-      <h1 className='large text-primary'>Home Feed</h1>
-      <p className='lead'>
-        <i className='fas fa-user' /> Welcome to the community
-      </p>
-
       <Addpost />
-
       <Row justify='center'>
         <Col lg={12}>
           {posts && posts.length > 0 ? (

@@ -10,6 +10,7 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import { Navigate } from 'react';
 import { Container } from 'react-bootstrap';
+
 const JobPost = ({
   auth,
   deleteJobPost,
@@ -32,29 +33,17 @@ const JobPost = ({
     window.location.href = '/jobposts';
   };
 
-  // Check if the delete button should be shown
-  useEffect(() => {
-    if (
-      !loading &&
-      auth.isAuthenticated &&
-      auth.user &&
-      jobPost &&
-      auth.user._id === jobPost.user._id
-    ) {
-      setShowDeleteButton(true);
-    } else {
-      setShowDeleteButton(false);
-    }
-  }, [loading, auth, jobPost]);
+  const isJobPostCreator =
+    jobPost &&
+    auth.isAuthenticated &&
+    auth.user &&
+    jobPost.user &&
+    auth.user._id === jobPost.user;
 
   // Render a loading spinner if jobPost is still loading
   if (loading) {
     return <Spinner />;
   }
-
-  // Check if the authenticated user is the creator of the job post
-  const isJobPostCreator =
-    auth.isAuthenticated && auth.user._id === jobPost.user;
 
   // Render the component only if jobPost is defined
   return jobPost !== null ? (

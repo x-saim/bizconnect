@@ -7,7 +7,7 @@ import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { applyForJob } from '../../redux/actions/jobpostActions';
-
+import { setAlert } from '../../redux/actions/alertActions';
 const JobApp = ({ applyForJob }) => {
   const { id } = useParams();
 
@@ -40,6 +40,7 @@ const JobApp = ({ applyForJob }) => {
 
     // Call the action to submit the application
     applyForJob(id, formData);
+    setAlert('Profile Updated', 'success');
   };
 
   return (
@@ -104,6 +105,7 @@ const JobApp = ({ applyForJob }) => {
 
 JobApp.propTypes = {
   applyForJob: PropTypes.func.isRequired,
+  setAlert: PropTypes.func.isRequired,
 };
 
-export default connect(null, { applyForJob })(JobApp);
+export default connect(null, { applyForJob, setAlert })(JobApp);

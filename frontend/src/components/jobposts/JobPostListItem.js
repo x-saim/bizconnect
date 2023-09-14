@@ -5,7 +5,7 @@ import moment from 'moment';
 import { deleteJobPost } from '../../redux/actions/jobpostActions';
 import { connect } from 'react-redux';
 
-const JobPostListItem = ({ auth, jobPost }) => {
+const JobPostListItem = ({ deleteJobPost, auth, jobPost }) => {
   const formattedDate = moment(jobPost.date).format('YYYY-MM-DD');
 
   // Check if the authenticated user is the creator of the job post
@@ -76,6 +76,7 @@ const JobPostListItem = ({ auth, jobPost }) => {
 JobPostListItem.propTypes = {
   jobPost: PropTypes.object.isRequired,
   auth: PropTypes.object.isRequired,
+  deleteJobPost: PropTypes.object.isRequired,
 };
 
 // Get the auth state
@@ -83,4 +84,4 @@ const mapStateToProps = (state) => ({
   auth: state.authReducer,
 });
 
-export default connect(mapStateToProps)(JobPostListItem);
+export default connect(mapStateToProps, { deleteJobPost })(JobPostListItem);

@@ -269,10 +269,8 @@ export const getProfiles = () => async (dispatch) => {
 
 //Get profile by id
 export const getProfileByID = (userID) => async (dispatch) => {
-  console.log('Fetching profile for userID:', userID);
   try {
     const res = await axios.get(`/api/profile/user/${userID}`);
-    console.log('URL:', res.config.url); // Log the URL being use
     dispatch({
       type: GET_PROFILE,
       payload: res.data,

@@ -7,6 +7,9 @@ const ProfileCard = ({ profile, user }) => {
     <>
       <MDBCard className='mb-4'>
         <MDBCardBody>
+          <div className='p-1 text-center bg-light'>
+            <h1 className='large text-primary '>Dashboard</h1>
+          </div>
           <MDBRow>
             <MDBCol sm='3'>
               <span>Full Name:</span>

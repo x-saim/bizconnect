@@ -66,11 +66,6 @@ const ExperienceTable = ({ rows, deleteExperienceField, alert }) => {
   );
 };
 
-// Get the auth state
-const mapStateToProps = (state) => ({
-  // profile: state.profileReducer.profile,
-});
-
-export default connect(mapStateToProps, { setAlert, deleteExperienceField })(
+export default connect(null, { setAlert, deleteExperienceField })(
   ExperienceTable
 );

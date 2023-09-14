@@ -65,11 +65,6 @@ const EducationTable = ({ rows, deleteEducationField, alert }) => {
   );
 };
 
-// Get the auth state
-const mapStateToProps = (state) => ({
-  // profile: state.profileReducer.profile,
-});
-
-export default connect(mapStateToProps, { setAlert, deleteEducationField })(
+export default connect(null, { setAlert, deleteEducationField })(
   EducationTable
 );

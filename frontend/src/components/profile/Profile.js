@@ -23,16 +23,21 @@ const Profile = ({ getProfileByID, auth, profile: { profile, loading } }) => {
       ) : (
         profile && (
           <>
-            <Link to='/profiles' className='btn btn-light'>
+            <Link to='/profiles' className='btn btn-dark'>
               Back to Profiles
             </Link>
 
             {auth.isAuthenticated &&
               auth.loading === false &&
               auth.user._id === profile.user._id && (
-                <Link to='/edit-profile' className='btn btn-dark'>
-                  Edit Profile
-                </Link>
+                <>
+                  <Link to='/edit-profile' className='btn btn-dark'>
+                    Edit Profile
+                  </Link>
+                  <Link to='/dashboard' className='btn btn-dark'>
+                    Dashboard
+                  </Link>
+                </>
               )}
 
             <div className='profile-grid my-1'>

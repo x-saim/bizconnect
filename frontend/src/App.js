@@ -13,7 +13,6 @@ import Profile from './components/profile/Profile';
 import JobPosts from './components/jobposts/JobPosts';
 import Posts from './components/posts/Posts';
 import Post from './components/post/Post';
-import Dashboard1 from './components/dashboard/Dashboard1';
 
 import JobPost from '../../frontend/src/components/jobpost/JobPost';
 import JobPostForm from './components/jobposts/JobPostForm';
@@ -68,7 +67,7 @@ const App = () => {
 
                   <Route
                     path='/dashboard'
-                    element={<PrivateRoute component={Dashboard1} />}
+                    element={<PrivateRoute component={Dashboard} />}
                   />
                   <Route />
 
@@ -133,12 +132,3 @@ const App = () => {
 };
 
 export default App;
-
-// export const ProtectedRoute = (props) => {
-//   if (localStorage.getItem('user')) {
-//     return <Route {...props} />;
-//   } else {
-//     return <Navigate replace to='/login' />;
-//     // return <Redirect to='/login'/>
-//   }
-// };

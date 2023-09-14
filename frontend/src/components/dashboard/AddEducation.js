@@ -37,6 +37,8 @@ const AddEduction = ({ setAlert, addEductionField, profile }) => {
         description: '',
       };
     });
+
+    setAlert('Education Added!', 'success');
   };
 
   const onChange = (e) => {

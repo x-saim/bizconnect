@@ -25,6 +25,7 @@ import { getCurrentProfile } from '../../redux/actions/profileActions';
 import { connect } from 'react-redux';
 import ProfileCard from './ProfileCard';
 import ExperienceTable from './ExperienceTable';
+import EducationTable from './EducationTable';
 import Spinner from '../layout/Spinner';
 function Copyright(props) {
   return (
@@ -182,15 +183,40 @@ const Dashboard = ({
                       p: 2,
                       display: 'flex',
                       flexDirection: 'column',
-                      height: 170,
+                      height: 300,
                     }}
                   >
+                    <h2 className='medium'>Experience</h2>
                     <ExperienceTable
                       rows={
                         profile ? (
                           profile.experience
                         ) : (
                           <p>No experience available.</p>
+                        )
+                      }
+                    />
+                  </Paper>
+                </Grid>
+              </Container>
+              <Container maxWidth='lg' sx={{ mt: 5, mb: 4 }}>
+                <Grid item xs={12} md={4} lg={3}>
+                  <Paper
+                    sx={{
+                      p: 2,
+                      display: 'flex',
+                      flexDirection: 'column',
+                      height: 300,
+                    }}
+                  >
+                    <h2 className='medium'>Education</h2>
+
+                    <EducationTable
+                      rows={
+                        profile ? (
+                          profile.education
+                        ) : (
+                          <p>No education available.</p>
                         )
                       }
                     />

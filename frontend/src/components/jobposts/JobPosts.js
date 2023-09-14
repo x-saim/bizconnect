@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import JobPostListItem from './JobPostListItem';
 
-const JobPostsList = ({ getJobPosts, jobPosts }) => {
+const JobPostsList = ({ getJobPosts, jobPosts, auth }) => {
   const [filteredJobPosts, setFilteredJobPosts] = useState([]);
 
   useEffect(() => {
@@ -19,9 +19,13 @@ const JobPostsList = ({ getJobPosts, jobPosts }) => {
   return (
     <div className='container'>
       <div>
-        <Link to='/jobposts/create' className='btn btn-success'>
-          Create a Job Posting
-        </Link>
+        {auth.isAuthenticated && auth.loading === false && auth.user._id && (
+          <>
+            <Link to='/jobposts/create' className='btn btn-success'>
+              Create a Job Posting
+            </Link>
+          </>
+        )}
       </div>
       <br></br>
       <div className='job-post-list'>
@@ -38,10 +42,12 @@ const JobPostsList = ({ getJobPosts, jobPosts }) => {
 JobPostsList.propTypes = {
   jobPosts: PropTypes.array.isRequired,
   getJobPosts: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   jobPosts: state.jobPostReducer.jobPosts,
+  auth: state.authReducer,
 });
 
 export default connect(mapStateToProps, { getJobPosts })(JobPostsList);

@@ -7,8 +7,9 @@ import PropTypes from 'prop-types';
 import { Container } from 'react-bootstrap';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
+import { Link } from 'react-router-dom';
 
-const JobPostForm = ({ addJobPost }) => {
+const JobPostForm = ({ addJobPost, auth }) => {
   const [formData, setFormData] = useState({
     title: '',
     logo: '',
@@ -60,10 +61,20 @@ const JobPostForm = ({ addJobPost }) => {
   return (
     <>
       <Container className='.container'>
+        <div>
+          {auth.isAuthenticated && auth.loading === false && auth.user._id && (
+            <>
+              <Link to='/jobposts' className='btn btn-dark'>
+                Back to Job Board
+              </Link>
+            </>
+          )}
+        </div>
+        <br />
         <Box sx={{}}>
           <Grid container spacing={2}>
             <Grid item xs={12}>
-              <Typography variant='h4'>Create a Job Post</Typography>
+              <Typography variant='h5'>Create a Job Post</Typography>
             </Grid>
             <Grid item xs={12} md={6}>
               <TextField
@@ -181,25 +192,18 @@ const JobPostForm = ({ addJobPost }) => {
         </Box>
       </Container>
     </>
-    // <div className='job-post-form'>
-    //   <h2>Create a Job Post</h2>
-    //   <form onSubmit={onSubmit}>
-    //     {/* Form inputs go here */}
-    //     <button type='submit'>Submit</button>
-    //   </form>
-    // </div>
   );
 };
 
 JobPostForm.propTypes = {
   addJobPost: PropTypes.func.isRequired,
   setAlert: PropTypes.func.isRequired,
-  isAuthenticated: PropTypes.bool,
+  auth: PropTypes.object.isRequired,
 };
 
 // Get the auth state
 const mapStateToProps = (state) => ({
-  isAuthenticated: state.authReducer.isAuthenticated,
+  auth: state.authReducer,
 });
 
 export default connect(mapStateToProps, { setAlert, addJobPost })(JobPostForm);

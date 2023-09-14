@@ -23,7 +23,9 @@ import SecondaryListItems from './SecondaryListItems';
 import PropTypes from 'prop-types';
 import { getCurrentProfile } from '../../redux/actions/profileActions';
 import { connect } from 'react-redux';
-
+import ProfileCard from './ProfileCard';
+import ExperienceTable from './ExperienceTable';
+import Spinner from '../layout/Spinner';
 function Copyright(props) {
   return (
     <Typography
@@ -168,43 +170,36 @@ const Dashboard = ({
           }}
         >
           <Toolbar />
-          <Container maxWidth='lg' sx={{ mt: 2, mb: 4 }}>
-            <Grid container spacing={3}>
-              <Grid item xs={12} md={8} lg={9}>
-                <Paper
-                  sx={{
-                    p: 2,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    height: 300,
-                    width: 700,
-                  }}
-                >
-                  {/* <About /> */}
-                </Paper>
-              </Grid>
-              {/* Recent Deposits */}
-              {/* <Grid item xs={12} md={4} lg={3}>
+          {loading && profile === null ? (
+            <Spinner />
+          ) : profile !== null ? (
+            <>
+              <ProfileCard profile={profile} user={user} />
+              <Container maxWidth='lg' sx={{ mt: 5, mb: 4 }}>
+                <Grid item xs={12} md={4} lg={3}>
                   <Paper
                     sx={{
                       p: 2,
                       display: 'flex',
                       flexDirection: 'column',
-                      height: 240,
+                      height: 170,
                     }}
                   >
-                    <Deposits />
+                    <ExperienceTable
+                      rows={
+                        profile ? (
+                          profile.experience
+                        ) : (
+                          <p>No experience available.</p>
+                        )
+                      }
+                    />
                   </Paper>
-                </Grid> */}
-              {/* Recent Orders */}
-              {/* <Grid item xs={12}>
-                  <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
-                    <Orders />
-                  </Paper>
-                </Grid> */}
-            </Grid>
-            <Copyright sx={{ pt: 4 }} />
-          </Container>
+                </Grid>
+              </Container>
+              <Copyright sx={{ pt: 4 }} />
+            </>
+          ) : null}
         </Box>
       </Box>
     </ThemeProvider>

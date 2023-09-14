@@ -6,12 +6,23 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import moment from 'moment';
 
 import { deleteExperienceField } from '../../redux/actions/profileActions';
 import { connect } from 'react-redux';
 import { setAlert } from '../../redux/actions/alertActions';
 
 const ExperienceTable = ({ rows, deleteExperienceField, alert }) => {
+  // Sort the rows by the 'from' date in descending order
+  const sortedRows = [...rows].sort((a, b) => {
+    // Convert the 'from' values to Date objects for comparison
+    const dateA = new Date(a.from);
+    const dateB = new Date(b.from);
+
+    // Sort in descending order
+    return dateB - dateA;
+  });
+
   return (
     <TableContainer component={Paper} sx={{}}>
       <Table sx={{ minWidth: 650 }} aria-label='simple table'>
@@ -26,16 +37,18 @@ const ExperienceTable = ({ rows, deleteExperienceField, alert }) => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
+          {sortedRows.map((row) => (
             <TableRow key={row.name}>
               <TableCell component='th' scope='row'>
                 {row.company}
               </TableCell>
               <TableCell align='right'>{row.title}</TableCell>
               <TableCell align='right'>{row.location}</TableCell>
-              <TableCell align='right'>{row.from}</TableCell>
               <TableCell align='right'>
-                {!row.to ? 'Current' : row.to}
+                {moment(row.from).format('YYYY-MM-DD')}
+              </TableCell>
+              <TableCell align='right'>
+                {!row.to ? 'Current' : moment(row.to).format('YYYY-MM-DD')}
               </TableCell>
               <TableCell
                 onClick={() => deleteExperienceField({ exp_id: row._id })}
@@ -53,7 +66,7 @@ const ExperienceTable = ({ rows, deleteExperienceField, alert }) => {
   );
 };
 
-//Get the auth state
+// Get the auth state
 const mapStateToProps = (state) => ({
   // profile: state.profileReducer.profile,
 });

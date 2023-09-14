@@ -6,12 +6,22 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-
+import moment from 'moment'; // Import moment.js
 import { deleteEducationField } from '../../redux/actions/profileActions';
 import { connect } from 'react-redux';
 import { setAlert } from '../../redux/actions/alertActions';
 
 const EducationTable = ({ rows, deleteEducationField, alert }) => {
+  // Sort the education rows by the 'from' date in descending order
+  const sortedRows = [...rows].sort((a, b) => {
+    // Convert the 'from' values to Date objects for comparison
+    const dateA = new Date(a.from);
+    const dateB = new Date(b.from);
+
+    // Sort in descending order
+    return dateB - dateA;
+  });
+
   return (
     <TableContainer component={Paper} sx={{}}>
       <Table sx={{ minWidth: 900 }} aria-label='simple table'>
@@ -26,18 +36,19 @@ const EducationTable = ({ rows, deleteEducationField, alert }) => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
-            <TableRow
-              key={row.name}
-              //   sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-            >
+          {sortedRows.map((row) => (
+            <TableRow key={row.name}>
               <TableCell component='th' scope='row'>
                 {row.school}
               </TableCell>
               <TableCell align='right'>{row.degree}</TableCell>
               <TableCell align='right'>{row.fieldofstudy}</TableCell>
-              <TableCell align='right'>{row.from}</TableCell>
-              <TableCell align='right'>{row.to}</TableCell>
+              <TableCell align='right'>
+                {moment(row.from).format('YYYY-MM-DD')}
+              </TableCell>
+              <TableCell align='right'>
+                {!row.to ? 'Current' : moment(row.to).format('YYYY-MM-DD')}
+              </TableCell>
               <TableCell
                 onClick={() => deleteEducationField({ edu_id: row._id })}
                 align='right'
@@ -54,7 +65,7 @@ const EducationTable = ({ rows, deleteEducationField, alert }) => {
   );
 };
 
-//Get the auth state
+// Get the auth state
 const mapStateToProps = (state) => ({
   // profile: state.profileReducer.profile,
 });

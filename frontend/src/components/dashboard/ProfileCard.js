@@ -1,19 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useEffect } from 'react';
-import { getCurrentProfile } from '../../redux/actions/profileActions';
-import {
-  MDBCol,
-  MDBContainer,
-  MDBRow,
-  MDBCard,
-  MDBCardBody,
-  MDBCardImage,
-  MDBBtn,
-  MDBListGroup,
-  MDBListGroupItem,
-  MDBIcon,
-} from 'mdb-react-ui-kit';
+import { MDBCol, MDBRow, MDBCard, MDBCardBody } from 'mdb-react-ui-kit';
 
 const ProfileCard = ({ profile, user }) => {
   return (
@@ -83,7 +70,12 @@ const ProfileCard = ({ profile, user }) => {
           <h2 className='medium'>Skills</h2>
           <ul>
             {profile.skills ? (
-              profile.skills.map((skill, index) => <li key={index}>{skill}</li>)
+              profile.skills.map((skill, index) => (
+                <li key={index}>
+                  <i className='fas fa-check' />
+                  {skill}
+                </li>
+              ))
             ) : (
               <li>No skills available.</li>
             )}

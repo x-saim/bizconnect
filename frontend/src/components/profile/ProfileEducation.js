@@ -11,7 +11,7 @@ const ProfileEducation = ({
     <div>
       <h3 className='text-dark'>{school}</h3>
       <p>
-        {formatFromDate} - {formatToDate ? formatToDate : 'Now'}
+        {formatFromDate} - {to ? formatToDate : 'Now'}
       </p>
       <p>
         <strong>Degree: </strong> {degree}

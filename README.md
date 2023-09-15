@@ -1,4 +1,4 @@
-# BizConnect 💻
+# 🤝🌐BizConnect 🌐🤝
 
 Welcome to the **BizConnect**! This platform allows users to network, share industry insights, find job opportunities, and offer freelance services. Below, you'll find essential information to get started with this application.
 
@@ -6,24 +6,25 @@ Welcome to the **BizConnect**! This platform allows users to network, share indu
 
 1. [Overview](#overview)
 2. [Features](#features)
-3. [App Views](#app-views)
-4. [Technologies Used](#technologies-used)
-5. [Dependencies](#dependencies)
-6. [Getting Started](#getting-started)
-7. [Usage](#usage)
+3. [Usage](#usage)
+4. [App Views](#app-views)
+5. [Technologies Used](#technologies-used)
+6. [Dependencies](#dependencies)
+7. [Getting Started](#getting-started)
+
 
 ## Overview
 
 This web application is a full-stack social network developed using Node.js, Express, React, Redux, and MongoDB. It includes various features for users to interact with, such as creating posts, liking and commenting, accessing job listings, networking with professionals, and managing their profiles.
 
-## Features 🌟
+## Features
 
 - **Home Feed**: Registered users can access the Home feed to create posts, like, unlike, and comment on posts.
 - **Job Board**: Users can create job listings, view job listings, and apply for jobs.
 - **Network/Profiles**: Users can scroll through profiles created on the app and connect with professionals.
 - **Dashboard**: Users can update their profiles, add education, and add work experience.
 
-### Usage ✨
+### Usage
 
 1. **Register**: Create your BizConnect account and complete your profile.
 
@@ -116,17 +117,15 @@ Happy networking and career growth! 🌐🤝
 To get started with this web application, follow these steps:
 
 1. Clone this repository to your local machine.
-2. Navigate to the backend and frontend directories separately and run the following command in each to install the required dependencies:
-
-``npm install``
+2. Navigate to the backend and frontend directories separately and run the following command in each to install the required dependencies: ``npm install``.
 
 3. In the backend/config directory, find the default.package.json file and fill in the mongoURI to connect to your MongoDB instance and a random generated jwtSecret to initialize the authentication set up.
 
 4. Start the servers:
 
-- In the backend directory, run: ``npm run server``
+- In the backend directory, run: ``npm run server``.
 
-- In the frontend directory, run: ``npm start``
+- In the frontend directory, run: ``npm start``.
 
 5. Open your web browser and access the application at http://localhost:3000.
 

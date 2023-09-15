@@ -16,14 +16,14 @@ Welcome to the **BizConnect**! This platform allows users to network, share indu
 
 This web application is a full-stack social network developed using Node.js, Express, React, Redux, and MongoDB. It includes various features for users to interact with, such as creating posts, liking and commenting, accessing job listings, networking with professionals, and managing their profiles.
 
-## 🌟 Features
+## Features 🌟
 
 - **Home Feed**: Registered users can access the Home feed to create posts, like, unlike, and comment on posts.
 - **Job Board**: Users can create job listings, view job listings, and apply for jobs.
 - **Network/Profiles**: Users can scroll through profiles created on the app and connect with professionals.
 - **Dashboard**: Users can update their profiles, add education, and add work experience.
 
-### ✨ Usage
+### Usage ✨
 
 1. **Register**: Create your BizConnect account and complete your profile.
 
@@ -41,39 +41,31 @@ Happy networking and career growth! 🌐🤝
 
 ## Landing Page
 
-![Landing Page](URL_TO_LANDING_PAGE_IMAGE)
+![Landing Page](https://github.com/x-saim/bizconnect/blob/master/docs/Landing.png?raw=true)
 
 ## About Us
-![About Page](URL_TO_ABOUT_PAGE_IMAGE)
+![About Page](https://github.com/x-saim/bizconnect/blob/master/docs/About.png?raw=true)
 
 
 ## Authentication Pages
 | Register                                  | Login                                  |
 | ---------------------------------------- | -------------------------------------- |
-| ![Register](URL_TO_REGISTER_IMAGE)       | ![Login](URL_TO_LOGIN_IMAGE)           |
+| ![Register](https://github.com/x-saim/bizconnect/blob/master/docs/Register.png?raw=true)       | ![Login](https://github.com/x-saim/bizconnect/blob/master/docs/Login.png?raw=true)           |
 
 | Profiles                                  | Profile Image                                   |
 | ---------------------------------------- | -------------------------------------------- |
-| ![Profiles](URL_TO_PROFILES_IMAGE)       | ![Profile Image](URL_TO_PROFILE_IMAGE)        |
+| ![Profiles](https://github.com/x-saim/bizconnect/blob/master/docs/Profiles.png?raw=true)       | ![Profile Image](https://github.com/x-saim/bizconnect/blob/master/docs/Profile.png?raw=true)        |
 
 ## Home Feed
 
-![Home Feed](URL_TO_HOME_FEED_IMAGE)
+![Home Feed](https://github.com/x-saim/bizconnect/blob/master/docs/Home%20Feed.png?raw=true)
+
+## Job Board
+![Job Board](https://github.com/x-saim/bizconnect/blob/master/docs/Job%20Board.png?raw=true)
 
 ## Dashboard
 
-![Dashboard](URL_TO_DASHBOARD_IMAGE)
-## Profile Page
-
-![Profiles Board](URL_TO_PROFILES_BOARD_IMAGE)
-
-## Profiles Board
-
-![Profile Page](URL_TO_PROFILES_BOARD_IMAGE)
-
-## Job Board
-
-![Job Board](URL_TO_JOB_BOARD_IMAGE)
+![Dashboard](https://github.com/x-saim/bizconnect/blob/master/docs/Dashboard.png?raw=true)
 
 ### Technologies Used
 

@@ -1,4 +1,4 @@
-# BizConnect
+# BizConnect 💻
 
 Welcome to the **BizConnect**! This platform allows users to network, share industry insights, find job opportunities, and offer freelance services. Below, you'll find essential information to get started with this application.
 
@@ -6,23 +6,74 @@ Welcome to the **BizConnect**! This platform allows users to network, share indu
 
 1. [Overview](#overview)
 2. [Features](#features)
-3. [Technologies Used](#technologies-used)
-4. [Dependencies](#dependencies)
-5. [Getting Started](#getting-started)
-6. [Usage](#usage)
+3. [App Views](#app-views)
+4. [Technologies Used](#technologies-used)
+5. [Dependencies](#dependencies)
+6. [Getting Started](#getting-started)
+7. [Usage](#usage)
 
 ## Overview
 
 This web application is a full-stack social network developed using Node.js, Express, React, Redux, and MongoDB. It includes various features for users to interact with, such as creating posts, liking and commenting, accessing job listings, networking with professionals, and managing their profiles.
 
-## Features
-
-### Main Features:
+## 🌟 Features
 
 - **Home Feed**: Registered users can access the Home feed to create posts, like, unlike, and comment on posts.
 - **Job Board**: Users can create job listings, view job listings, and apply for jobs.
 - **Network/Profiles**: Users can scroll through profiles created on the app and connect with professionals.
 - **Dashboard**: Users can update their profiles, add education, and add work experience.
+
+### ✨ Usage
+
+1. **Register**: Create your BizConnect account and complete your profile.
+
+2. **Explore**: Dive into the Home Feed to see what's happening in your industry. Browse job listings and profiles.
+
+3. **Connect**: Start connecting with professionals who share your interests and goals.
+
+4. **Customize**: Personalize your profile, add your educational background and work experience to stand out.
+
+Let's embark on this exciting journey together! If you have any questions or need assistance, don't hesitate to reach out to our support team.
+
+Happy networking and career growth! 🌐🤝
+### App Views
+
+
+## Landing Page
+
+![Landing Page](URL_TO_LANDING_PAGE_IMAGE)
+
+## About Us
+![About Page](URL_TO_ABOUT_PAGE_IMAGE)
+
+
+## Authentication Pages
+| Register                                  | Login                                  |
+| ---------------------------------------- | -------------------------------------- |
+| ![Register](URL_TO_REGISTER_IMAGE)       | ![Login](URL_TO_LOGIN_IMAGE)           |
+
+| Profiles                                  | Profile Image                                   |
+| ---------------------------------------- | -------------------------------------------- |
+| ![Profiles](URL_TO_PROFILES_IMAGE)       | ![Profile Image](URL_TO_PROFILE_IMAGE)        |
+
+## Home Feed
+
+![Home Feed](URL_TO_HOME_FEED_IMAGE)
+
+## Dashboard
+
+![Dashboard](URL_TO_DASHBOARD_IMAGE)
+## Profile Page
+
+![Profiles Board](URL_TO_PROFILES_BOARD_IMAGE)
+
+## Profiles Board
+
+![Profile Page](URL_TO_PROFILES_BOARD_IMAGE)
+
+## Job Board
+
+![Job Board](URL_TO_JOB_BOARD_IMAGE)
 
 ### Technologies Used
 
@@ -45,29 +96,28 @@ This web application is a full-stack social network developed using Node.js, Exp
 
 ### Backend Dependencies:
 
-- express
-- express-validator
-- bcryptjs
-- config
-- gravatar
-- jsonwebtoken
-- mongoose
-- cors
-- cloudinary
+- express 4.18.2
+- express-validator 7.0.1
+- bcryptjs 2.4.3
+- config 3.3.9
+- gravatar 1.8.2
+- jsonwebtoken 9.0.2
+- mongoose 7.5.0
+- cors 2.8.5
+- cloudinary 1.40.0
 
 ### Frontend Dependencies:
-- axios
-- react-router-dom
-- redux
-- react-redux
-- redux-devtools-extension
-- moment
-- uuid
-- tailwindcss
-- @mui/icons-material
-- @mui/material
-- @ant-design/icons
-- react-bootstrap
+- axios 1.5.0
+- react-router-dom 6.15.0
+- react-redux 8.1.2
+- redux-devtools-extension 2.13.9
+- moment 2.29.4
+- uuid 9.0.0
+- tailwindcss 3.3.3
+- @mui/icons-material 5.14.9
+- @mui/material 5.14.9
+- @ant-design/icons 5.2.6
+- react-bootstrap 2.8.0
 
 ## Getting Started
 
@@ -82,17 +132,9 @@ To get started with this web application, follow these steps:
 
 4. Start the servers:
 
-- In the backend directory, run:
+- In the backend directory, run: ``npm run server``
 
-``npm run server``
-
-- In the frontend directory, run:
-
-``npm start``
+- In the frontend directory, run: ``npm start``
 
 5. Open your web browser and access the application at http://localhost:3000.
 
-### Usage
-Once the application is up and running, you can register as a user, log in, and start using the various features like creating posts, browsing job listings, networking with professionals, and managing your profile.
-
-Enjoy using the BizConnect web application! If you have any questions or encounter issues, please refer to the documentation or contact the developers for assistance.

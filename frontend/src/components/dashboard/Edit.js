@@ -3,7 +3,6 @@ import { useState } from 'react';
 import { createOrUpdateProfile } from '../../redux/actions/profileActions';
 import { connect } from 'react-redux';
 import { setAlert } from '../../redux/actions/alertActions';
-import PropTypes from 'prop-types';
 
 const Edit = ({ setAlert, createOrUpdateProfile, isAuthenticated }) => {
   const [formData, setFormData] = useState({

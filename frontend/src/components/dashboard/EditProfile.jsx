@@ -1,9 +1,6 @@
 import { Box } from "@mui/material"
-import { Button } from "antd"
 import { useState } from "react"
 import { Link } from "react-router-dom"
-
-import '../../assets/css/editprofiledashboard.css'
 import AddEduction from './AddEducation';
 import AddExperience from './AddExperience';
 import Edit from "./Edit"
@@ -17,7 +14,7 @@ export const EditProfile = () => {
           Go Back
         </Link>
         <Box sx={{display: 'flex', flexWrap: 'wrap', marginTop:'16px'}}>
-          {/* <button onClick={() => setCurrent('overview')} className={`btn my-2 ${current === 'overview' ? 'btn-dark' : 'btn-light'}`}>Overview</button> */}
+   
           <button onClick={() => setCurrent('edit-profile')} className={`btn my-2 ${current === 'edit-profile' ? 'btn-dark' : 'btn-light'}`}>Edit</button>
           <button onClick={() => setCurrent('add-education')} className={`btn my-2 ${current === 'add-education' ? 'btn-dark' : 'btn-light'}`}>Add Education</button>
           <button onClick={() => setCurrent('add-experience')} className={`btn my-2 ${current === 'add-experience' ? 'btn-dark' : 'btn-light'}`}>Add Experience</button>

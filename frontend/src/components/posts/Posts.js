@@ -1,9 +1,7 @@
 import React, { useEffect } from 'react';
 import { Row, Col } from 'antd';
-
 import PostItem from './PostItem';
 import { getPosts } from '../../redux/actions/postActions';
-import Spinner from '../layout/Spinner';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Addpost from './Addpost';

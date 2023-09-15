@@ -1,6 +1,4 @@
 import { Typography } from '@mui/material';
-// import BasicTable from "./EducationTable"
-import ExperienceTable from './ExperienceTable';
 import { Box, Button, Grid, TextField } from '@mui/material';
 import { useState } from 'react';
 import { addExperienceField } from '../../redux/actions/profileActions';
@@ -15,8 +13,6 @@ const AddExperience = ({ setAlert, addExperienceField, profile }) => {
     title: '',
     location: '',
     description: '',
-    // from: dayjs(''),
-    // to: dayjs(''),
   });
   const [from, setFrom] = useState(dayjs(''));
   const [to, setTo] = useState(dayjs(''));
@@ -144,7 +140,6 @@ const AddExperience = ({ setAlert, addExperienceField, profile }) => {
   );
 };
 
-//Get the auth state
 const mapStateToProps = (state) => ({
   profile: state.profileReducer.profile,
 });

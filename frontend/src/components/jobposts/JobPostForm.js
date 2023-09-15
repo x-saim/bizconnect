@@ -24,7 +24,6 @@ const JobPostForm = ({ addJobPost, auth }) => {
 
   const {
     title,
-    logo,
     company,
     description,
     requirements,

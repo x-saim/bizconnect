@@ -1,5 +1,4 @@
 import { Typography } from '@mui/material';
-import EducationTable from './EducationTable';
 import { Box, Button, Grid, TextField } from '@mui/material';
 import { useState } from 'react';
 import { addEductionField } from '../../redux/actions/profileActions';
@@ -14,8 +13,6 @@ const AddEduction = ({ setAlert, addEductionField, profile }) => {
     degree: '',
     fieldofstudy: '',
     description: '',
-    // from: dayjs(''),
-    // to: dayjs(''),
   });
   const [from, setFrom] = useState(dayjs(''));
   const [to, setTo] = useState(dayjs(''));
@@ -50,10 +47,6 @@ const AddEduction = ({ setAlert, addEductionField, profile }) => {
 
   return (
     <>
-      {/* <Typography sx={{ marginY: '12px' }} variant='h3'>
-        Education
-      </Typography> */}
-      {/* <EducationTable rows={profile ? profile.education : []} /> */}
       <Box sx={{}}>
         <Typography sx={{ marginY: '12px' }} variant='h5'>
           Add New Education

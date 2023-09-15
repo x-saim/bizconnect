@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { getJobPost, deleteJobPost } from '../../redux/actions/jobpostActions';
 import PropTypes from 'prop-types';
@@ -8,7 +8,6 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import { Navigate } from 'react';
 import { Container } from 'react-bootstrap';
 
 const JobPost = ({
@@ -22,16 +21,6 @@ const JobPost = ({
   useEffect(() => {
     getJobPost(id);
   }, [getJobPost, id]);
-
-  const [showDeleteButton, setShowDeleteButton] = useState(false);
-
-  // Handle the delete button click
-  const handleDeleteClick = async (e) => {
-    e.preventDefault();
-    await deleteJobPost(id);
-    // Redirect to the job posts page
-    window.location.href = '/jobposts';
-  };
 
   const isJobPostCreator =
     jobPost &&

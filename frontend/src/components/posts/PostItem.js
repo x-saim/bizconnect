@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
 import {
@@ -66,7 +65,7 @@ function PostItem2({
       </header>
 
       <p className='description'>{text}</p>
-      {image && <img src={image} alt='post image' />}
+      {image && <img src={image} alt='post' />}
 
       <footer className='d-flex mt footerfontsize'>
         <button

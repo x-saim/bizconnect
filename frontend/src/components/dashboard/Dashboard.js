@@ -8,7 +8,6 @@ import List from '@mui/material/List';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
-import Badge from '@mui/material/Badge';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
@@ -112,7 +111,10 @@ const Dashboard = ({
   const navigate = useNavigate();
 
   const handleProfileClick = () => {
-    navigate(`/profile/${user}`);
+    if (user && user._id) {
+      // Check if user and user._id are defined before navigating
+      navigate(`/profile/${user._id}`);
+    }
   };
 
   const handleEditProfileClick = () => {
